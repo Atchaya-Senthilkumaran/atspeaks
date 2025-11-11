@@ -15,7 +15,7 @@ export default function Events() {
     const fetchEvents = async () => {
       try {
         const res = await fetch(
-          "https://atspeaks-kn7l.onrender.com/api/events"
+          "https://atspeaks-zqwc.vercel.app/api/events"
         );
         const data = await res.json();
         setEvents(data);

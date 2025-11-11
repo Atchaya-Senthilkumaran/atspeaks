@@ -24,7 +24,7 @@ export default function Contact() {
 
     try {
       const res = await fetch(
-        "https://atspeaks-kn7l.onrender.com/api/contact",
+        "https://atspeaks-zqwc.vercel.app/api/contact",
         {
           method: "POST",
           headers: {
