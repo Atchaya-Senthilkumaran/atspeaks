@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir /s /b)",
+      "Bash(findstr:*)",
+      "Bash(node:*)",
+      "Bash(curl:*)",
+      "Bash(dir:*)",
+      "Bash(nul)",
+      "Bash(mkdir:*)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(timeout /t 5)",
+      "Bash(npm run dev:*)",
+      "Bash(timeout /t 3)",
+      "Bash(echo:*)",
+      "Bash(server.js)",
+      "Bash(netstat:*)",
+      "Bash(taskkill /F /PID 20132)",
+      "Bash(taskkill //F //PID 20132 2)",
+      "Bash(timeout:*)",
+      "Bash(test-screenshot.txt)",
+      "Bash(npm start)",
+      "Bash(taskkill:*)",
+      "Bash(rm:*)",
+      "Bash(python -m json.tool:*)",
+      "Bash(python:*)",
+      "Bash(Get-Process)",
+      "Bash(Where-Object {$_rocessName -eq \"node\"})",
+      "Bash(ForEach-Object { Stop-Process -Id $_d -Force })",
+      "Bash(test:*)",
+      "Bash(cat:*)",
+      "Bash(copy:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
