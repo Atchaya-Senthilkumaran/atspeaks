@@ -24,7 +24,7 @@ export default function Contact() {
 
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/contact`,
+        "https://atspeaks-kn7l.onrender.com/api/contact",
         {
           method: "POST",
           headers: {
@@ -35,7 +35,7 @@ export default function Contact() {
       );
 
       const data = await res.json();
-
+      console.log(data)
       if (res.ok) {
         setStatus({
           type: "success",

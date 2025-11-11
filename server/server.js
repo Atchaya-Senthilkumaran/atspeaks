@@ -19,10 +19,7 @@ connectDB(process.env.MONGO_URI).catch(err => {
 });
 
 // Middlewares
-app.use(cors({
-  origin: FRONTEND_URL,
-  credentials: true
-}));
+app.use(cors()); // Allow all origins
 app.use(express.json({ limit: '5mb' }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
