@@ -11,7 +11,7 @@ const recordingRoutes = require('./routes/recordingRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
+const FRONTEND_URL = process.env.FRONTEND_URL;
 
 // Connect DB (non-blocking, will use mock data if fails)
 connectDB(process.env.MONGO_URI).catch(err => {
