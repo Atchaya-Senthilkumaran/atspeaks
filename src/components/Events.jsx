@@ -18,16 +18,44 @@ export default function Events() {
         console.log('🔗 Fetching events from:', API_URL);
         const res = await fetch(`${API_URL}/api/events`);
 
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
+        console.log('📡 Response status:', res.status);
+        console.log('📡 Response ok:', res.ok);
+
+        // Parse JSON response
+        let data;
+        try {
+          data = await res.json();
+        } catch (parseError) {
+          console.error('❌ Failed to parse JSON response:', parseError);
+          const text = await res.text().catch(() => '');
+          console.error('❌ Response text:', text);
+          throw new Error(`Failed to parse response: ${text}`);
         }
 
-        const data = await res.json();
-        console.log('✅ Events fetched successfully:', data.length, 'events');
-        setEvents(data);
+        // Handle response - events API should always return an array
+        if (Array.isArray(data)) {
+          console.log('✅ Events fetched successfully:', data.length, 'events');
+          setEvents(data);
+        } else if (data.events && Array.isArray(data.events)) {
+          // Handle error response that contains events array
+          console.log('✅ Using events from response object:', data.events.length, 'events');
+          setEvents(data.events);
+        } else if (!res.ok && data.error) {
+          // Error response without events
+          console.warn('⚠️ API returned error:', data.error);
+          console.warn('⚠️ Message:', data.message);
+          // Use empty array to show "No events found"
+          setEvents([]);
+        } else {
+          console.error('❌ Invalid response format:', data);
+          setEvents([]);
+        }
       } catch (error) {
         console.error("❌ Failed to fetch events:", error);
         console.error("API URL was:", API_URL);
+        console.error("Error details:", error.message);
+        // Set empty array on error so user sees "No events found" instead of loading forever
+        setEvents([]);
       } finally {
         setLoading(false);
       }

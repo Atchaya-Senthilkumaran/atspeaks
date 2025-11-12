@@ -34,21 +34,41 @@ export default function BookingModal({ event, open, onClose }) {
 
     try {
       console.log('🔗 Submitting booking to:', API_URL);
-      console.log('📝 Form data:', form);
+      console.log('📝 Form data before processing:', form);
 
-      const bookingData = {
-        name: form.name?.trim(),
-        email: form.email?.trim(),
-        whatsapp: form.whatsapp?.trim(),
-        institution: form.institution?.trim(),
-        location: form.location?.trim(),
-        yearOrRole: form.yearOrRole?.trim(),
+      // Validate fields on client side first
+      const trimmedData = {
+        name: String(form.name || '').trim(),
+        email: String(form.email || '').trim(),
+        whatsapp: String(form.whatsapp || '').trim(),
+        institution: String(form.institution || '').trim(),
+        location: String(form.location || '').trim(),
+        yearOrRole: String(form.yearOrRole || '').trim(),
         heardFrom: form.heardFrom || "website",
         eventId: event?._id || event?.id || "",
-        upiTransactionId: form.upiTransactionId?.trim(),
+        upiTransactionId: String(form.upiTransactionId || '').trim(),
       };
 
-      console.log('📦 Booking data being sent:', bookingData);
+      // Check for empty required fields
+      const requiredFields = ['name', 'email', 'whatsapp', 'institution', 'location', 'yearOrRole', 'upiTransactionId'];
+      const emptyFields = requiredFields.filter(field => !trimmedData[field] || trimmedData[field].length === 0);
+
+      if (emptyFields.length > 0) {
+        setErrorMessage(`Please fill all required fields: ${emptyFields.join(', ')}`);
+        setSubmitting(false);
+        return;
+      }
+
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(trimmedData.email)) {
+        setErrorMessage('Please provide a valid email address');
+        setSubmitting(false);
+        return;
+      }
+
+      console.log('📦 Booking data being sent:', trimmedData);
+      console.log('📦 Event ID:', trimmedData.eventId);
 
       const res = await fetch(
         `${API_URL}/api/recordings`,
@@ -57,16 +77,31 @@ export default function BookingModal({ event, open, onClose }) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(bookingData),
+          body: JSON.stringify(trimmedData),
         }
       );
 
+      console.log('📡 Response status:', res.status);
+      console.log('📡 Response ok:', res.ok);
+
+      const responseData = await res.json().catch(async (err) => {
+        console.error('❌ Failed to parse JSON response:', err);
+        const text = await res.text().catch(() => '');
+        console.error('❌ Response text:', text);
+        throw new Error(`Server error: ${res.status} - ${text}`);
+      });
+
+      console.log('📡 Response data:', responseData);
+
       if (!res.ok) {
-        const data = await res.json().catch(() => ({ message: `Server error: ${res.status}` }));
-        throw new Error(data.message || `Submission failed with status: ${res.status}`);
+        // Handle validation errors
+        if (responseData.missingFields && responseData.missingFields.length > 0) {
+          throw new Error(`Please fill all required fields: ${responseData.missingFields.join(', ')}`);
+        }
+        throw new Error(responseData.message || `Submission failed with status: ${res.status}`);
       }
 
-      const data = await res.json();
+      const data = responseData;
 
       // Show success screen
       setSuccess(true);
@@ -84,12 +119,15 @@ export default function BookingModal({ event, open, onClose }) {
       // More descriptive error messages
       let errorMsg = "Something went wrong. Please try again.";
 
-      if (err.message.includes('Failed to fetch')) {
-        errorMsg = "Cannot connect to server. Please check if the backend is running or update your API URL.";
+      if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
+        errorMsg = "Cannot connect to server. Please check your internet connection and try again.";
+      } else if (err.message.includes('fill all required fields')) {
+        errorMsg = err.message; // Show the specific missing fields message
       } else if (err.message) {
         errorMsg = err.message;
       }
 
+      console.error('❌ Error details:', err);
       setErrorMessage(errorMsg);
     } finally {
       setSubmitting(false);

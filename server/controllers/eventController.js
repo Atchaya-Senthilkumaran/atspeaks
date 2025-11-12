@@ -308,31 +308,70 @@ const mockEvents = [
 // GET /api/events
 exports.getEvents = async (req, res) => {
   try {
-    console.log(`📊 Mock events count: ${mockEvents.length}`);
     console.log(`📊 MongoDB readyState: ${mongoose.connection.readyState}`);
+    console.log(`📊 MONGO_URI set: ${process.env.MONGO_URI ? 'Yes' : 'No'}`);
 
-    // Check if MongoDB is connected
-    if (mongoose.connection.readyState !== 1) {
-      console.log('⚠️  MongoDB not connected, using mock data');
-      console.log(`✅ Returning ${mockEvents.length} mock events`);
-      return res.json(mockEvents);
+    // Try to ensure connection if MONGO_URI is set
+    if (process.env.MONGO_URI && mongoose.connection.readyState !== 1) {
+      const { ensureConnection } = require('../config/db');
+      console.log('🔄 Attempting to establish MongoDB connection...');
+      try {
+        await ensureConnection(process.env.MONGO_URI);
+        // Wait a bit for connection to stabilize
+        await new Promise(resolve => setTimeout(resolve, 500));
+      } catch (connErr) {
+        console.error('⚠️ Connection attempt failed:', connErr.message);
+      }
     }
 
-    const events = await Event.find().sort({ date: -1, createdAt: -1 });
-    console.log(`📊 Events from database: ${events.length}`);
+    // Check if MongoDB is connected after retry
+    if (mongoose.connection.readyState === 1) {
+      console.log('✅ MongoDB is connected, fetching events from database...');
+      
+      try {
+        const events = await Event.find().sort({ date: -1, createdAt: -1 })
+          .maxTimeMS(10000) // 10 second timeout
+          .lean(); // Use lean for better performance
+        
+        console.log(`📊 Events from database: ${events.length}`);
 
-    // If no events in DB, return mock data
-    if (events.length === 0) {
-      console.log('⚠️  No events in database, using mock data');
-      console.log(`✅ Returning ${mockEvents.length} mock events`);
-      return res.json(mockEvents);
+        // If we have events in DB, return them
+        if (events.length > 0) {
+          console.log(`✅ Returning ${events.length} events from database`);
+          return res.json(events);
+        } else {
+          console.log('⚠️  No events in database, using mock data');
+          // Return mock data if DB is empty (helps during development/seed)
+          return res.json(mockEvents);
+        }
+      } catch (dbErr) {
+        console.error('❌ Database query error:', dbErr.message);
+        // If it's a timeout or connection error, use mock as fallback
+        if (dbErr.name === 'MongooseError' || dbErr.message.includes('buffering') || dbErr.message.includes('timeout')) {
+          console.log('⚠️  Database operation failed, using mock data as fallback');
+          // Return mock events so site still works
+          return res.json(mockEvents);
+        }
+        throw dbErr;
+      }
+    } else {
+      // MongoDB is not connected
+      if (!process.env.MONGO_URI) {
+        console.log('⚠️  MONGO_URI not configured, using mock data');
+        return res.json(mockEvents);
+      } else {
+        // MONGO_URI is set but connection failed - use mock data as fallback
+        console.log('⚠️  MongoDB connection failed, using mock data as fallback');
+        console.log('⚠️  Please check MongoDB configuration in Vercel environment variables');
+        // Still return mock events so the site works, but log the issue
+        return res.json(mockEvents);
+      }
     }
-
-    console.log(`✅ Returning ${events.length} events from database`);
-    res.json(events);
   } catch (err) {
-    console.log('⚠️  Error fetching events, using mock data:', err.message);
-    console.log(`✅ Returning ${mockEvents.length} mock events`);
+    console.error('❌ Error in getEvents:', err);
+    console.error('Stack trace:', err.stack);
+    // Return mock data as fallback so site still works
+    console.log('⚠️  Using mock data due to error');
     res.json(mockEvents);
   }
 };
