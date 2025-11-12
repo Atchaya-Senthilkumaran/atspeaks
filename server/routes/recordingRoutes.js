@@ -4,12 +4,8 @@ const multer = require('multer');
 const path = require('path');
 const { createRecordingRequest, getRecordingRequests } = require('../controllers/recordingController');
 
-// Setup file upload using multer
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'uploads/'),
-  filename: (req, file, cb) =>
-    cb(null, Date.now() + '-' + file.originalname.replace(/\s+/g, '_')),
-});
+// Use memory storage for Vercel serverless compatibility
+const storage = multer.memoryStorage();
 
 const upload = multer({
   storage,

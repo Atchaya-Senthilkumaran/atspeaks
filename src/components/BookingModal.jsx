@@ -51,13 +51,24 @@ export default function BookingModal({ event, open, onClose }) {
     fd.append("paymentScreenshot", file);
 
     try {
+      const apiUrl = import.meta.env.VITE_API_URL || "https://atspeaks-zqwc.vercel.app";
+      console.log('API URL:', apiUrl); // Debug log
+
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/recordings`,
-        { method: "POST", body: fd }
+        `${apiUrl}/api/recordings`,
+        {
+          method: "POST",
+          body: fd,
+          // No need to set Content-Type header when using FormData
+        }
       );
 
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({ message: `Server error: ${res.status}` }));
+        throw new Error(data.message || `Submission failed with status: ${res.status}`);
+      }
+
       const data = await res.json();
-      if (!res.ok) throw new Error(data.message || "Submission failed.");
 
       // Show success screen
       setSuccess(true);
@@ -70,7 +81,18 @@ export default function BookingModal({ event, open, onClose }) {
       setForm({ name: "", email: "", whatsapp: "", institution: "", location: "", yearOrRole: "", heardFrom: "website" });
       setFile(null);
     } catch (err) {
-      setErrorMessage(err.message || "Something went wrong. Please try again.");
+      console.error('Booking submission error:', err); // Debug log
+
+      // More descriptive error messages
+      let errorMsg = "Something went wrong. Please try again.";
+
+      if (err.message.includes('Failed to fetch')) {
+        errorMsg = "Cannot connect to server. Please check if the backend is running or update your API URL.";
+      } else if (err.message) {
+        errorMsg = err.message;
+      }
+
+      setErrorMessage(errorMsg);
     } finally {
       setSubmitting(false);
     }
@@ -319,7 +341,7 @@ export default function BookingModal({ event, open, onClose }) {
                 onChange={handleChange}
                 className="w-full border border-slate-300 rounded-lg p-2 sm:p-2.5 mt-1 text-xs sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
                 placeholder="+91 98765 43210"
-                pattern="[+0-9\s-]+"
+                pattern="[\+0-9\s\-]+"
                 required
               />
             </div>

@@ -12,10 +12,14 @@ const recordingRoutes = require('./routes/recordingRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Connect DB (non-blocking, will use mock data if fails)
-connectDB(process.env.MONGO_URI).catch(err => {
-  console.log('⚠️ MongoDB connection failed, using mock data fallback');
-});
+// Connect DB on startup
+if (process.env.MONGO_URI) {
+  connectDB(process.env.MONGO_URI).catch(err => {
+    console.log('⚠️ MongoDB connection failed, using mock data fallback');
+  });
+} else {
+  console.log('⚠️ MONGO_URI not set, running without database');
+}
 
 // Middlewares - CORS configured to allow all origins
 app.use(cors({
@@ -23,7 +27,8 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
-app.use(express.json({ limit: '5mb' }));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // API routes

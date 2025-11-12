@@ -4,6 +4,7 @@ export const sampleEvents = [
     title: "Data to Dimensions: 3D Data Visualization",
     date: "2025-11-01",
     type: "Past",
+    price: 299, // Add your desired price here
     description:
       "Visualizing Structured Data in 3D with React and Three.js. Learn how to turn data into immersive 3D visuals, build with React + Three.js, and map, optimize & visualize data interactively.",
     poster: "/posters/13.png",
@@ -32,6 +33,7 @@ export const sampleEvents = [
     title: "Agentic Frames: From CLI to MCP",
     date: "2025-10-12",
     type: "Past",
+    price: 499,
     description:
       "Command. Automate. Adapt. Premium course exploring agentic frameworks from command-line interfaces to model context protocol.",
     poster: "/posters/12.png",
@@ -52,6 +54,7 @@ export const sampleEvents = [
     title: "Campus to Corporate: Hack and Crack Placements",
     date: "2025-09-06",
     type: "Past",
+    price: 199,
     description:
       "A comprehensive session featuring industry insights on landing your dream job and navigating the placement process.",
     poster: "/posters/11.png",
@@ -81,6 +84,7 @@ export const sampleEvents = [
     title: "Agentic AI Unlocked",
     date: "2025-08-17",
     type: "Past",
+    price: 199,
     description:
       "How Agentic AI is enhancing workflows across industries. Perfect for innovators, tech leads, and entrepreneurs.",
     poster: "/posters/10.png",
@@ -110,6 +114,7 @@ export const sampleEvents = [
     title: "Resume to Recruiter",
     date: "2025-07-13",
     type: "Past",
+    price: 149,
     description:
       "Wanna know how to craft a killer resume & grab internships like a pro? This is for you! Learn professional resume writing and job application strategies.",
     poster: "/posters/9.jpg",
@@ -130,6 +135,7 @@ export const sampleEvents = [
     title: "Figma For Absolute Beginners",
     date: "2025-06-15",
     type: "Past",
+    price: 399,
     description:
       "Premium hands-on training on UI/UX from basic to advanced. A comprehensive 3-day workshop covering Figma fundamentals and advanced design techniques.",
     poster: "/posters/8.png",
@@ -150,6 +156,7 @@ export const sampleEvents = [
     title: "Wordpress Simplified",
     date: "2025-05-17",
     type: "Past",
+    price: 249,
     description:
       "Build your first website with no code! Learn WordPress fundamentals and create your own website in this beginner-friendly session.",
     poster: "/posters/7.png",
@@ -170,6 +177,7 @@ export const sampleEvents = [
     title: "Beyond Boundaries: Unlock Your Tech Career Map",
     date: "2025-04-20",
     type: "Past",
+    price: 199,
     description:
       "Explore career domains, identify your ideal tech role, get skillset breakdown, and build your roadmap for success in tech.",
     poster: "/posters/6.png",
@@ -190,6 +198,7 @@ export const sampleEvents = [
     title: "Dear Data Analyst: Begin with Power BI",
     date: "2025-03-30",
     type: "Past",
+    price: 349,
     description:
       "Premium course covering basics of Power BI, tools and features, and sample projects. A 2-day workshop for aspiring data analysts.",
     poster: "/posters/5.png",
@@ -210,6 +219,7 @@ export const sampleEvents = [
     title: "Langchain Chatbots",
     date: "2025-03-02",
     type: "Past",
+    price: 299,
     description:
       "No API Needed — Code smart bots easily! Learn to build intelligent chatbots using LangChain and Python in this practical workshop.",
     poster: "/posters/4.png",
@@ -230,6 +240,7 @@ export const sampleEvents = [
     title: "Design Smarter: Master Figma in 3 Days",
     date: "2025-02-09",
     type: "Past",
+    price: 299,
     description:
       "Online Masterclass to master Figma in 3 days. Comprehensive training covering advanced Figma techniques and design workflows.",
     poster: "/posters/3.png",
@@ -250,6 +261,7 @@ export const sampleEvents = [
     title: "Wordpress Wonders",
     date: "2025-01-11",
     type: "Past",
+    price: 249,
     description:
       "Build Your First Website Faster Than Ever! Learn to create websites with WordPress in this hands-on session.",
     poster: "/posters/2.png",
@@ -270,6 +282,8 @@ export const sampleEvents = [
     title: "Introduction To Figma",
     date: "2024-12-28",
     type: "Past",
+    price: 0, // Setting to 0 will show "Recording Not Available" modal
+    recordingAvailable: false,
     description:
       "Enter into the world of designing! A 2-day live webinar covering Figma basics, tools & features, sample projects, and UI/UX career path.",
     poster: "/posters/1.jpg",

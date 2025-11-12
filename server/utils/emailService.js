@@ -1,5 +1,4 @@
 const nodemailer = require('nodemailer');
-const path = require('path');
 
 // Create transporter
 const transporter = nodemailer.createTransport({
@@ -17,18 +16,10 @@ const transporter = nodemailer.createTransport({
 
 // Send email to admin about new booking
 const sendAdminNotification = async (bookingData, eventDetails) => {
-  const logoPath = path.join(__dirname, '../public/recordings/logo.jpg');
-
   const mailOptions = {
     from: process.env.FROM_EMAIL,
     to: 'connect.atspeaks@gmail.com',
     subject: `🎉 New Recording Booking - ${eventDetails.title}`,
-    attachments: [{
-      filename: 'logo.jpg',
-      path: logoPath,
-      cid: 'atspeaks-logo',
-      contentDisposition: 'inline'
-    }],
     html: `
       <!DOCTYPE html>
       <html>
@@ -49,11 +40,9 @@ const sendAdminNotification = async (bookingData, eventDetails) => {
       </head>
       <body>
         <div class="container">
-          <div class="logo-section">
-            <img src="cid:atspeaks-logo" alt="AT Speaks Logo" style="width: 200px; height: auto; margin: 0 auto 10px; display: block;" />
-          </div>
           <div class="header">
-            <h2 style="margin: 0;">🎉 New Recording Booking Received!</h2>
+            <h1 style="margin: 0; font-size: 24px;">AT Speaks</h1>
+            <h2 style="margin: 10px 0 0 0;">🎉 New Recording Booking Received!</h2>
           </div>
           <div class="content">
             <div class="detail-row">
@@ -116,18 +105,10 @@ const sendAdminNotification = async (bookingData, eventDetails) => {
 
 // Send confirmation email to user (UPDATED)
 const sendUserConfirmation = async (bookingData, eventDetails) => {
-  const logoPath = path.join(__dirname, '../public/recordings/logo.jpg');
-
   const mailOptions = {
     from: process.env.FROM_EMAIL,
     to: bookingData.email,
     subject: `✅ Recording Registration Received - ${eventDetails.title}`,
-    attachments: [{
-      filename: 'logo.jpg',
-      path: logoPath,
-      cid: 'atspeaks-logo',
-      contentDisposition: 'inline'
-    }],
     html: `
       <!DOCTYPE html>
       <html>
@@ -151,8 +132,8 @@ const sendUserConfirmation = async (bookingData, eventDetails) => {
       <body>
         <div class="container">
           <div class="header">
-            <img src="cid:atspeaks-logo" alt="AT Speaks Logo" style="width: 180px; height: auto; margin: 0 auto 20px; display: block;" />
-            <h2 style="margin-top: 20px;">Your Recording Registration is Under Review</h2>
+            <h1 style="margin: 0; font-size: 28px;">AT Speaks</h1>
+            <h2 style="margin-top: 15px;">Your Recording Registration is Under Review</h2>
           </div>
           <div class="content">
             <div class="success-icon">📩</div>
@@ -202,18 +183,10 @@ const sendUserConfirmation = async (bookingData, eventDetails) => {
 
 // Send email to admin about new contact form submission
 const sendContactAdminNotification = async (contactData) => {
-  const logoPath = path.join(__dirname, '../public/recordings/logo.jpg');
-
   const mailOptions = {
     from: process.env.FROM_EMAIL,
     to: 'connect.atspeaks@gmail.com',
     subject: `📧 New Contact Form Submission - ${contactData.subject}`,
-    attachments: [{
-      filename: 'logo.jpg',
-      path: logoPath,
-      cid: 'atspeaks-logo',
-      contentDisposition: 'inline'
-    }],
     html: `
       <!DOCTYPE html>
       <html>
@@ -233,11 +206,9 @@ const sendContactAdminNotification = async (contactData) => {
       </head>
       <body>
         <div class="container">
-          <div class="logo-section">
-            <img src="cid:atspeaks-logo" alt="AT Speaks Logo" style="width: 200px; height: auto; margin: 0 auto 10px; display: block;" />
-          </div>
           <div class="header">
-            <h2 style="margin: 0;">📧 New Contact Form Submission</h2>
+            <h1 style="margin: 0; font-size: 24px;">AT Speaks</h1>
+            <h2 style="margin: 10px 0 0 0;">📧 New Contact Form Submission</h2>
           </div>
           <div class="content">
             <div class="detail-row">
@@ -280,18 +251,10 @@ const sendContactAdminNotification = async (contactData) => {
 
 // Send confirmation email to user for contact form submission
 const sendContactUserConfirmation = async (contactData) => {
-  const logoPath = path.join(__dirname, '../public/recordings/logo.jpg');
-
   const mailOptions = {
     from: process.env.FROM_EMAIL,
     to: contactData.email,
     subject: '✅ We received your message - AT Speaks',
-    attachments: [{
-      filename: 'logo.jpg',
-      path: logoPath,
-      cid: 'atspeaks-logo',
-      contentDisposition: 'inline'
-    }],
     html: `
       <!DOCTYPE html>
       <html>
@@ -311,8 +274,8 @@ const sendContactUserConfirmation = async (contactData) => {
       <body>
         <div class="container">
           <div class="header">
-            <img src="cid:atspeaks-logo" alt="AT Speaks Logo" style="width: 180px; height: auto; margin: 0 auto 20px; display: block;" />
-            <h2 style="margin-top: 20px;">Thank You for Reaching Out!</h2>
+            <h1 style="margin: 0; font-size: 28px;">AT Speaks</h1>
+            <h2 style="margin-top: 15px;">Thank You for Reaching Out!</h2>
           </div>
           <div class="content">
             <div class="success-icon">✉️</div>

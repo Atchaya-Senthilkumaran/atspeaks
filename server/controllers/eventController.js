@@ -1,7 +1,7 @@
 const Event = require('../models/Event');
 const mongoose = require('mongoose');
 
-// Mock data fallback - All 12 real events from src/data/data.js
+// Mock data fallback - All 13 real events from src/data/data.js
 const mockEvents = [
   {
     _id: '1',
@@ -10,6 +10,8 @@ const mockEvents = [
     type: "Past",
     description: "Visualizing Structured Data in 3D with React and Three.js. Learn how to turn data into immersive 3D visuals, build with React + Three.js, and map, optimize & visualize data interactively.",
     poster: "/posters/13.png",
+    price: 199,
+    recordingAvailable: true,
     highlights: [
       "Turn data into immersive 3D visuals",
       "Build with React + Three.js",
@@ -37,6 +39,8 @@ const mockEvents = [
     type: "Past",
     description: "Command. Automate. Adapt. Premium course exploring agentic frameworks from command-line interfaces to model context protocol.",
     poster: "/posters/12.png",
+    price: 299,
+    recordingAvailable: true,
     highlights: [
       "Master command-line interfaces",
       "Understand agentic frameworks",
@@ -50,40 +54,14 @@ const mockEvents = [
     }
   },
   {
-    _id: '13',
-    title: "Campus to Corporate: Hack and Crack Placements",
-    date: "2025-09-06",
-    type: "Past",
-    description: "A comprehensive session featuring industry insights on landing your dream job and navigating the placement process.",
-    poster: "/posters/11.png",
-    highlights: [
-      "Master placement preparation strategies",
-      "Learn from Amazon Application Engineer",
-      "Campus to corporate transition guidance",
-      "Crack your dream job interviews"
-    ],
-    speakers: [
-      {
-        role: "Speaker",
-        name: "Siva Santosh",
-        title: "Application Engineer - Amazon",
-        bio: "Industry expert sharing placement insights"
-      },
-      {
-        role: "Host",
-        name: "Atchaya Senthilkumaran",
-        title: "Founder & CEO - AT Speaks",
-        bio: "Career mentor and tech educator"
-      }
-    ]
-  },
-  {
     _id: '3',
     title: "Agentic AI Unlocked",
     date: "2025-08-17",
     type: "Past",
     description: "How Agentic AI is enhancing workflows across industries. Perfect for innovators, tech leads, and entrepreneurs.",
     poster: "/posters/10.png",
+    price: 199,
+    recordingAvailable: true,
     highlights: [
       "Automate repetitive tasks efficiently",
       "Execute complex workflows",
@@ -112,6 +90,8 @@ const mockEvents = [
     type: "Past",
     description: "Wanna know how to craft a killer resume & grab internships like a pro? This is for you! Learn professional resume writing and job application strategies.",
     poster: "/posters/9.jpg",
+    price: 299,
+    recordingAvailable: true,
     highlights: [
       "Craft a killer resume that stands out",
       "Learn internship application strategies",
@@ -131,6 +111,8 @@ const mockEvents = [
     type: "Past",
     description: "Premium hands-on training on UI/UX from basic to advanced. A comprehensive 3-day workshop covering Figma fundamentals and advanced design techniques.",
     poster: "/posters/8.png",
+    price: 399,
+    recordingAvailable: true,
     highlights: [
       "Hands-on UI/UX training from basic to advanced",
       "Master Figma tools and features",
@@ -150,6 +132,8 @@ const mockEvents = [
     type: "Past",
     description: "Build your first website with no code! Learn WordPress fundamentals and create your own website in this beginner-friendly session.",
     poster: "/posters/7.png",
+    price: 199,
+    recordingAvailable: true,
     highlights: [
       "Build your first website with no code required",
       "Master WordPress fundamentals",
@@ -169,6 +153,8 @@ const mockEvents = [
     type: "Past",
     description: "Explore career domains, identify your ideal tech role, get skillset breakdown, and build your roadmap for success in tech.",
     poster: "/posters/6.png",
+    price: 299,
+    recordingAvailable: true,
     highlights: [
       "Explore various career domains in tech",
       "Identify your ideal tech role",
@@ -188,6 +174,8 @@ const mockEvents = [
     type: "Past",
     description: "Premium course covering basics of Power BI, tools and features, and sample projects. A 2-day workshop for aspiring data analysts.",
     poster: "/posters/5.png",
+    price: 399,
+    recordingAvailable: true,
     highlights: [
       "Basics of Power BI platform",
       "Master Power BI tools and features",
@@ -207,6 +195,8 @@ const mockEvents = [
     type: "Past",
     description: "No API Needed — Code smart bots easily! Learn to build intelligent chatbots using LangChain and Python in this practical workshop.",
     poster: "/posters/4.png",
+    price: 199,
+    recordingAvailable: true,
     highlights: [
       "Build chatbots without external APIs",
       "Learn LangChain framework",
@@ -226,6 +216,8 @@ const mockEvents = [
     type: "Past",
     description: "Online Masterclass to master Figma in 3 days. Comprehensive training covering advanced Figma techniques and design workflows.",
     poster: "/posters/3.png",
+    price: 0,
+    recordingAvailable: false,
     highlights: [
       "Master Figma in just 3 days",
       "Advanced design techniques",
@@ -245,6 +237,8 @@ const mockEvents = [
     type: "Past",
     description: "Build Your First Website Faster Than Ever! Learn to create websites with WordPress in this hands-on session.",
     poster: "/posters/2.png",
+    price: 199,
+    recordingAvailable: true,
     highlights: [
       "Build websites faster than ever",
       "WordPress fundamentals and best practices",
@@ -264,6 +258,8 @@ const mockEvents = [
     type: "Past",
     description: "Enter into the world of designing! A 2-day live webinar covering Figma basics, tools & features, sample projects, and UI/UX career path.",
     poster: "/posters/1.jpg",
+    price: 0,
+    recordingAvailable: false,
     highlights: [
       "Designing with Figma fundamentals",
       "Figma tools & features overview",
@@ -276,6 +272,36 @@ const mockEvents = [
       title: "Founder & CEO - AT Speaks",
       bio: "UI/UX design educator introducing students to the world of Figma"
     }
+  },
+  {
+    _id: '13',
+    title: "Campus to Corporate: Hack and Crack Placements",
+    date: "2025-09-06",
+    type: "Past",
+    description: "A comprehensive session featuring industry insights on landing your dream job and navigating the placement process.",
+    poster: "/posters/11.png",
+    price: 199,
+    recordingAvailable: true,
+    highlights: [
+      "Master placement preparation strategies",
+      "Learn from Amazon Application Engineer",
+      "Campus to corporate transition guidance",
+      "Crack your dream job interviews"
+    ],
+    speakers: [
+      {
+        role: "Speaker",
+        name: "Siva Santosh",
+        title: "Application Engineer - Amazon",
+        bio: "Industry expert sharing placement insights"
+      },
+      {
+        role: "Host",
+        name: "Atchaya Senthilkumaran",
+        title: "Founder & CEO - AT Speaks",
+        bio: "Career mentor and tech educator"
+      }
+    ]
   }
 ];
 
