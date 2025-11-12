@@ -5,6 +5,11 @@ const mongoose = require('mongoose');
  * Uses global.mongoose cache to reuse connections across serverless invocations
  * This is crucial for Vercel serverless functions where connections should be cached
  */
+
+// Configure Mongoose buffering (set globally, not in connection options)
+mongoose.set('bufferCommands', true); // Enable buffering
+mongoose.set('bufferMaxEntries', 0); // Unlimited buffered commands
+
 let cached = global.mongoose;
 
 if (!cached) {
@@ -36,10 +41,6 @@ const connectDB = async (mongoUri) => {
     console.log('🔌 Establishing new MongoDB connection...');
     
     const opts = {
-      // IMPORTANT: Enable buffering but with longer timeout
-      // This allows Mongoose to wait for connection before executing queries
-      bufferCommands: true, // Enable buffering - wait for connection before executing queries
-      bufferMaxEntries: 0, // Disable limit on buffered commands (0 = unlimited)
       // Connection pool settings
       maxPoolSize: 5, // Reduced pool size for serverless (fewer connections needed)
       minPoolSize: 1, // Minimum pool size
@@ -50,8 +51,8 @@ const connectDB = async (mongoUri) => {
       // Retry settings
       retryWrites: true, // Retry writes on transient errors
       retryReads: true, // Retry reads on transient errors
-      // Wait for connection to be ready before executing queries
-      // This prevents "buffering timed out" errors
+      // Note: bufferCommands and bufferMaxEntries are Mongoose options, not MongoDB driver options
+      // They are set globally using mongoose.set() at the top of this file
     };
 
     // Only add serverApi for MongoDB Atlas (mongodb+srv://)
