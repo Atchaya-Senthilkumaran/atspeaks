@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // This connects on each request but reuses cached connections
 app.use(async (req, res, next) => {
   // Skip for health check to avoid connection overhead
-  if (req.path === '/api/health') {
+  if (req.path === '/api/health' || req.path === '/') {
     return next();
   }
 
@@ -37,7 +37,15 @@ app.use(async (req, res, next) => {
   if (MONGO_URI) {
     try {
       // Ensure connection is established (uses cached connection if available)
-      await ensureConnection(MONGO_URI);
+      // This waits for connection to be fully ready before proceeding
+      const connection = await ensureConnection(MONGO_URI);
+      
+      if (!connection || mongoose.connection.readyState !== 1) {
+        console.log('⚠️ MongoDB connection not ready, controllers will handle fallback');
+        // Don't block request - let controllers handle fallback gracefully
+      } else {
+        console.log('✅ MongoDB connection ready for request');
+      }
     } catch (err) {
       // Log error but don't block request - let controllers handle fallback
       console.log('⚠️ DB connection attempt failed, continuing with fallback...');

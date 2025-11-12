@@ -183,7 +183,20 @@ exports.createRecordingRequest = async (req, res) => {
 // GET - Fetch all recording requests (for admin)
 exports.getRecordingRequests = async (req, res) => {
   try {
-    // Check if MongoDB is connected
+    // Ensure MongoDB connection is established before querying
+    if (process.env.MONGO_URI && mongoose.connection.readyState !== 1) {
+      const { ensureConnection } = require('../config/db');
+      console.log('🔄 Ensuring MongoDB connection before query...');
+      try {
+        await ensureConnection(process.env.MONGO_URI);
+        // Wait a bit for connection to stabilize
+        await new Promise(resolve => setTimeout(resolve, 500));
+      } catch (connErr) {
+        console.error('⚠️ Connection attempt failed:', connErr.message);
+      }
+    }
+
+    // Check if MongoDB is connected and ready
     if (mongoose.connection.readyState !== 1) {
       console.log('⚠️ MongoDB not connected for GET request');
       return res.status(200).json({
@@ -193,11 +206,31 @@ exports.getRecordingRequests = async (req, res) => {
       });
     }
 
-    // Set a timeout for the query
+    // Verify connection is actually working before querying
+    try {
+      // Quick check to ensure connection is active
+      await mongoose.connection.db.admin().ping().catch(() => {
+        throw new Error('Connection ping failed');
+      });
+    } catch (pingErr) {
+      console.error('⚠️ Connection ping failed:', pingErr.message);
+      return res.status(200).json({
+        success: true,
+        message: 'Database connection not ready',
+        data: []
+      });
+    }
+
+    console.log('✅ Connection verified, executing query...');
+
+    // Execute query with timeout
     const requests = await RecordingRequest.find()
       .sort({ createdAt: -1 })
-      .maxTimeMS(5000) // 5 second timeout for the query
-      .lean(); // Use lean() for better performance
+      .maxTimeMS(10000) // 10 second timeout for the query (increased)
+      .lean() // Use lean() for better performance
+      .exec(); // Explicitly execute the query
+
+    console.log(`✅ Retrieved ${requests.length} recording requests`);
 
     res.status(200).json({
       success: true,
@@ -206,12 +239,25 @@ exports.getRecordingRequests = async (req, res) => {
     });
   } catch (err) {
     console.error('❌ Error fetching recording requests:', err.message);
+    console.error('❌ Error name:', err.name);
+    console.error('❌ Error stack:', err.stack);
 
     // Handle timeout specifically
-    if (err.name === 'MongooseError' && err.message.includes('buffering timed out')) {
+    if (err.name === 'MongooseError' && (err.message.includes('buffering timed out') || err.message.includes('timeout'))) {
+      console.error('⚠️ Query timed out - connection may not be ready');
       return res.status(200).json({
         success: true,
         message: 'Database query timed out, please try again',
+        data: []
+      });
+    }
+
+    // Handle connection errors
+    if (err.name === 'MongoError' || err.name === 'MongoServerError' || err.message.includes('connection')) {
+      console.error('⚠️ Connection error occurred');
+      return res.status(200).json({
+        success: true,
+        message: 'Database connection error, please try again',
         data: []
       });
     }
