@@ -32,8 +32,33 @@ export default function BookingModal({ event, open, onClose }) {
     setSubmitting(true);
     setErrorMessage(null);
 
-    if (!form.name || !form.email || !form.whatsapp || !form.institution || !form.location || !form.yearOrRole || !form.upiTransactionId) {
-      setErrorMessage("Please fill all fields including the UPI Transaction ID.");
+    // Trim and validate all required fields
+    const trimmedForm = {
+      name: form.name?.trim(),
+      email: form.email?.trim(),
+      whatsapp: form.whatsapp?.trim(),
+      institution: form.institution?.trim(),
+      location: form.location?.trim(),
+      yearOrRole: form.yearOrRole?.trim(),
+      upiTransactionId: form.upiTransactionId?.trim(),
+    };
+
+    console.log('📝 Form validation check:', trimmedForm);
+
+    if (!trimmedForm.name || !trimmedForm.email || !trimmedForm.whatsapp ||
+        !trimmedForm.institution || !trimmedForm.location || !trimmedForm.yearOrRole ||
+        !trimmedForm.upiTransactionId) {
+      const missingFields = [];
+      if (!trimmedForm.name) missingFields.push('Name');
+      if (!trimmedForm.email) missingFields.push('Email');
+      if (!trimmedForm.whatsapp) missingFields.push('WhatsApp');
+      if (!trimmedForm.institution) missingFields.push('Institution');
+      if (!trimmedForm.location) missingFields.push('Location');
+      if (!trimmedForm.yearOrRole) missingFields.push('Year/Role');
+      if (!trimmedForm.upiTransactionId) missingFields.push('UPI Transaction ID');
+
+      console.log('❌ Missing fields:', missingFields);
+      setErrorMessage(`Please fill the following fields: ${missingFields.join(', ')}`);
       setSubmitting(false);
       return;
     }
@@ -42,15 +67,15 @@ export default function BookingModal({ event, open, onClose }) {
       console.log('🔗 Submitting booking to:', API_URL);
 
       const bookingData = {
-        name: form.name,
-        email: form.email,
-        whatsapp: form.whatsapp,
-        institution: form.institution,
-        location: form.location,
-        yearOrRole: form.yearOrRole,
-        heardFrom: form.heardFrom,
+        name: trimmedForm.name,
+        email: trimmedForm.email,
+        whatsapp: trimmedForm.whatsapp,
+        institution: trimmedForm.institution,
+        location: trimmedForm.location,
+        yearOrRole: trimmedForm.yearOrRole,
+        heardFrom: form.heardFrom || "website",
         eventId: event?._id || event?.id || "",
-        upiTransactionId: form.upiTransactionId,
+        upiTransactionId: trimmedForm.upiTransactionId,
       };
 
       console.log('📦 Booking data being sent:', bookingData);
@@ -356,19 +381,19 @@ export default function BookingModal({ event, open, onClose }) {
                   name="institution"
                   value={form.institution}
                   onChange={handleChange}
-                  className="w-full border border-slate-300 rounded-lg p-2.5 mt-1 text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
+                  className="w-full border border-slate-300 rounded-lg p-2 sm:p-2.5 mt-1 text-xs sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
                   placeholder="Institution name"
                   required
                 />
               </div>
 
               <div>
-                <label className="text-sm font-medium text-slate-700">Location <span className="text-red-500">*</span></label>
+                <label className="text-xs sm:text-sm font-medium text-slate-700">Location <span className="text-red-500">*</span></label>
                 <input
                   name="location"
                   value={form.location}
                   onChange={handleChange}
-                  className="w-full border border-slate-300 rounded-lg p-2.5 mt-1 text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
+                  className="w-full border border-slate-300 rounded-lg p-2 sm:p-2.5 mt-1 text-xs sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
                   placeholder="City, State"
                   required
                 />
@@ -376,12 +401,12 @@ export default function BookingModal({ event, open, onClose }) {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-slate-700">Year of Study / Role <span className="text-red-500">*</span></label>
+              <label className="text-xs sm:text-sm font-medium text-slate-700">Year of Study / Role <span className="text-red-500">*</span></label>
               <input
                 name="yearOrRole"
                 value={form.yearOrRole}
                 onChange={handleChange}
-                className="w-full border border-slate-300 rounded-lg p-2.5 mt-1 text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
+                className="w-full border border-slate-300 rounded-lg p-2 sm:p-2.5 mt-1 text-xs sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
                 placeholder="e.g., 2nd Year or Software Engineer"
                 required
               />
@@ -389,14 +414,14 @@ export default function BookingModal({ event, open, onClose }) {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-slate-700">
+              <label className="text-xs sm:text-sm font-medium text-slate-700">
                 Where did you hear about this? <span className="text-red-500">*</span>
               </label>
               <select
                 name="heardFrom"
                 value={form.heardFrom}
                 onChange={handleChange}
-                className="w-full border border-slate-300 rounded-lg p-2.5 mt-1 text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
+                className="w-full border border-slate-300 rounded-lg p-2 sm:p-2.5 mt-1 text-xs sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
               >
                 <option value="website">Website</option>
                 <option value="whatsapp">WhatsApp</option>
@@ -408,7 +433,7 @@ export default function BookingModal({ event, open, onClose }) {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-slate-700">
+              <label className="text-xs sm:text-sm font-medium text-slate-700">
                 UPI Transaction ID <span className="text-red-500">*</span>
               </label>
               <input
@@ -416,7 +441,7 @@ export default function BookingModal({ event, open, onClose }) {
                 type="text"
                 value={form.upiTransactionId}
                 onChange={handleChange}
-                className="w-full border border-slate-300 rounded-lg p-2.5 mt-1 text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
+                className="w-full border border-slate-300 rounded-lg p-2 sm:p-2.5 mt-1 text-xs sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
                 placeholder="Enter your UPI Transaction ID (e.g., 123456789012)"
                 required
               />
