@@ -72,11 +72,23 @@ exports.createRecordingRequest = async (req, res) => {
       upiTransactionId: String(upiTransactionId).trim(),
     };
 
-    // Save to MongoDB
-    console.log('💾 Saving to MongoDB...');
-    const booking = new RecordingRequest(bookingData);
-    await booking.save();
-    console.log('✅ Booking saved to MongoDB successfully');
+    // Save to MongoDB (with timeout handling)
+    console.log('💾 Attempting to save to MongoDB...');
+    let savedToDb = false;
+
+    if (mongoose.connection.readyState === 1) {
+      try {
+        const booking = new RecordingRequest(bookingData);
+        await booking.save({ timeout: 5000 }); // 5 second timeout
+        savedToDb = true;
+        console.log('✅ Booking saved to MongoDB successfully');
+      } catch (dbErr) {
+        console.error('⚠️ MongoDB save failed (will continue with email):', dbErr.message);
+        // Don't fail the request if MongoDB fails - emails will still be sent
+      }
+    } else {
+      console.log('⚠️ MongoDB not connected, proceeding with email only');
+    }
 
     // Send emails (non-blocking)
     console.log('📧 Sending emails...');
@@ -116,14 +128,41 @@ exports.getRecordingRequests = async (req, res) => {
     // Check if MongoDB is connected
     if (mongoose.connection.readyState !== 1) {
       console.log('⚠️ MongoDB not connected for GET request');
-      return res.json([]);
+      return res.status(200).json({
+        success: true,
+        message: 'Database not connected',
+        data: []
+      });
     }
 
-    const requests = await RecordingRequest.find().sort({ createdAt: -1 });
-    res.json(requests);
+    // Set a timeout for the query
+    const requests = await RecordingRequest.find()
+      .sort({ createdAt: -1 })
+      .maxTimeMS(5000) // 5 second timeout for the query
+      .lean(); // Use lean() for better performance
+
+    res.status(200).json({
+      success: true,
+      count: requests.length,
+      data: requests
+    });
   } catch (err) {
-    console.error('❌ Error fetching recording requests:', err);
+    console.error('❌ Error fetching recording requests:', err.message);
+
+    // Handle timeout specifically
+    if (err.name === 'MongooseError' && err.message.includes('buffering timed out')) {
+      return res.status(200).json({
+        success: true,
+        message: 'Database query timed out, please try again',
+        data: []
+      });
+    }
+
     // Return empty array instead of error if DB not available
-    res.json([]);
+    res.status(200).json({
+      success: true,
+      message: 'Unable to fetch requests at this time',
+      data: []
+    });
   }
 };

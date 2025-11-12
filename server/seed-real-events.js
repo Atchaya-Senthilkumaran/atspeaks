@@ -17,6 +17,7 @@ const seed = async () => {
         date: "2025-11-01",
         type: "Past",
         price: 299,
+        recordingAvailable: true,
         description:
           "Visualizing Structured Data in 3D with React and Three.js. Learn how to turn data into immersive 3D visuals, build with React + Three.js, and map, optimize & visualize data interactively.",
         poster: "/posters/13.png",

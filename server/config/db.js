@@ -11,10 +11,15 @@ const connectDB = async (mongoUri) => {
   }
 
   try {
-    // Set timeout options for Vercel
+    // Optimized timeout options for Vercel serverless
     const conn = await mongoose.connect(mongoUri, {
-      serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
-      socketTimeoutMS: 45000,
+      serverSelectionTimeoutMS: 10000, // 10s to establish connection
+      socketTimeoutMS: 45000, // 45s for socket operations
+      maxPoolSize: 10, // Limit connection pool
+      minPoolSize: 1,
+      maxIdleTimeMS: 30000, // Close idle connections after 30s
+      connectTimeoutMS: 10000, // 10s connection timeout
+      bufferCommands: false, // Disable buffering for faster error detection
     });
 
     cachedConnection = conn;
