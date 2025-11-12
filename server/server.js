@@ -20,55 +20,10 @@ const MONGO_URI = process.env.MONGO_URI || process.env.MONGODB_URI;
 app.use(cors({
   origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: false
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
-// Body parsing middleware - must come before routes
-// IMPORTANT: Order matters - JSON parser must come before routes
-app.use(express.json({ 
-  limit: '10mb',
-  strict: false, // Allow non-strict JSON
-  verify: (req, res, buf, encoding) => {
-    // Log raw body for debugging (only for recordings endpoint)
-    if (req.path === '/api/recordings' && req.method === 'POST') {
-      try {
-        const bodyStr = buf.toString('utf8');
-        console.log('📦 Raw request body length:', buf.length);
-        console.log('📦 Raw request body (first 1000 chars):', bodyStr.substring(0, 1000));
-        console.log('📦 Content-Type header:', req.get('Content-Type'));
-      } catch (err) {
-        console.error('❌ Error reading raw body:', err.message);
-      }
-    }
-  }
-}));
-
-app.use(express.urlencoded({ 
-  extended: true, 
-  limit: '10mb',
-  parameterLimit: 50000 // Increase parameter limit
-}));
-
-// Debug middleware for recordings endpoint - runs AFTER body parsing
-app.use('/api/recordings', (req, res, next) => {
-  if (req.method === 'POST') {
-    console.log('🔍 Recordings POST request received');
-    console.log('🔍 Request body exists:', !!req.body);
-    console.log('🔍 Request body type:', typeof req.body);
-    console.log('🔍 Request body is object:', typeof req.body === 'object');
-    console.log('🔍 Request body keys:', req.body ? Object.keys(req.body) : 'No body');
-    console.log('🔍 Request body values:', req.body);
-    console.log('🔍 Content-Type:', req.get('Content-Type'));
-    console.log('🔍 Content-Length:', req.get('Content-Length'));
-    
-    // Check if body is empty object
-    if (req.body && typeof req.body === 'object' && Object.keys(req.body).length === 0) {
-      console.error('⚠️ WARNING: Request body is empty object!');
-    }
-  }
-  next();
-});
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Middleware to ensure DB connection before requests (for Vercel serverless)
 // This connects on each request but reuses cached connections
