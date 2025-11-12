@@ -1,5 +1,5 @@
 // API Configuration - Production
-const API_URL = 'https://atspeaks-zqwc.vercel.app';
+const API_URL = 'https://atspeaksplease.vercel.app/';
 
 console.log('🔗 API URL configured as:', API_URL);
 

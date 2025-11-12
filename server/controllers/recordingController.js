@@ -139,7 +139,7 @@ exports.createRecordingRequest = async (req, res) => {
       console.log('⚠️ Please check MongoDB configuration in Vercel environment variables');
     }
 
-    // Send emails (non-blocking)
+    // Send emails (await to ensure they're sent in serverless environment)
     console.log('📧 Sending emails...');
     const emailData = {
       name: fields.name,
@@ -152,12 +152,36 @@ exports.createRecordingRequest = async (req, res) => {
       upiTransactionId: fields.upiTransactionId
     };
 
-    sendAdminNotification(emailData, eventDetails).catch(err =>
-      console.error('❌ Admin email failed:', err.message)
-    );
-    sendUserConfirmation(emailData, eventDetails).catch(err =>
-      console.error('❌ User email failed:', err.message)
-    );
+    // Send both emails in parallel but await them to ensure they complete
+    // This is crucial in serverless environments where the function might terminate early
+    // Promise.allSettled ensures both emails are attempted even if one fails
+    const emailResults = await Promise.allSettled([
+      sendAdminNotification(emailData, eventDetails),
+      sendUserConfirmation(emailData, eventDetails)
+    ]);
+    
+    // Check results and log status
+    const adminResult = emailResults[0];
+    const userResult = emailResults[1];
+    
+    if (adminResult.status === 'fulfilled') {
+      console.log('✅ Admin notification email sent successfully');
+    } else {
+      console.error('❌ Admin email failed:', adminResult.reason?.message || adminResult.reason);
+    }
+    
+    if (userResult.status === 'fulfilled') {
+      console.log('✅ User confirmation email sent successfully');
+    } else {
+      console.error('❌ User email failed:', userResult.reason?.message || userResult.reason);
+    }
+    
+    // Log overall status
+    if (adminResult.status === 'fulfilled' && userResult.status === 'fulfilled') {
+      console.log('✅ All emails sent successfully');
+    } else {
+      console.warn('⚠️ Some emails failed to send, but booking was successful');
+    }
 
     console.log('✅ Recording booking completed successfully');
 

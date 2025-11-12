@@ -1,25 +1,39 @@
 const nodemailer = require('nodemailer');
 
-// Create transporter
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false, // Use TLS
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  tls: {
-    rejectUnauthorized: false, // Accept self-signed certificates
-  },
-});
+// Create transporter (cached for serverless efficiency)
+let transporter = null;
+
+// Get or create transporter (reusable in serverless environment)
+const getTransporter = () => {
+  if (!transporter) {
+    transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false, // Use TLS
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+      tls: {
+        rejectUnauthorized: false, // Accept self-signed certificates
+      },
+      // Connection pool settings for serverless
+      pool: true,
+      maxConnections: 1,
+      maxMessages: 3,
+    });
+  }
+  return transporter;
+};
 
 // Send email to admin about new booking
 const sendAdminNotification = async (bookingData, eventDetails) => {
-  const mailOptions = {
-    from: process.env.FROM_EMAIL,
-    to: 'connect.atspeaks@gmail.com',
-    subject: `🎉 New Recording Booking - ${eventDetails.title}`,
+  try {
+    const emailTransporter = getTransporter();
+    const mailOptions = {
+      from: process.env.FROM_EMAIL || process.env.EMAIL_USER,
+      to: 'connect.atspeaks@gmail.com',
+      subject: `🎉 New Recording Booking - ${eventDetails.title}`,
     html: `
       <!DOCTYPE html>
       <html>
@@ -93,22 +107,28 @@ const sendAdminNotification = async (bookingData, eventDetails) => {
       </body>
       </html>
     `,
-  };
+    };
 
-  try {
-    await transporter.sendMail(mailOptions);
+    const info = await emailTransporter.sendMail(mailOptions);
     console.log('✅ Admin notification email sent successfully');
+    console.log('📧 Message ID:', info.messageId);
+    return info;
   } catch (error) {
-    console.error('❌ Failed to send admin notification:', error);
+    console.error('❌ Failed to send admin notification:', error.message);
+    console.error('❌ Error code:', error.code);
+    console.error('❌ Error response:', error.response);
+    throw error; // Re-throw to allow caller to handle
   }
 };
 
 // Send confirmation email to user (UPDATED)
 const sendUserConfirmation = async (bookingData, eventDetails) => {
-  const mailOptions = {
-    from: process.env.FROM_EMAIL,
-    to: bookingData.email,
-    subject: `✅ Recording Registration Received - ${eventDetails.title}`,
+  try {
+    const emailTransporter = getTransporter();
+    const mailOptions = {
+      from: process.env.FROM_EMAIL || process.env.EMAIL_USER,
+      to: bookingData.email,
+      subject: `✅ Recording Registration Received - ${eventDetails.title}`,
     html: `
       <!DOCTYPE html>
       <html>
@@ -140,7 +160,7 @@ const sendUserConfirmation = async (bookingData, eventDetails) => {
 
             <div class="message">
               <p>Hi <strong>${bookingData.name}</strong>,</p>
-              <p>Thank you for booking your spot! Your registration details have been received and are currently being verified by our team.</p>
+              <p>Your recording registration has been received! It is under verification. Once verified, you'll receive recordings in the next <strong>24–72 hours</strong>.</p>
             </div>
 
             <div class="event-title">📹 ${eventDetails.title}</div>
@@ -156,13 +176,13 @@ const sendUserConfirmation = async (bookingData, eventDetails) => {
             </div>
 
             <div class="highlight">
-              <strong>⏰ What’s Next?</strong><br>
-              Once your registration is verified, you’ll receive the event recording link via this registered email within <strong>24–72 hours</strong>.
+              <strong>📩 What's Next?</strong><br>
+              Your registration is currently under verification. Once verified, you'll receive the event recording link via this registered email within <strong>24–72 hours</strong>.
             </div>
 
             <div class="contact">
               <strong>📧 Need Help?</strong><br>
-              If you haven’t received the recording after 72 hours, or have any questions, please reach out to us at:<br>
+              If you haven't received the recording after 72 hours, or have any questions, please reach out to us at:<br>
               <a href="mailto:connect.atspeaks@gmail.com">connect.atspeaks@gmail.com</a>
             </div>
           </div>
@@ -174,22 +194,28 @@ const sendUserConfirmation = async (bookingData, eventDetails) => {
       </body>
       </html>
     `,
-  };
+    };
 
-  try {
-    await transporter.sendMail(mailOptions);
+    const info = await emailTransporter.sendMail(mailOptions);
     console.log('✅ User confirmation email sent successfully');
+    console.log('📧 Message ID:', info.messageId);
+    return info;
   } catch (error) {
-    console.error('❌ Failed to send user confirmation:', error);
+    console.error('❌ Failed to send user confirmation:', error.message);
+    console.error('❌ Error code:', error.code);
+    console.error('❌ Error response:', error.response);
+    throw error; // Re-throw to allow caller to handle
   }
 };
 
 // Send email to admin about new contact form submission
 const sendContactAdminNotification = async (contactData) => {
-  const mailOptions = {
-    from: process.env.FROM_EMAIL,
-    to: 'connect.atspeaks@gmail.com',
-    subject: `📧 New Contact Form Submission - ${contactData.subject}`,
+  try {
+    const emailTransporter = getTransporter();
+    const mailOptions = {
+      from: process.env.FROM_EMAIL || process.env.EMAIL_USER,
+      to: 'connect.atspeaks@gmail.com',
+      subject: `📧 New Contact Form Submission - ${contactData.subject}`,
     html: `
       <!DOCTYPE html>
       <html>
@@ -242,22 +268,25 @@ const sendContactAdminNotification = async (contactData) => {
       </body>
       </html>
     `,
-  };
+    };
 
-  try {
-    await transporter.sendMail(mailOptions);
+    const info = await emailTransporter.sendMail(mailOptions);
     console.log('✅ Contact admin notification email sent successfully');
+    return info;
   } catch (error) {
     console.error('❌ Failed to send contact admin notification:', error);
+    throw error;
   }
 };
 
 // Send confirmation email to user for contact form submission
 const sendContactUserConfirmation = async (contactData) => {
-  const mailOptions = {
-    from: process.env.FROM_EMAIL,
-    to: contactData.email,
-    subject: '✅ We received your message - AT Speaks',
+  try {
+    const emailTransporter = getTransporter();
+    const mailOptions = {
+      from: process.env.FROM_EMAIL || process.env.EMAIL_USER,
+      to: contactData.email,
+      subject: '✅ We received your message - AT Speaks',
     html: `
       <!DOCTYPE html>
       <html>
@@ -307,13 +336,14 @@ const sendContactUserConfirmation = async (contactData) => {
       </body>
       </html>
     `,
-  };
+    };
 
-  try {
-    await transporter.sendMail(mailOptions);
+    const info = await emailTransporter.sendMail(mailOptions);
     console.log('✅ Contact user confirmation email sent successfully');
+    return info;
   } catch (error) {
     console.error('❌ Failed to send contact user confirmation:', error);
+    throw error;
   }
 };
 
