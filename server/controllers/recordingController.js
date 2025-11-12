@@ -7,21 +7,29 @@ const mongoose = require('mongoose');
 exports.createRecordingRequest = async (req, res) => {
   try {
     console.log('📝 Recording request received');
+    console.log('Request body:', JSON.stringify(req.body));
 
     const { name, email, whatsapp, institution, location, yearOrRole, heardFrom, eventId, upiTransactionId } = req.body;
 
-    // Validate fields
-    if (!name || !email || !whatsapp || !institution || !location || !yearOrRole || !heardFrom) {
-      console.error('❌ Missing required fields');
-      return res.status(400).json({ message: 'All fields are required' });
+    // Validate fields with detailed logging
+    const missingFields = [];
+    if (!name?.trim()) missingFields.push('name');
+    if (!email?.trim()) missingFields.push('email');
+    if (!whatsapp?.trim()) missingFields.push('whatsapp');
+    if (!institution?.trim()) missingFields.push('institution');
+    if (!location?.trim()) missingFields.push('location');
+    if (!yearOrRole?.trim()) missingFields.push('yearOrRole');
+    if (!heardFrom?.trim()) missingFields.push('heardFrom');
+    if (!upiTransactionId?.trim()) missingFields.push('upiTransactionId');
+
+    if (missingFields.length > 0) {
+      console.error('❌ Missing required fields:', missingFields.join(', '));
+      return res.status(400).json({
+        message: `Missing required fields: ${missingFields.join(', ')}`
+      });
     }
 
-    if (!upiTransactionId) {
-      console.error('❌ UPI Transaction ID missing');
-      return res.status(400).json({ message: 'UPI Transaction ID is required' });
-    }
-
-    console.log('✅ UPI Transaction ID received:', upiTransactionId);
+    console.log('✅ All fields validated successfully');
 
     // Fetch event details
     let eventDetails = { title: 'Event Recording', date: new Date().toLocaleDateString() };
