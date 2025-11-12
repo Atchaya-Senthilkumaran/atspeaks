@@ -78,8 +78,8 @@ const sendAdminNotification = async (bookingData, eventDetails) => {
               <span class="value">${bookingData.heardFrom}</span>
             </div>
             <div class="detail-row">
-              <span class="label">Payment Screenshot:</span><br>
-              <span class="value">Uploaded to server/uploads/${bookingData.paymentScreenshot}</span>
+              <span class="label">UPI Transaction ID:</span><br>
+              <span class="value">${bookingData.upiTransactionId}</span>
             </div>
             <div class="detail-row">
               <span class="label">Booking Time:</span><br>
@@ -150,6 +150,9 @@ const sendUserConfirmation = async (bookingData, eventDetails) => {
             </div>
             <div class="detail">
               <span class="label">Booking Date:</span> ${new Date().toLocaleDateString()}
+            </div>
+            <div class="detail">
+              <span class="label">UPI Transaction ID:</span> ${bookingData.upiTransactionId}
             </div>
 
             <div class="highlight">

@@ -9,8 +9,8 @@ export default function BookingModal({ event, open, onClose }) {
     location: "",
     yearOrRole: "",
     heardFrom: "website",
+    upiTransactionId: "",
   });
-  const [file, setFile] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [successData, setSuccessData] = useState(null);
@@ -26,40 +26,39 @@ export default function BookingModal({ event, open, onClose }) {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFile = (e) => setFile(e.target.files[0]);
-
   const submit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     setErrorMessage(null);
 
-    if (!form.name || !form.email || !form.whatsapp || !form.institution || !form.location || !form.yearOrRole || !file) {
-      setErrorMessage("Please fill all fields and upload your payment screenshot.");
+    if (!form.name || !form.email || !form.whatsapp || !form.institution || !form.location || !form.yearOrRole || !form.upiTransactionId) {
+      setErrorMessage("Please fill all fields including the UPI Transaction ID.");
       setSubmitting(false);
       return;
     }
 
-    const fd = new FormData();
-    fd.append("name", form.name);
-    fd.append("email", form.email);
-    fd.append("whatsapp", form.whatsapp);
-    fd.append("institution", form.institution);
-    fd.append("location", form.location);
-    fd.append("yearOrRole", form.yearOrRole);
-    fd.append("heardFrom", form.heardFrom);
-    fd.append("eventId", event?._id || event?.id || "");
-    fd.append("paymentScreenshot", file);
-
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || "https://atspeaks-zqwc.vercel.app";
+      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
       console.log('API URL:', apiUrl); // Debug log
 
       const res = await fetch(
         `${apiUrl}/api/recordings`,
         {
           method: "POST",
-          body: fd,
-          // No need to set Content-Type header when using FormData
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            whatsapp: form.whatsapp,
+            institution: form.institution,
+            location: form.location,
+            yearOrRole: form.yearOrRole,
+            heardFrom: form.heardFrom,
+            eventId: event?._id || event?.id || "",
+            upiTransactionId: form.upiTransactionId,
+          }),
         }
       );
 
@@ -78,8 +77,7 @@ export default function BookingModal({ event, open, onClose }) {
         name: form.name,
         email: form.email,
       });
-      setForm({ name: "", email: "", whatsapp: "", institution: "", location: "", yearOrRole: "", heardFrom: "website" });
-      setFile(null);
+      setForm({ name: "", email: "", whatsapp: "", institution: "", location: "", yearOrRole: "", heardFrom: "website", upiTransactionId: "" });
     } catch (err) {
       console.error('Booking submission error:', err); // Debug log
 
@@ -246,7 +244,7 @@ export default function BookingModal({ event, open, onClose }) {
                 className="w-full max-w-[250px] mx-auto rounded-xl border shadow-md mb-2 sm:mb-3"
               />
               <p className="text-xs text-slate-600 text-center">
-                After paying, upload the payment screenshot in the form.
+                After paying, enter the UPI Transaction ID in the form.
               </p>
             </div>
 
@@ -256,8 +254,8 @@ export default function BookingModal({ event, open, onClose }) {
               <ul className="text-[11px] sm:text-xs text-slate-600 space-y-1 list-disc list-inside">
                 <li>Scan QR code using any UPI app</li>
                 <li>Pay exactly ₹{event?.price || 200}</li>
-                <li>Take a screenshot of payment</li>
-                <li>Upload screenshot in the form</li>
+                <li>Copy your UPI Transaction ID from payment confirmation</li>
+                <li>Enter the Transaction ID in the form below</li>
                 <li>You'll receive recording link within 24-72 hours</li>
               </ul>
             </div>
@@ -406,16 +404,18 @@ export default function BookingModal({ event, open, onClose }) {
 
             <div>
               <label className="text-sm font-medium text-slate-700">
-                Upload Payment Screenshot <span className="text-red-500">*</span>
+                UPI Transaction ID <span className="text-red-500">*</span>
               </label>
               <input
-                type="file"
-                accept="image/*"
-                onChange={handleFile}
-                className="w-full border border-slate-300 rounded-lg p-2.5 mt-1 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-[#1f3492] file:text-white hover:file:bg-[#c8348f] file:cursor-pointer"
+                name="upiTransactionId"
+                type="text"
+                value={form.upiTransactionId}
+                onChange={handleChange}
+                className="w-full border border-slate-300 rounded-lg p-2.5 mt-1 text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
+                placeholder="Enter your UPI Transaction ID (e.g., 123456789012)"
                 required
               />
-              <p className="text-xs text-slate-500 mt-1">Upload screenshot of your ₹{event?.price || 200} payment</p>
+              <p className="text-xs text-slate-500 mt-1">Enter the 12-digit UPI Transaction ID from your payment confirmation</p>
             </div>
 
             {errorMessage && (

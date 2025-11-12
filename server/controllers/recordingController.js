@@ -2,15 +2,13 @@ const RecordingRequest = require('../models/RecordingRequest');
 const Event = require('../models/Event');
 const { sendAdminNotification, sendUserConfirmation } = require('../utils/emailService');
 const mongoose = require('mongoose');
-const fs = require('fs');
-const path = require('path');
 
 // POST - Create new recording request
 exports.createRecordingRequest = async (req, res) => {
   try {
     console.log('📝 Recording request received');
 
-    const { name, email, whatsapp, institution, location, yearOrRole, heardFrom, eventId } = req.body;
+    const { name, email, whatsapp, institution, location, yearOrRole, heardFrom, eventId, upiTransactionId } = req.body;
 
     // Validate fields
     if (!name || !email || !whatsapp || !institution || !location || !yearOrRole || !heardFrom) {
@@ -18,16 +16,12 @@ exports.createRecordingRequest = async (req, res) => {
       return res.status(400).json({ message: 'All fields are required' });
     }
 
-    if (!req.file) {
-      console.error('❌ Payment screenshot missing');
-      return res.status(400).json({ message: 'Payment screenshot is required' });
+    if (!upiTransactionId) {
+      console.error('❌ UPI Transaction ID missing');
+      return res.status(400).json({ message: 'UPI Transaction ID is required' });
     }
 
-    console.log('✅ File uploaded:', req.file.filename, '- Size:', req.file.size, 'bytes');
-
-    // Store the filename and path
-    const paymentScreenshot = req.file.filename;
-    const paymentScreenshotPath = `/uploads/${req.file.filename}`;
+    console.log('✅ UPI Transaction ID received:', upiTransactionId);
 
     // Fetch event details
     let eventDetails = { title: 'Event Recording', date: new Date().toLocaleDateString() };
@@ -54,8 +48,7 @@ exports.createRecordingRequest = async (req, res) => {
       yearOrRole,
       heardFrom,
       eventId: eventId || 'N/A',
-      paymentScreenshot,
-      paymentScreenshotPath,
+      upiTransactionId,
     };
 
     // Save to MongoDB
@@ -66,7 +59,7 @@ exports.createRecordingRequest = async (req, res) => {
 
     // Send emails (non-blocking)
     console.log('📧 Sending emails...');
-    const emailData = { name, email, whatsapp, institution, location, yearOrRole, heardFrom, paymentScreenshot };
+    const emailData = { name, email, whatsapp, institution, location, yearOrRole, heardFrom, upiTransactionId };
 
     sendAdminNotification(emailData, eventDetails).catch(err =>
       console.error('❌ Admin email failed:', err.message)

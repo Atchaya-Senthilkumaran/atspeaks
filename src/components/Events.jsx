@@ -14,9 +14,8 @@ export default function Events() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch(
-          "https://atspeaks-zqwc.vercel.app/api/events"
-        );
+        const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+        const res = await fetch(`${apiUrl}/api/events`);
         const data = await res.json();
         setEvents(data);
       } catch (error) {

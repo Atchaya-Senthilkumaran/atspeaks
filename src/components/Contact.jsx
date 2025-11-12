@@ -23,8 +23,9 @@ export default function Contact() {
     setStatus({ type: "", message: "" });
 
     try {
+      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
       const res = await fetch(
-        "https://atspeaks-zqwc.vercel.app/api/contact",
+        `${apiUrl}/api/contact`,
         {
           method: "POST",
           headers: {
