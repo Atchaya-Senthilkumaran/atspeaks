@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import API_URL from "../config/api";
 
 export default function BookingModal({ event, open, onClose }) {
   const [form, setForm] = useState({
@@ -38,11 +39,10 @@ export default function BookingModal({ event, open, onClose }) {
     }
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
-      console.log('API URL:', apiUrl); // Debug log
+      console.log('🔗 Submitting booking to:', API_URL);
 
       const res = await fetch(
-        `${apiUrl}/api/recordings`,
+        `${API_URL}/api/recordings`,
         {
           method: "POST",
           headers: {
@@ -79,7 +79,8 @@ export default function BookingModal({ event, open, onClose }) {
       });
       setForm({ name: "", email: "", whatsapp: "", institution: "", location: "", yearOrRole: "", heardFrom: "website", upiTransactionId: "" });
     } catch (err) {
-      console.error('Booking submission error:', err); // Debug log
+      console.error('❌ Booking submission error:', err);
+      console.error('API URL was:', API_URL);
 
       // More descriptive error messages
       let errorMsg = "Something went wrong. Please try again.";

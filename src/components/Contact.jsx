@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import API_URL from "../config/api";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -23,9 +24,9 @@ export default function Contact() {
     setStatus({ type: "", message: "" });
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL;
+      console.log('🔗 Sending contact form to:', API_URL);
       const res = await fetch(
-        `${apiUrl}/api/contact`,
+        `${API_URL}/api/contact`,
         {
           method: "POST",
           headers: {
@@ -36,7 +37,8 @@ export default function Contact() {
       );
 
       const data = await res.json();
-      console.log(data)
+      console.log('✅ Response:', data);
+
       if (res.ok) {
         setStatus({
           type: "success",
@@ -55,6 +57,8 @@ export default function Contact() {
         });
       }
     } catch (error) {
+      console.error("❌ Contact form error:", error);
+      console.error("API URL was:", API_URL);
       setStatus({
         type: "error",
         message: "Network error. Please check your connection and try again."

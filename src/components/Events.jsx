@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import EventDetailModal from "./EventDetailModal";
 import BookingModal from "./BookingModal";
+import API_URL from "../config/api";
 
 export default function Events() {
   const [events, setEvents] = useState([]);
@@ -14,12 +15,19 @@ export default function Events() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const apiUrl = import.meta.env.VITE_API_URL;
-        const res = await fetch(`${apiUrl}/api/events`);
+        console.log('🔗 Fetching events from:', API_URL);
+        const res = await fetch(`${API_URL}/api/events`);
+
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
         const data = await res.json();
+        console.log('✅ Events fetched successfully:', data.length, 'events');
         setEvents(data);
       } catch (error) {
-        console.error("Failed to fetch events:", error);
+        console.error("❌ Failed to fetch events:", error);
+        console.error("API URL was:", API_URL);
       } finally {
         setLoading(false);
       }

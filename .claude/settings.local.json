@@ -32,7 +32,8 @@
       "Bash(cat:*)",
       "Bash(copy:*)",
       "WebFetch(domain:atspeaks-zqwc.vercel.app)",
-      "WebFetch(domain:atspeaks-zeta.vercel.app)"
+      "WebFetch(domain:atspeaks-zeta.vercel.app)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
