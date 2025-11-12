@@ -41,6 +41,20 @@ export default function BookingModal({ event, open, onClose }) {
     try {
       console.log('🔗 Submitting booking to:', API_URL);
 
+      const bookingData = {
+        name: form.name,
+        email: form.email,
+        whatsapp: form.whatsapp,
+        institution: form.institution,
+        location: form.location,
+        yearOrRole: form.yearOrRole,
+        heardFrom: form.heardFrom,
+        eventId: event?._id || event?.id || "",
+        upiTransactionId: form.upiTransactionId,
+      };
+
+      console.log('📦 Booking data being sent:', bookingData);
+
       const res = await fetch(
         `${API_URL}/api/recordings`,
         {
@@ -48,17 +62,7 @@ export default function BookingModal({ event, open, onClose }) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            name: form.name,
-            email: form.email,
-            whatsapp: form.whatsapp,
-            institution: form.institution,
-            location: form.location,
-            yearOrRole: form.yearOrRole,
-            heardFrom: form.heardFrom,
-            eventId: event?._id || event?.id || "",
-            upiTransactionId: form.upiTransactionId,
-          }),
+          body: JSON.stringify(bookingData),
         }
       );
 
