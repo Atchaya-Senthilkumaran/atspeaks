@@ -30,7 +30,9 @@
       "Bash(ForEach-Object { Stop-Process -Id $_d -Force })",
       "Bash(test:*)",
       "Bash(cat:*)",
-      "Bash(copy:*)"
+      "Bash(copy:*)",
+      "WebFetch(domain:atspeaks-zqwc.vercel.app)",
+      "WebFetch(domain:atspeaks-zeta.vercel.app)"
     ],
     "deny": [],
     "ask": []
