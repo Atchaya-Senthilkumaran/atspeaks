@@ -23,11 +23,11 @@ exports.createRecordingRequest = async (req, res) => {
       return res.status(400).json({ message: 'Payment screenshot is required' });
     }
 
-    console.log('✅ File received:', req.file.originalname, '- Size:', req.file.buffer.length, 'bytes');
+    console.log('✅ File uploaded:', req.file.filename, '- Size:', req.file.size, 'bytes');
 
-    // Convert file to base64 for MongoDB storage
-    const paymentScreenshotBase64 = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
-    const paymentScreenshot = req.file.originalname;
+    // Store the filename and path
+    const paymentScreenshot = req.file.filename;
+    const paymentScreenshotPath = `/uploads/${req.file.filename}`;
 
     // Fetch event details
     let eventDetails = { title: 'Event Recording', date: new Date().toLocaleDateString() };
@@ -55,7 +55,7 @@ exports.createRecordingRequest = async (req, res) => {
       heardFrom,
       eventId: eventId || 'N/A',
       paymentScreenshot,
-      paymentScreenshotBase64,
+      paymentScreenshotPath,
     };
 
     // Save to MongoDB

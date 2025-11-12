@@ -10,8 +10,9 @@ const RecordingRequestSchema = new mongoose.Schema(
     yearOrRole: { type: String, required: true },
     heardFrom: { type: String, required: true },
     eventId: { type: String },
-    paymentScreenshot: { type: String, required: true },
-    paymentScreenshotBase64: { type: String }, // For Vercel deployment
+    paymentScreenshot: { type: String, required: true }, // Filename
+    paymentScreenshotPath: { type: String }, // Full path (/uploads/filename)
+    paymentScreenshotBase64: { type: String }, // For Vercel deployment (optional)
   },
   { timestamps: true }
 );
