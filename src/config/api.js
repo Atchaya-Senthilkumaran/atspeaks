@@ -1,5 +1,5 @@
-// API Configuration - Hardcoded for production
-const API_URL = 'https://atspeaks-zqwc.vercel.app';
+// API Configuration - Local development
+const API_URL = 'http://localhost:5000';
 
 console.log('🔗 API URL configured as:', API_URL);
 
