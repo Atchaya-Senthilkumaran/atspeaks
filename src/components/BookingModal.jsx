@@ -24,7 +24,13 @@ export default function BookingModal({ event, open, onClose }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    // Ensure value is properly set (handle undefined/null)
+    const sanitizedValue = value !== null && value !== undefined ? String(value) : '';
+    setForm((prev) => ({ ...prev, [name]: sanitizedValue }));
+    // Clear any previous error when user types
+    if (errorMessage) {
+      setErrorMessage(null);
+    }
   };
 
   const submit = async (e) => {
@@ -67,8 +73,63 @@ export default function BookingModal({ event, open, onClose }) {
         return;
       }
 
+      // Verify all required fields are present and non-empty
       console.log('📦 Booking data being sent:', trimmedData);
       console.log('📦 Event ID:', trimmedData.eventId);
+      console.log('📦 All fields check:', {
+        name: trimmedData.name?.length > 0 ? '✓' : '✗',
+        email: trimmedData.email?.length > 0 ? '✓' : '✗',
+        whatsapp: trimmedData.whatsapp?.length > 0 ? '✓' : '✗',
+        institution: trimmedData.institution?.length > 0 ? '✓' : '✗',
+        location: trimmedData.location?.length > 0 ? '✓' : '✗',
+        yearOrRole: trimmedData.yearOrRole?.length > 0 ? '✓' : '✗',
+        upiTransactionId: trimmedData.upiTransactionId?.length > 0 ? '✓' : '✗',
+        heardFrom: trimmedData.heardFrom || 'website',
+        eventId: trimmedData.eventId || 'N/A'
+      });
+
+      // Prepare final data - use trimmedData directly (already validated and trimmed)
+      // Don't use || '' fallback here since we've already validated
+      const finalData = {
+        name: trimmedData.name,
+        email: trimmedData.email,
+        whatsapp: trimmedData.whatsapp,
+        institution: trimmedData.institution,
+        location: trimmedData.location,
+        yearOrRole: trimmedData.yearOrRole,
+        heardFrom: trimmedData.heardFrom || 'website',
+        eventId: trimmedData.eventId || '',
+        upiTransactionId: trimmedData.upiTransactionId
+      };
+
+      // Final validation - check each field is non-empty string
+      const requiredFieldsCheck = ['name', 'email', 'whatsapp', 'institution', 'location', 'yearOrRole', 'upiTransactionId'];
+      const emptyFieldsCheck = [];
+      
+      requiredFieldsCheck.forEach(field => {
+        const value = finalData[field];
+        // Check if field is missing, undefined, null, or empty string
+        if (!value || (typeof value === 'string' && value.length === 0)) {
+          emptyFieldsCheck.push(field);
+          console.error(`❌ Field "${field}" is empty in finalData: "${value}"`);
+        } else {
+          console.log(`✅ Field "${field}" is valid: "${value}" (length: ${value.length})`);
+        }
+      });
+
+      if (emptyFieldsCheck.length > 0) {
+        console.error('❌ Empty fields detected before sending:', emptyFieldsCheck);
+        console.error('❌ Final data:', finalData);
+        console.error('❌ Form state:', form);
+        setErrorMessage(`Please fill all required fields: ${emptyFieldsCheck.join(', ')}`);
+        setSubmitting(false);
+        return;
+      }
+
+      // Log final data being sent
+      console.log('✅ All fields validated, sending request...');
+      console.log('📤 Final data being sent:', JSON.stringify(finalData, null, 2));
+      console.log('📤 Final data field lengths:', Object.entries(finalData).map(([k, v]) => `${k}: ${v ? v.length : 0}`));
 
       const res = await fetch(
         `${API_URL}/api/recordings`,
@@ -77,32 +138,82 @@ export default function BookingModal({ event, open, onClose }) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(trimmedData),
+          body: JSON.stringify(finalData),
         }
       );
 
       console.log('📡 Response status:', res.status);
       console.log('📡 Response ok:', res.ok);
 
-      const responseData = await res.json().catch(async (err) => {
-        console.error('❌ Failed to parse JSON response:', err);
-        const text = await res.text().catch(() => '');
-        console.error('❌ Response text:', text);
-        throw new Error(`Server error: ${res.status} - ${text}`);
-      });
+      // Get response text first to see what we're getting
+      const responseText = await res.text().catch(() => '');
+      console.log('📡 Response status:', res.status);
+      console.log('📡 Response statusText:', res.statusText);
+      console.log('📡 Response text (first 500 chars):', responseText.substring(0, 500));
+
+      let responseData;
+      try {
+        responseData = JSON.parse(responseText);
+      } catch (parseErr) {
+        console.error('❌ Failed to parse JSON response:', parseErr);
+        console.error('❌ Full response text:', responseText);
+        console.error('❌ Response headers:', Object.fromEntries(res.headers.entries()));
+        
+        // If it's not JSON, show the raw text
+        const errorMsg = responseText || `Server error: ${res.status}`;
+        setErrorMessage(errorMsg.substring(0, 200));
+        setSubmitting(false);
+        return;
+      }
 
       console.log('📡 Response data:', responseData);
+      console.log('📡 Response data keys:', Object.keys(responseData));
 
       if (!res.ok) {
-        // Handle validation errors
-        if (responseData.missingFields && responseData.missingFields.length > 0) {
-          throw new Error(`Please fill all required fields: ${responseData.missingFields.join(', ')}`);
+        // Handle validation errors with detailed information
+        console.error('❌ Request failed with status:', res.status);
+        console.error('❌ Full response data:', JSON.stringify(responseData, null, 2));
+        console.error('❌ Response keys:', Object.keys(responseData));
+        
+        // Check for missing fields in response
+        if (responseData.missingFields && Array.isArray(responseData.missingFields) && responseData.missingFields.length > 0) {
+          // Show which fields are missing
+          const errorMsg = `Please fill all required fields: ${responseData.missingFields.join(', ')}`;
+          console.error('❌ Validation error - missing fields:', responseData.missingFields);
+          console.error('❌ Debug info:', responseData.debug);
+          console.error('❌ Received fields:', responseData.receivedFields);
+          console.error('❌ Required fields:', responseData.requiredFields);
+          
+          // Show user-friendly error message with specific missing fields
+          setErrorMessage(errorMsg);
+          setSubmitting(false);
+          return;
         }
-        throw new Error(responseData.message || `Submission failed with status: ${res.status}`);
+        
+        // Handle other error messages - use the exact message from the server
+        const errorMsg = responseData.message || responseData.error || `Submission failed with status: ${res.status}`;
+        console.error('❌ Error response message:', errorMsg);
+        console.error('❌ Full response:', JSON.stringify(responseData, null, 2));
+        
+        // Show error to user
+        setErrorMessage(errorMsg);
+        setSubmitting(false);
+        return;
       }
 
       const data = responseData;
+      
+      // Verify success response
+      if (data.success !== true) {
+        console.error('❌ Response indicates failure:', data);
+        const errorMsg = data.message || 'Booking submission failed. Please try again.';
+        setErrorMessage(errorMsg);
+        setSubmitting(false);
+        return;
+      }
 
+      console.log('✅ Booking successful:', data);
+      
       // Show success screen
       setSuccess(true);
       setSuccessData({
@@ -114,6 +225,9 @@ export default function BookingModal({ event, open, onClose }) {
       setForm({ name: "", email: "", whatsapp: "", institution: "", location: "", yearOrRole: "", heardFrom: "website", upiTransactionId: "" });
     } catch (err) {
       console.error('❌ Booking submission error:', err);
+      console.error('❌ Error name:', err.name);
+      console.error('❌ Error message:', err.message);
+      console.error('❌ Error stack:', err.stack);
       console.error('API URL was:', API_URL);
 
       // More descriptive error messages
@@ -121,7 +235,7 @@ export default function BookingModal({ event, open, onClose }) {
 
       if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
         errorMsg = "Cannot connect to server. Please check your internet connection and try again.";
-      } else if (err.message.includes('fill all required fields')) {
+      } else if (err.message.includes('fill all required fields') || err.message.includes('required')) {
         errorMsg = err.message; // Show the specific missing fields message
       } else if (err.message) {
         errorMsg = err.message;
