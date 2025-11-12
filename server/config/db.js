@@ -212,7 +212,7 @@ const ensureConnection = async (mongoUri) => {
   }
   
   // If still not connected, return null
-  // Controllers will handle fallback to mock data
+  // Controllers will handle error responses
   console.error('❌ Failed to establish MongoDB connection');
   return null;
 };

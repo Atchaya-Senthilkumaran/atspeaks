@@ -98,8 +98,8 @@ mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/database-name?retryWr
    - Shows `mongo: "connected"` if working
 
 2. **Events Endpoint**: `GET /api/events`
-   - Returns events from MongoDB
-   - Falls back to mock data if connection fails
+   - Returns events from MongoDB only
+   - Returns empty array with error message if connection fails
 
 3. **Check Logs**: View Vercel function logs
    - Look for connection messages
@@ -108,7 +108,7 @@ mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/database-name?retryWr
 ### Best Practices
 
 1. **Always Use ensureConnection()**: Called automatically in middleware
-2. **Handle Connection Failures**: Controllers handle fallback gracefully
+2. **Handle Connection Failures**: Controllers return error responses with empty arrays
 3. **Monitor Connection State**: Use health check endpoint
 4. **Set Timeouts**: Connection timeouts prevent hanging requests
 5. **Use Connection Pool**: Limited pool size for serverless (5 connections)

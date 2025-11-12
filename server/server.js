@@ -41,14 +41,14 @@ app.use(async (req, res, next) => {
       const connection = await ensureConnection(MONGO_URI);
       
       if (!connection || mongoose.connection.readyState !== 1) {
-        console.log('⚠️ MongoDB connection not ready, controllers will handle fallback');
-        // Don't block request - let controllers handle fallback gracefully
+        console.log('⚠️ MongoDB connection not ready, controllers will handle error response');
+        // Don't block request - let controllers handle error gracefully
       } else {
         console.log('✅ MongoDB connection ready for request');
       }
     } catch (err) {
-      // Log error but don't block request - let controllers handle fallback
-      console.log('⚠️ DB connection attempt failed, continuing with fallback...');
+      // Log error but don't block request - let controllers handle error response
+      console.log('⚠️ DB connection attempt failed, controllers will handle error...');
       console.log('⚠️ Error:', err.message);
     }
   } else {
