@@ -32,50 +32,20 @@ export default function BookingModal({ event, open, onClose }) {
     setSubmitting(true);
     setErrorMessage(null);
 
-    // Trim and validate all required fields
-    const trimmedForm = {
-      name: form.name?.trim(),
-      email: form.email?.trim(),
-      whatsapp: form.whatsapp?.trim(),
-      institution: form.institution?.trim(),
-      location: form.location?.trim(),
-      yearOrRole: form.yearOrRole?.trim(),
-      upiTransactionId: form.upiTransactionId?.trim(),
-    };
-
-    console.log('📝 Form validation check:', trimmedForm);
-
-    if (!trimmedForm.name || !trimmedForm.email || !trimmedForm.whatsapp ||
-        !trimmedForm.institution || !trimmedForm.location || !trimmedForm.yearOrRole ||
-        !trimmedForm.upiTransactionId) {
-      const missingFields = [];
-      if (!trimmedForm.name) missingFields.push('Name');
-      if (!trimmedForm.email) missingFields.push('Email');
-      if (!trimmedForm.whatsapp) missingFields.push('WhatsApp');
-      if (!trimmedForm.institution) missingFields.push('Institution');
-      if (!trimmedForm.location) missingFields.push('Location');
-      if (!trimmedForm.yearOrRole) missingFields.push('Year/Role');
-      if (!trimmedForm.upiTransactionId) missingFields.push('UPI Transaction ID');
-
-      console.log('❌ Missing fields:', missingFields);
-      setErrorMessage(`Please fill the following fields: ${missingFields.join(', ')}`);
-      setSubmitting(false);
-      return;
-    }
-
     try {
       console.log('🔗 Submitting booking to:', API_URL);
+      console.log('📝 Form data:', form);
 
       const bookingData = {
-        name: trimmedForm.name,
-        email: trimmedForm.email,
-        whatsapp: trimmedForm.whatsapp,
-        institution: trimmedForm.institution,
-        location: trimmedForm.location,
-        yearOrRole: trimmedForm.yearOrRole,
+        name: form.name?.trim(),
+        email: form.email?.trim(),
+        whatsapp: form.whatsapp?.trim(),
+        institution: form.institution?.trim(),
+        location: form.location?.trim(),
+        yearOrRole: form.yearOrRole?.trim(),
         heardFrom: form.heardFrom || "website",
         eventId: event?._id || event?.id || "",
-        upiTransactionId: trimmedForm.upiTransactionId,
+        upiTransactionId: form.upiTransactionId?.trim(),
       };
 
       console.log('📦 Booking data being sent:', bookingData);
