@@ -10,7 +10,7 @@ const mockEvents = [
     type: "Past",
     description: "Visualizing Structured Data in 3D with React and Three.js. Learn how to turn data into immersive 3D visuals, build with React + Three.js, and map, optimize & visualize data interactively.",
     poster: "/posters/13.png",
-    price: 199,
+    price: 299,
     recordingAvailable: true,
     highlights: [
       "Turn data into immersive 3D visuals",
@@ -39,7 +39,7 @@ const mockEvents = [
     type: "Past",
     description: "Command. Automate. Adapt. Premium course exploring agentic frameworks from command-line interfaces to model context protocol.",
     poster: "/posters/12.png",
-    price: 299,
+    price: 499,
     recordingAvailable: true,
     highlights: [
       "Master command-line interfaces",
@@ -90,7 +90,7 @@ const mockEvents = [
     type: "Past",
     description: "Wanna know how to craft a killer resume & grab internships like a pro? This is for you! Learn professional resume writing and job application strategies.",
     poster: "/posters/9.jpg",
-    price: 299,
+    price: 149,
     recordingAvailable: true,
     highlights: [
       "Craft a killer resume that stands out",
@@ -132,7 +132,7 @@ const mockEvents = [
     type: "Past",
     description: "Build your first website with no code! Learn WordPress fundamentals and create your own website in this beginner-friendly session.",
     poster: "/posters/7.png",
-    price: 199,
+    price: 249,
     recordingAvailable: true,
     highlights: [
       "Build your first website with no code required",
@@ -153,7 +153,7 @@ const mockEvents = [
     type: "Past",
     description: "Explore career domains, identify your ideal tech role, get skillset breakdown, and build your roadmap for success in tech.",
     poster: "/posters/6.png",
-    price: 299,
+    price: 199,
     recordingAvailable: true,
     highlights: [
       "Explore various career domains in tech",
@@ -174,7 +174,7 @@ const mockEvents = [
     type: "Past",
     description: "Premium course covering basics of Power BI, tools and features, and sample projects. A 2-day workshop for aspiring data analysts.",
     poster: "/posters/5.png",
-    price: 399,
+    price: 349,
     recordingAvailable: true,
     highlights: [
       "Basics of Power BI platform",
@@ -195,7 +195,7 @@ const mockEvents = [
     type: "Past",
     description: "No API Needed — Code smart bots easily! Learn to build intelligent chatbots using LangChain and Python in this practical workshop.",
     poster: "/posters/4.png",
-    price: 199,
+    price: 299,
     recordingAvailable: true,
     highlights: [
       "Build chatbots without external APIs",
@@ -216,8 +216,8 @@ const mockEvents = [
     type: "Past",
     description: "Online Masterclass to master Figma in 3 days. Comprehensive training covering advanced Figma techniques and design workflows.",
     poster: "/posters/3.png",
-    price: 0,
-    recordingAvailable: false,
+    price: 299,
+    recordingAvailable: true,
     highlights: [
       "Master Figma in just 3 days",
       "Advanced design techniques",
@@ -237,7 +237,7 @@ const mockEvents = [
     type: "Past",
     description: "Build Your First Website Faster Than Ever! Learn to create websites with WordPress in this hands-on session.",
     poster: "/posters/2.png",
-    price: 199,
+    price: 249,
     recordingAvailable: true,
     highlights: [
       "Build websites faster than ever",

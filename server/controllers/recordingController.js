@@ -7,25 +7,38 @@ const mongoose = require('mongoose');
 exports.createRecordingRequest = async (req, res) => {
   try {
     console.log('📝 Recording request received');
-    console.log('Request body:', JSON.stringify(req.body));
+    console.log('Request body:', JSON.stringify(req.body, null, 2));
 
     const { name, email, whatsapp, institution, location, yearOrRole, heardFrom, eventId, upiTransactionId } = req.body;
 
     // Validate fields with detailed logging
     const missingFields = [];
-    if (!name?.trim()) missingFields.push('name');
-    if (!email?.trim()) missingFields.push('email');
-    if (!whatsapp?.trim()) missingFields.push('whatsapp');
-    if (!institution?.trim()) missingFields.push('institution');
-    if (!location?.trim()) missingFields.push('location');
-    if (!yearOrRole?.trim()) missingFields.push('yearOrRole');
-    if (!heardFrom?.trim()) missingFields.push('heardFrom');
-    if (!upiTransactionId?.trim()) missingFields.push('upiTransactionId');
+    const fieldValues = {
+      name: name || '',
+      email: email || '',
+      whatsapp: whatsapp || '',
+      institution: institution || '',
+      location: location || '',
+      yearOrRole: yearOrRole || '',
+      heardFrom: heardFrom || '',
+      upiTransactionId: upiTransactionId || ''
+    };
+
+    console.log('📋 Field values received:');
+    Object.entries(fieldValues).forEach(([key, value]) => {
+      const trimmed = String(value).trim();
+      console.log(`  ${key}: "${trimmed}" (length: ${trimmed.length})`);
+      if (!trimmed) {
+        missingFields.push(key);
+      }
+    });
 
     if (missingFields.length > 0) {
-      console.error('❌ Missing required fields:', missingFields.join(', '));
+      console.error('❌ Missing or empty fields:', missingFields.join(', '));
       return res.status(400).json({
-        message: `Missing required fields: ${missingFields.join(', ')}`
+        success: false,
+        message: `Please fill all required fields: ${missingFields.join(', ')}`,
+        missingFields
       });
     }
 
@@ -46,17 +59,17 @@ exports.createRecordingRequest = async (req, res) => {
       }
     }
 
-    // Prepare booking data
+    // Prepare booking data with trimmed values
     const bookingData = {
-      name,
-      email,
-      whatsapp,
-      institution,
-      location,
-      yearOrRole,
-      heardFrom,
+      name: String(name).trim(),
+      email: String(email).trim(),
+      whatsapp: String(whatsapp).trim(),
+      institution: String(institution).trim(),
+      location: String(location).trim(),
+      yearOrRole: String(yearOrRole).trim(),
+      heardFrom: String(heardFrom).trim(),
       eventId: eventId || 'N/A',
-      upiTransactionId,
+      upiTransactionId: String(upiTransactionId).trim(),
     };
 
     // Save to MongoDB
@@ -88,9 +101,11 @@ exports.createRecordingRequest = async (req, res) => {
 
   } catch (err) {
     console.error('❌ Error in createRecordingRequest:', err);
+    console.error('Stack trace:', err.stack);
     res.status(500).json({
-      message: 'Failed to process booking',
-      error: err.message
+      success: false,
+      message: 'Failed to process booking. Please try again.',
+      error: process.env.NODE_ENV === 'production' ? 'Internal server error' : err.message
     });
   }
 };
