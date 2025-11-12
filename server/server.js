@@ -36,20 +36,39 @@ app.use(async (req, res, next) => {
   // Only attempt connection if MONGO_URI is set
   if (MONGO_URI) {
     try {
-      // Ensure connection is established (uses cached connection if available)
-      // This waits for connection to be fully ready before proceeding
-      const connection = await ensureConnection(MONGO_URI);
+      // Check current connection state
+      const currentState = mongoose.connection.readyState;
+      console.log(`📊 Current MongoDB readyState: ${currentState} (0=disconnected, 1=connected, 2=connecting, 3=disconnecting)`);
       
-      if (!connection || mongoose.connection.readyState !== 1) {
-        console.log('⚠️ MongoDB connection not ready, controllers will handle error response');
-        // Don't block request - let controllers handle error gracefully
+      // If not connected, ensure connection is established
+      if (currentState !== 1) {
+        console.log('🔄 MongoDB not connected, attempting to establish connection...');
+        const connection = await ensureConnection(MONGO_URI);
+        
+        // Wait for connection if it's in progress (state 2)
+        if (mongoose.connection.readyState === 2) {
+          console.log('⏳ Connection in progress, waiting...');
+          let waitAttempts = 0;
+          while (mongoose.connection.readyState === 2 && waitAttempts < 30) {
+            await new Promise(resolve => setTimeout(resolve, 500));
+            waitAttempts++;
+          }
+        }
+        
+        // Check final state
+        if (mongoose.connection.readyState === 1) {
+          console.log('✅ MongoDB connection established successfully');
+        } else {
+          console.log(`⚠️ MongoDB connection failed (readyState: ${mongoose.connection.readyState})`);
+          // Don't block request - let controllers handle error gracefully
+        }
       } else {
-        console.log('✅ MongoDB connection ready for request');
+        console.log('✅ Using existing MongoDB connection');
       }
     } catch (err) {
       // Log error but don't block request - let controllers handle error response
-      console.log('⚠️ DB connection attempt failed, controllers will handle error...');
-      console.log('⚠️ Error:', err.message);
+      console.error('❌ DB connection attempt failed:', err.message);
+      console.error('❌ Error stack:', err.stack);
     }
   } else {
     console.log('⚠️ MONGO_URI not set, skipping database connection');
@@ -108,10 +127,15 @@ app.get('/', (req, res) => {
 if (process.env.NODE_ENV !== 'production') {
   // For local development, try to connect on startup
   if (MONGO_URI) {
-    connectDB(MONGO_URI).catch(err => {
-      console.log('⚠️ MongoDB connection failed on startup, will retry on request');
-      console.log('⚠️ Error:', err.message);
-    });
+    console.log('🔄 Attempting to connect to MongoDB on startup...');
+    connectDB(MONGO_URI)
+      .then(() => {
+        console.log('✅ MongoDB connected on startup');
+      })
+      .catch(err => {
+        console.log('⚠️ MongoDB connection failed on startup, will retry on request');
+        console.log('⚠️ Error:', err.message);
+      });
   } else {
     console.log('⚠️ MONGO_URI not set in environment variables');
     console.log('⚠️ Server will run without database connection');

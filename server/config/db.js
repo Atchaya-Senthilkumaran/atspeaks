@@ -168,17 +168,54 @@ const ensureConnection = async (mongoUri) => {
   // If already connected and ready, return immediately (fast path)
   // This is the fast path for serverless - most requests after the first will hit this
   if (mongoose.connection.readyState === 1) {
+    console.log('✅ Using existing MongoDB connection');
     return mongoose.connection;
   }
 
+  // If connection is in progress (state 2), wait for it
+  if (mongoose.connection.readyState === 2) {
+    console.log('⏳ Connection in progress, waiting for it to complete...');
+    let waitAttempts = 0;
+    const maxWaitAttempts = 40; // Wait up to 20 seconds
+    
+    while (mongoose.connection.readyState === 2 && waitAttempts < maxWaitAttempts) {
+      await new Promise(resolve => setTimeout(resolve, 500));
+      waitAttempts++;
+      
+      if (waitAttempts % 5 === 0) {
+        console.log(`⏳ Still connecting... (${waitAttempts}/${maxWaitAttempts})`);
+      }
+    }
+    
+    if (mongoose.connection.readyState === 1) {
+      console.log('✅ Connection completed successfully');
+      return mongoose.connection;
+    }
+  }
+
   // Try to establish connection
-  console.log('🔄 Establishing MongoDB connection...');
+  console.log('🔄 Establishing new MongoDB connection...');
   const connection = await connectDB(mongoUri);
   
-  // connectDB waits for connection to be ready, so if it returns non-null, connection is ready
-  if (connection && mongoose.connection.readyState === 1) {
-    console.log('✅ Connection ready for operations');
-    return mongoose.connection;
+  // Wait for connection to be ready (connectDB should handle this, but double-check)
+  if (connection) {
+    // Wait for connection to be fully ready
+    let readyAttempts = 0;
+    const maxReadyAttempts = 30; // Wait up to 15 seconds
+    
+    while (mongoose.connection.readyState !== 1 && readyAttempts < maxReadyAttempts) {
+      await new Promise(resolve => setTimeout(resolve, 500));
+      readyAttempts++;
+      
+      if (readyAttempts % 5 === 0) {
+        console.log(`⏳ Waiting for connection to be ready... (${readyAttempts}/${maxReadyAttempts}, state: ${mongoose.connection.readyState})`);
+      }
+    }
+    
+    if (mongoose.connection.readyState === 1) {
+      console.log('✅ Connection ready for operations');
+      return mongoose.connection;
+    }
   }
   
   // If connection failed, try once more after a short delay
@@ -192,28 +229,44 @@ const ensureConnection = async (mongoUri) => {
     
     // Close any existing connection (don't wait for it)
     if (mongoose.connection.readyState !== 0 && mongoose.connection.readyState !== 3) {
-      mongoose.connection.close().catch(() => {
+      try {
+        await mongoose.connection.close();
+      } catch (closeErr) {
         // Ignore errors when closing
-      });
+      }
     }
     
     // Wait a bit before retry (allows network to stabilize)
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 2000));
     
     // Retry connection
+    console.log('🔄 Attempting connection retry...');
     const retryConnection = await connectDB(mongoUri);
     
-    if (retryConnection && mongoose.connection.readyState === 1) {
-      console.log('✅ Connection ready after retry');
-      return mongoose.connection;
+    if (retryConnection) {
+      // Wait for retry connection to be ready
+      let readyAttempts = 0;
+      const maxReadyAttempts = 30;
+      
+      while (mongoose.connection.readyState !== 1 && readyAttempts < maxReadyAttempts) {
+        await new Promise(resolve => setTimeout(resolve, 500));
+        readyAttempts++;
+      }
+      
+      if (mongoose.connection.readyState === 1) {
+        console.log('✅ Connection ready after retry');
+        return mongoose.connection;
+      } else {
+        console.error(`⚠️  Connection not ready after retry (state: ${mongoose.connection.readyState})`);
+      }
     } else {
-      console.error(`⚠️  Connection not ready after retry (state: ${mongoose.connection.readyState})`);
+      console.error('⚠️  Retry connection attempt returned null');
     }
   }
   
   // If still not connected, return null
   // Controllers will handle error responses
-  console.error('❌ Failed to establish MongoDB connection');
+  console.error(`❌ Failed to establish MongoDB connection (final state: ${mongoose.connection.readyState})`);
   return null;
 };
 
