@@ -43,7 +43,12 @@ app.use(async (req, res, next) => {
       // If not connected, ensure connection is established
       if (currentState !== 1) {
         console.log('🔄 MongoDB not connected, attempting to establish connection...');
-        const connection = await ensureConnection(MONGO_URI);
+        
+        // Use Promise.resolve to handle both success and failure gracefully
+        const connection = await Promise.resolve(ensureConnection(MONGO_URI)).catch(err => {
+          console.error('⚠️ Connection attempt error:', err?.message || err);
+          return null;
+        });
         
         // Wait for connection if it's in progress (state 2)
         if (mongoose.connection.readyState === 2) {
@@ -67,13 +72,17 @@ app.use(async (req, res, next) => {
       }
     } catch (err) {
       // Log error but don't block request - let controllers handle error response
-      console.error('❌ DB connection attempt failed:', err.message);
-      console.error('❌ Error stack:', err.stack);
+      // This catch should never be hit if we use Promise.resolve, but keep it for safety
+      console.error('❌ DB connection attempt failed:', err?.message || 'Unknown error');
+      if (err?.stack) {
+        console.error('❌ Error stack:', err.stack.split('\n').slice(0, 3).join('\n'));
+      }
     }
   } else {
     console.log('⚠️ MONGO_URI not set, skipping database connection');
   }
   
+  // Always call next() - never block the request
   next();
 });
 
@@ -85,42 +94,90 @@ app.use('/api/recordings', recordingRoutes);
 
 // Health check endpoint
 app.get('/api/health', async (req, res) => {
-  let mongoStatus = 'not_configured';
-  
-  if (MONGO_URI) {
-    // Check connection state without attempting to connect
-    const readyState = mongoose.connection.readyState;
-    // 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
-    mongoStatus = readyState === 1 ? 'connected' : 'disconnected';
+  try {
+    let mongoStatus = 'not_configured';
     
-    // Optionally try to establish connection for health check
-    if (readyState !== 1) {
-      try {
-        await ensureConnection(MONGO_URI);
-        mongoStatus = mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
-      } catch (err) {
-        mongoStatus = 'connection_failed';
+    if (MONGO_URI) {
+      // Check connection state without attempting to connect
+      const readyState = mongoose.connection.readyState;
+      // 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
+      mongoStatus = readyState === 1 ? 'connected' : 'disconnected';
+      
+      // Optionally try to establish connection for health check
+      if (readyState !== 1) {
+        try {
+          await Promise.resolve(ensureConnection(MONGO_URI)).catch(() => null);
+          mongoStatus = mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
+        } catch (err) {
+          mongoStatus = 'connection_failed';
+        }
       }
     }
+    
+    res.json({ 
+      status: 'ok',
+      mongo: mongoStatus,
+      readyState: mongoose.connection.readyState,
+      timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV || 'development'
+    });
+  } catch (err) {
+    // Always return a response, even if there's an error
+    res.status(200).json({
+      status: 'error',
+      mongo: 'error',
+      readyState: mongoose.connection.readyState,
+      error: err?.message || 'Unknown error',
+      timestamp: new Date().toISOString()
+    });
   }
-  
-  res.json({ 
-    status: 'ok',
-    mongo: mongoStatus,
-    readyState: mongoose.connection.readyState,
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || 'development'
-  });
 });
 
 // Root route (optional - for testing)
 app.get('/', (req, res) => {
-  res.json({
-    message: 'AT Speaks API Server',
-    status: 'running',
-    mongo: MONGO_URI ? (mongoose.connection.readyState === 1 ? 'connected' : 'disconnected') : 'not_configured',
+  try {
+    res.json({
+      message: 'AT Speaks API Server',
+      status: 'running',
+      mongo: MONGO_URI ? (mongoose.connection.readyState === 1 ? 'connected' : 'disconnected') : 'not_configured',
+      timestamp: new Date().toISOString()
+    });
+  } catch (err) {
+    res.status(200).json({
+      message: 'AT Speaks API Server',
+      status: 'running',
+      mongo: 'error',
+      error: err?.message || 'Unknown error',
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+// Catch-all route handler for 404s (must be after all routes, before error handler)
+app.use((req, res) => {
+  res.status(404).json({
+    error: 'Not found',
+    message: `Route ${req.method} ${req.path} not found`,
     timestamp: new Date().toISOString()
   });
+});
+
+// Global error handler to catch any unhandled errors (MUST be last, after all routes and 404 handler)
+app.use((err, req, res, next) => {
+  console.error('❌ Unhandled error in middleware:', err);
+  console.error('❌ Error message:', err?.message || 'Unknown error');
+  if (err?.stack) {
+    console.error('❌ Error stack:', err.stack.split('\n').slice(0, 5).join('\n'));
+  }
+  
+  // Always send a response to prevent function crash
+  if (!res.headersSent) {
+    res.status(500).json({
+      error: 'Internal server error',
+      message: process.env.NODE_ENV === 'production' ? 'An error occurred' : (err?.message || 'Unknown error'),
+      timestamp: new Date().toISOString()
+    });
+  }
 });
 
 // Initialize connection for local development (not needed for Vercel serverless)
@@ -149,6 +206,20 @@ if (process.env.NODE_ENV !== 'production') {
     console.log(`📡 Ready to handle requests`);
   });
 }
+
+// Handle unhandled promise rejections (prevents function crash)
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('❌ Unhandled Rejection at:', promise);
+  console.error('❌ Reason:', reason);
+  // Don't exit - let the request complete
+});
+
+// Handle uncaught exceptions (prevents function crash)
+process.on('uncaughtException', (err) => {
+  console.error('❌ Uncaught Exception:', err);
+  console.error('❌ Stack:', err.stack);
+  // Don't exit - let the request complete
+});
 
 // Export for Vercel serverless
 // Vercel will call this module for each request

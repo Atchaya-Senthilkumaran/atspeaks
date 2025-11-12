@@ -7,8 +7,7 @@ const mongoose = require('mongoose');
  */
 
 // Configure Mongoose buffering (set globally, not in connection options)
-mongoose.set('bufferCommands', true); // Enable buffering
-mongoose.set('bufferMaxEntries', 0); // Unlimited buffered commands
+mongoose.set('bufferCommands', true); // Enable buffering - Mongoose will wait for connection before executing queries
 
 let cached = global.mongoose;
 
@@ -104,7 +103,8 @@ const connectDB = async (mongoUri) => {
         // Reset promise on error so we can retry
         cached.promise = null;
         cached.conn = null;
-        throw err; // Re-throw to be caught by caller
+        // Don't throw - return null instead to prevent unhandled promise rejection
+        return null;
       });
   }
 
