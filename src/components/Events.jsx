@@ -43,14 +43,14 @@ export default function Events() {
     <section id="events" className="mt-20">
 
       {/* Header */}
-      <div className="flex items-center justify-between flex-wrap gap-2">
+      <div className="flex items-center justify-between flex-wrap gap-3 sm:gap-2">
         <div>
-          <h2 className="text-2xl sm:text-3xl font-bold">Events</h2>
-          <div className="h-1 w-16 sm:w-20 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2"></div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Events</h2>
+          <div className="h-1 w-16 sm:w-20 md:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2"></div>
         </div>
         <button
           onClick={() => setShowAll(!showAll)}
-          className="text-sm font-medium text-[#1f3492] hover:underline cursor-pointer"
+          className="text-xs sm:text-sm font-medium text-[#1f3492] hover:underline cursor-pointer px-2 py-1"
         >
           {showAll ? "Show less" : "View all"}
         </button>

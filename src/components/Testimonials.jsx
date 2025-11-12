@@ -9,10 +9,10 @@ export default function Testimonials() {
       <div className="absolute inset-0 bg-gradient-to-br from-[#1f3492]/10 via-transparent to-[#c8348f]/10 -z-10 rounded-3xl blur-3xl"></div>
 
       {/* Heading */}
-      <div className="text-center max-w-2xl mx-auto">
-        <h2 className="text-3xl font-bold">What learners say</h2>
-        <div className="h-1 w-20 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mx-auto"></div>
-        <p className="text-slate-600 mt-3">
+      <div className="text-center max-w-2xl mx-auto px-2">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">What learners say</h2>
+        <div className="h-1 w-16 sm:w-20 md:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mx-auto"></div>
+        <p className="text-sm sm:text-base text-slate-600 mt-3">
           Real feedback from students who've experienced our workshops and sessions.
         </p>
       </div>
@@ -93,7 +93,7 @@ export default function Testimonials() {
 
       {/* Scroll Hint */}
       <div className="text-center mt-4">
-        <p className="text-xs text-slate-400">← Scroll to explore →</p>
+        <p className="text-xs sm:text-sm text-slate-400 font-medium">← Scroll to explore →</p>
       </div>
 
       {/* Hide scrollbar */}
