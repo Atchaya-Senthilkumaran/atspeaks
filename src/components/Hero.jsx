@@ -15,9 +15,11 @@ export default function Hero() {
       {/* LEFT CONTENT */}
       <div className="px-2 sm:px-0 w-full overflow-x-hidden order-1 md:order-1">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-          <span className="bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent">
-            AT Speaks
-          </span> empowers
+          <span className="whitespace-nowrap">
+            <span className="bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent">
+              AT Speaks
+            </span> empowers
+          </span>
           <br />
           you to learn
           <br />

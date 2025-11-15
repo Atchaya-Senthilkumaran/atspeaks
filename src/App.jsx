@@ -14,7 +14,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-slate-50 to-white text-slate-900 overflow-x-hidden max-w-full w-full">
       <Navbar />
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-4 sm:py-6 md:py-8 lg:py-10 xl:py-12 w-full overflow-x-hidden">
+      <main className="mx-auto max-w-7xl px-3 sm:px-5 md:px-6 lg:px-8 xl:px-10 py-4 sm:py-6 md:py-8 lg:py-10 xl:py-12 w-full overflow-x-hidden">
         <Hero />
         <About />
         <Events />
