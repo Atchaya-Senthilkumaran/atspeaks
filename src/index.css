@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import responsive styles */
+/* Import responsive styles - must be before other CSS rules */
 @import './responsive.css';
 
 /* Ultra-smooth scrolling for the entire page - Mobile First */
