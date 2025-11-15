@@ -35,7 +35,8 @@
       "WebFetch(domain:atspeaks-zeta.vercel.app)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push)"
+      "Bash(git push)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []
