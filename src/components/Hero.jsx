@@ -17,7 +17,7 @@ export default function Hero() {
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight break-words">
           <span className="bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent">
             AT Speaks
-          </span>empowers
+          </span>{" "}empowers
            you to learn
           <br />
           <span className="text-slate-900">
