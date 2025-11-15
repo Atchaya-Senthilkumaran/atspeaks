@@ -69,13 +69,13 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="mt-0 py-0 relative w-full overflow-x-hidden">
+    <section id="contact" className="mt-8 sm:mt-10 md:mt-12 lg:mt-16 py-0 relative w-full overflow-x-hidden">
       {/* Soft Background Glow */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/15 to-[#1f3492]/20 blur-3xl -z-10"></div>
 
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">Get in touch</h2>
-      <div className="h-1 w-16 sm:w-20 md:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2"></div>
-      <p className="mt-3 text-gray-600 max-w-2xl text-base sm:text-lg">
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800">Get in touch</h2>
+      <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2"></div>
+      <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-2xl">
         Have a collaboration idea, need a workshop at your college, or want recordings/access?
         Send us a message — we're always happy to connect.
       </p>
@@ -83,7 +83,7 @@ export default function Contact() {
       {/* Status Message */}
       {status.message && (
         <div
-          className={`mt-4 p-4 rounded-lg ${
+          className={`mt-3 sm:mt-4 p-3 sm:p-4 rounded-lg text-xs sm:text-sm ${
             status.type === "success"
               ? "bg-green-50 text-green-700 border border-green-200"
               : "bg-red-50 text-red-700 border border-red-200"
@@ -93,25 +93,25 @@ export default function Contact() {
         </div>
       )}
 
-      <div className="mt-6 bg-white shadow-lg rounded-xl p-4 sm:p-5 md:p-6 border border-gray-200 w-full overflow-x-hidden">
+      <div className="mt-4 sm:mt-6 bg-white shadow-lg rounded-xl p-3 sm:p-4 md:p-5 lg:p-6 border border-gray-200 w-full overflow-x-hidden">
         <form
           className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 w-full"
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-gray-700">Your Name</label>
+            <label className="text-xs sm:text-sm font-medium text-gray-700">Your Name</label>
             <input
               required
               name="name"
               value={formData.name}
               onChange={handleChange}
               placeholder="Enter your name"
-              className="px-3 py-2.5 rounded-lg border border-gray-300 bg-white focus:border-[#1f3492] focus:ring-1 focus:ring-[#1f3492]/20 focus:outline-none transition"
+              className="px-3 py-2 sm:py-2.5 rounded-lg border border-gray-300 bg-white focus:border-[#1f3492] focus:ring-1 focus:ring-[#1f3492]/20 focus:outline-none transition text-sm sm:text-base"
             />
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium text-gray-700">Email Address</label>
+            <label className="text-xs sm:text-sm font-medium text-gray-700">Email Address</label>
             <input
               required
               name="email"
@@ -119,24 +119,24 @@ export default function Contact() {
               value={formData.email}
               onChange={handleChange}
               placeholder="you@example.com"
-              className="px-3 py-2.5 rounded-lg border border-gray-300 bg-white focus:border-[#1f3492] focus:ring-1 focus:ring-[#1f3492]/20 focus:outline-none transition"
+              className="px-3 py-2 sm:py-2.5 rounded-lg border border-gray-300 bg-white focus:border-[#1f3492] focus:ring-1 focus:ring-[#1f3492]/20 focus:outline-none transition text-sm sm:text-base"
             />
           </div>
 
           <div className="flex flex-col gap-1.5 md:col-span-2">
-            <label className="text-sm font-medium text-gray-700">Subject</label>
+            <label className="text-xs sm:text-sm font-medium text-gray-700">Subject</label>
             <input
               required
               name="subject"
               value={formData.subject}
               onChange={handleChange}
               placeholder="What is this about?"
-              className="px-3 py-2.5 rounded-lg border border-gray-300 bg-white focus:border-[#1f3492] focus:ring-1 focus:ring-[#1f3492]/20 focus:outline-none transition"
+              className="px-3 py-2 sm:py-2.5 rounded-lg border border-gray-300 bg-white focus:border-[#1f3492] focus:ring-1 focus:ring-[#1f3492]/20 focus:outline-none transition text-sm sm:text-base"
             />
           </div>
 
           <div className="flex flex-col gap-1.5 md:col-span-2">
-            <label className="text-sm font-medium text-gray-700">Message</label>
+            <label className="text-xs sm:text-sm font-medium text-gray-700">Message</label>
             <textarea
               required
               name="message"
@@ -144,7 +144,7 @@ export default function Contact() {
               onChange={handleChange}
               placeholder="Write your message here..."
               rows={3}
-              className="px-3 py-2.5 rounded-lg border border-gray-300 bg-white focus:border-[#1f3492] focus:ring-1 focus:ring-[#1f3492]/20 focus:outline-none transition resize-none"
+              className="px-3 py-2 sm:py-2.5 rounded-lg border border-gray-300 bg-white focus:border-[#1f3492] focus:ring-1 focus:ring-[#1f3492]/20 focus:outline-none transition resize-none text-sm sm:text-base"
             />
           </div>
 
@@ -152,7 +152,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={loading}
-              className="rounded-lg px-6 py-2.5 bg-gradient-to-r from-[#1f3492] to-[#c8348f] hover:brightness-95 transition text-white font-medium shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              className="rounded-lg px-4 sm:px-6 py-2 sm:py-2.5 bg-gradient-to-r from-[#1f3492] to-[#c8348f] hover:brightness-95 transition text-white text-xs sm:text-sm md:text-base font-medium shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? "Sending..." : "Send Message"}
             </button>

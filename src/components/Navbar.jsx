@@ -9,12 +9,12 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-30 bg-white/70 backdrop-blur-md border-b border-slate-200 w-full overflow-x-hidden">
-      <div className="mx-auto max-w-6xl px-2 sm:px-4 md:px-6 py-2 flex items-center justify-between w-full overflow-x-hidden">
-        <div className="flex items-center ml-0 sm:ml-0 md:-ml-[30px] flex-shrink-0">
+      <div className="mx-auto max-w-6xl px-3 sm:px-4 md:px-6 py-2 flex items-center justify-between w-full overflow-x-hidden">
+        <div className="flex items-center flex-shrink-0">
           <img
             src="/logo2.png"
             alt="AT Speaks Logo"
-            className="h-[40px] w-[120px] xs:h-[45px] xs:w-[140px] sm:h-[50px] sm:w-[160px] md:h-[60px] md:w-[200px] object-contain"
+            className="h-[35px] w-[100px] sm:h-[45px] sm:w-[140px] md:h-[50px] md:w-[160px] lg:h-[60px] lg:w-[200px] object-contain"
           />
         </div>
 
@@ -48,17 +48,18 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-slate-200 shadow-lg">
+        <div className="md:hidden bg-white border-t border-slate-200 shadow-lg w-full">
           <nav className="flex flex-col px-4 py-3 space-y-3">
-            <a href="#home" onClick={handleLinkClick} className="text-slate-700 hover:text-[#1f3492] py-2 border-b border-slate-100 transition-colors">Home</a>
-            <a href="#about" onClick={handleLinkClick} className="text-slate-700 hover:text-[#1f3492] py-2 border-b border-slate-100 transition-colors">About</a>
-            <a href="#events" onClick={handleLinkClick} className="text-slate-700 hover:text-[#1f3492] py-2 border-b border-slate-100 transition-colors">Events</a>
-            <a href="#services" onClick={handleLinkClick} className="text-slate-700 hover:text-[#1f3492] py-2 border-b border-slate-100 transition-colors">Services</a>
-            <a href="#community" onClick={handleLinkClick} className="text-slate-700 hover:text-[#1f3492] py-2 border-b border-slate-100 transition-colors">Community</a>
-            <a href="#testimonials" onClick={handleLinkClick} className="text-slate-700 hover:text-[#1f3492] py-2 border-b border-slate-100 transition-colors">Testimonials</a>
-            <a href="#contact" onClick={handleLinkClick} className="text-slate-700 hover:text-[#1f3492] py-2 border-b border-slate-100 transition-colors">Contact</a>
+            <a href="#home" onClick={handleLinkClick} className="text-slate-700 hover:text-[#1f3492] py-2 border-b border-slate-100 transition-colors text-sm">Home</a>
+            <a href="#about" onClick={handleLinkClick} className="text-slate-700 hover:text-[#1f3492] py-2 border-b border-slate-100 transition-colors text-sm">About</a>
+            <a href="#events" onClick={handleLinkClick} className="text-slate-700 hover:text-[#1f3492] py-2 border-b border-slate-100 transition-colors text-sm">Events</a>
+            <a href="#services" onClick={handleLinkClick} className="text-slate-700 hover:text-[#1f3492] py-2 border-b border-slate-100 transition-colors text-sm">Services</a>
+            <a href="#community" onClick={handleLinkClick} className="text-slate-700 hover:text-[#1f3492] py-2 border-b border-slate-100 transition-colors text-sm">Community</a>
+            <a href="#testimonials" onClick={handleLinkClick} className="text-slate-700 hover:text-[#1f3492] py-2 border-b border-slate-100 transition-colors text-sm">Testimonials</a>
+            <a href="#contact" onClick={handleLinkClick} className="text-slate-700 hover:text-[#1f3492] py-2 border-b border-slate-100 transition-colors text-sm">Contact</a>
             <a
               href="https://chat.whatsapp.com/B9GxPUSs4SFA7rMJUHo84I?mode=wwt"
+              onClick={handleLinkClick}
               className="inline-block text-center rounded-full px-4 py-2.5 text-sm font-medium bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white shadow-md hover:shadow-lg transition-all mt-2"
             >
               Join Now

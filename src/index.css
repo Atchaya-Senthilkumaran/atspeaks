@@ -5,10 +5,10 @@
 /* Import responsive styles */
 @import './responsive.css';
 
-/* Ultra-smooth scrolling for the entire page */
+/* Ultra-smooth scrolling for the entire page - Mobile First */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 60px; /* Mobile first */
   overflow-x: hidden;
   max-width: 100vw;
 }
@@ -19,9 +19,20 @@ body {
   position: relative;
 }
 
-/* Offset scroll position to account for sticky navbar */
+/* Offset scroll position to account for sticky navbar - Mobile First */
 section {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 60px; /* Mobile first */
+}
+
+/* Larger screens */
+@media screen and (min-width: 768px) {
+  html {
+    scroll-padding-top: 80px;
+  }
+  
+  section {
+    scroll-margin-top: 80px;
+  }
 }
 
 /* Smooth transitions for all interactive elements */

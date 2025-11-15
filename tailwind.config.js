@@ -4,12 +4,11 @@ export default {
   theme: {
     extend: {
       screens: {
-        'xs': '375px',
-        'sm': '640px',
-        'md': '768px',
-        'lg': '1024px',
-        'xl': '1280px',
-        '2xl': '1536px',
+        // Mobile-first breakpoints as specified
+        'sm': '480px',   // Large phones (480-768px)
+        'md': '768px',   // Tablets (768-1024px)
+        'lg': '1024px',  // Laptops (1024-1440px)
+        'xl': '1440px',  // Large screens (1440px+)
       },
     },
   },

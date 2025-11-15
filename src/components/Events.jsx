@@ -68,24 +68,24 @@ export default function Events() {
   const displayedEvents = showAll ? events : events.slice(0, 3);
 
   return (
-    <section id="events" className="mt-20 w-full overflow-x-hidden">
+    <section id="events" className="mt-12 sm:mt-16 md:mt-20 w-full overflow-x-hidden">
 
       {/* Header */}
-      <div className="flex items-center justify-between flex-wrap gap-3 sm:gap-2">
+      <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3">
         <div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Events</h2>
-          <div className="h-1 w-16 sm:w-20 md:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2"></div>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">Events</h2>
+          <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2"></div>
         </div>
         <button
           onClick={() => setShowAll(!showAll)}
-          className="text-xs sm:text-sm font-medium text-[#1f3492] hover:underline cursor-pointer px-2 py-1"
+          className="text-[10px] sm:text-xs md:text-sm font-medium text-[#1f3492] hover:underline cursor-pointer px-2 py-1"
         >
           {showAll ? "Show less" : "View all"}
         </button>
       </div>
 
-      {/* Events Grid */}
-      <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 w-full">
+      {/* Events Grid - Mobile First: 1 column on mobile, 2 columns on sm+, 3 columns on lg+ */}
+      <div className="mt-4 sm:mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 w-full">
         {loading ? (
           <div className="col-span-1 sm:col-span-2 lg:col-span-3 text-center py-10 text-slate-600">
             Loading events...
@@ -100,71 +100,74 @@ export default function Events() {
               key={e._id}
               className="
                 p-[1px]
-                rounded-2xl
+                rounded-xl sm:rounded-2xl
                 bg-gradient-to-br
                 from-[#1f3492]/20
                 via-[#c8348f]/10
                 to-transparent
                 hover:shadow-lg
                 transition-all
+                w-full
               "
             >
               <div
                 className="
                   bg-white
-                  rounded-2xl
-                  p-5
+                  rounded-xl sm:rounded-2xl
+                  p-4 sm:p-5
                   shadow-sm
                   backdrop-blur
                   border border-white/60
                   hover:-translate-y-1
                   transition-all
+                  w-full
                 "
               >
 
-                {/* ✅ Poster (1:1) */}
-                <div className="w-full aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10 max-w-full">
+                {/* Poster - Responsive Image */}
+                <div className="w-full aspect-square overflow-hidden rounded-lg sm:rounded-xl bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10">
                   <img
                     src={e.poster || "/default_poster.jpg"}
                     alt={e.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500 max-w-full"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
 
-                {/* ✅ Type + Date */}
-                <div className="flex items-center justify-between text-sm text-slate-500 mt-4">
-                  <span className="px-2 py-[2px] rounded-full bg-[#1f3492]/10 text-[#1f3492] font-medium">
+                {/* Type + Date */}
+                <div className="flex items-center justify-between text-xs sm:text-sm text-slate-500 mt-3 sm:mt-4">
+                  <span className="px-2 py-[2px] rounded-full bg-[#1f3492]/10 text-[#1f3492] font-medium text-[10px] sm:text-xs">
                     {e.type}
                   </span>
-                  <span>{e.date}</span>
+                  <span className="text-[10px] sm:text-xs md:text-sm">{e.date}</span>
                 </div>
 
-                {/* ✅ Title */}
-                <h3 className="mt-3 text-lg font-semibold text-slate-900 leading-snug">
+                {/* Title */}
+                <h3 className="mt-2 sm:mt-3 text-base sm:text-lg font-semibold text-slate-900 leading-snug">
                   {e.title}
                 </h3>
 
-                {/* ✅ Description */}
-                <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                {/* Description */}
+                <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
                   {e.description}
                 </p>
 
-                {/* ✅ Buttons */}
-                <div className="mt-4 flex gap-3">
+                {/* Buttons */}
+                <div className="mt-3 sm:mt-4 flex flex-wrap gap-2 sm:gap-3">
                   <button
                     onClick={() => setSelectedEvent(e)}
                     className="
                       inline-block
-                      px-4 py-2
+                      px-3 sm:px-4 py-1.5 sm:py-2
                       rounded-full
                       bg-gradient-to-r
                       from-[#1f3492] to-[#c8348f]
                       text-white
-                      text-sm
+                      text-xs sm:text-sm
                       font-medium
                       shadow
                       hover:brightness-95
                       cursor-pointer
+                      whitespace-nowrap
                     "
                   >
                     Details
@@ -179,14 +182,15 @@ export default function Events() {
                       }}
                       className="
                         inline-block
-                        px-4 py-2
+                        px-3 sm:px-4 py-1.5 sm:py-2
                         rounded-full
                         border border-[#1f3492]
                         text-[#1f3492]
-                        text-sm font-medium
+                        text-xs sm:text-sm font-medium
                         shadow-sm
                         hover:bg-[#1f3492]/10
                         cursor-pointer
+                        whitespace-nowrap
                       "
                     >
                       Book Recording
