@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-0 pb-8 sm:pb-12 md:pb-16 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center w-full overflow-visible"
+      className="relative pt-0 pb-8 sm:pb-12 md:pb-16 lg:pb-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6 lg:gap-8 items-center w-full overflow-visible"
     >
 
       {/* Background Glow */}
@@ -61,9 +61,9 @@ export default function Hero() {
       </div>
 
       {/* RIGHT SIDE — IMPACT SHOWCASE */}
-      <div className="relative flex justify-center md:justify-end mt-12 md:mt-0 w-full overflow-visible max-w-full order-2 md:order-2">
+      <div className="relative flex justify-center md:justify-center lg:justify-end mt-12 md:mt-0 w-full overflow-visible max-w-full order-2 md:order-2 md:pr-4 lg:pr-0">
         {/* Background Card - Rotated Gradient with Pattern */}
-        <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] shadow-2xl transform rotate-12 relative overflow-hidden">
+        <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-[22rem] md:h-[22rem] lg:w-[26rem] lg:h-[26rem] xl:w-[28rem] xl:h-[28rem] rounded-3xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] shadow-2xl transform rotate-12 relative overflow-hidden">
           {/* Dot Pattern */}
           <div className="absolute inset-0 opacity-50" style={{
             backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.5) 1.5px, transparent 1.5px)`,
@@ -79,41 +79,41 @@ export default function Hero() {
         </div>
 
         {/* Foreground Card - Stats & Impact */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-3xl bg-gradient-to-br from-white via-[#1f3492]/20 to-[#c8348f]/20 backdrop-blur-xl border-2 border-[#1f3492]/40 shadow-2xl flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 sm:w-64 sm:h-64 md:w-[18rem] md:h-[18rem] lg:w-[21rem] lg:h-[21rem] xl:w-[23rem] xl:h-[23rem] rounded-3xl bg-gradient-to-br from-white via-[#1f3492]/20 to-[#c8348f]/20 backdrop-blur-xl border-2 border-[#1f3492]/40 shadow-2xl flex flex-col items-center justify-center p-4 sm:p-6 md:p-7 lg:p-9">
 
           {/* Header */}
-          <div className="mb-4 sm:mb-6 md:mb-8">
-            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white text-center">Our Impact</h3>
+          <div className="mb-4 sm:mb-6 md:mb-7 lg:mb-9">
+            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white text-center">Our Impact</h3>
           </div>
 
           {/* Stats Grid - Simple 3 Column */}
-          <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 w-full">
+          <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-7 w-full">
 
             {/* Stat 1 */}
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-[#1f3567]/40 flex items-center justify-center mb-2 sm:mb-2.5 md:mb-3 shadow-md">
-                <Users className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#ededef]" strokeWidth={2.5} />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full bg-[#1f3567]/40 flex items-center justify-center mb-2 sm:mb-2.5 md:mb-3 lg:mb-4 shadow-md">
+                <Users className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-[#ededef]" strokeWidth={2.5} />
               </div>
-              <div className="text-lg sm:text-xl md:text-2xl font-bold text-white">1000+</div>
-              <div className="text-[10px] sm:text-xs text-white mt-0.5 sm:mt-1 font-semibold">Students</div>
+              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white">1000+</div>
+              <div className="text-[10px] sm:text-xs md:text-sm text-white mt-0.5 sm:mt-1 font-semibold">Students</div>
             </div>
 
             {/* Stat 2 */}
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-[#c8348e]/40 flex items-center justify-center mb-2 sm:mb-2.5 md:mb-3 shadow-md">
-                <Award className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#ededef]" strokeWidth={2.5} />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full bg-[#c8348e]/40 flex items-center justify-center mb-2 sm:mb-2.5 md:mb-3 lg:mb-4 shadow-md">
+                <Award className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-[#ededef]" strokeWidth={2.5} />
               </div>
-              <div className="text-lg sm:text-xl md:text-2xl font-bold text-white">10+</div>
-              <div className="text-[10px] sm:text-xs text-white mt-0.5 sm:mt-1 font-semibold">Events</div>
+              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white">10+</div>
+              <div className="text-[10px] sm:text-xs md:text-sm text-white mt-0.5 sm:mt-1 font-semibold">Events</div>
             </div>
 
             {/* Stat 3 */}
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-[#1f3567]/40 flex items-center justify-center mb-2 sm:mb-2.5 md:mb-3 shadow-md">
-                <TrendingUp className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#ededef]" strokeWidth={2.5} />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full bg-[#1f3567]/40 flex items-center justify-center mb-2 sm:mb-2.5 md:mb-3 lg:mb-4 shadow-md">
+                <TrendingUp className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-[#ededef]" strokeWidth={2.5} />
               </div>
-              <div className="text-lg sm:text-xl md:text-2xl font-bold text-white">5+</div>
-              <div className="text-[10px] sm:text-xs text-white mt-0.5 sm:mt-1 font-semibold">Domains</div>
+              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white">5+</div>
+              <div className="text-[10px] sm:text-xs md:text-sm text-white mt-0.5 sm:mt-1 font-semibold">Domains</div>
             </div>
 
           </div>
