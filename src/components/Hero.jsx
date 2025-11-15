@@ -18,7 +18,9 @@ export default function Hero() {
           <span className="bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent">
             AT Speaks
           </span>{" "}
-          empowers you to learn
+          empowers
+          <br />
+          you to learn
           <br />
           <span className="text-slate-900">
             Skills that shape real careers.
