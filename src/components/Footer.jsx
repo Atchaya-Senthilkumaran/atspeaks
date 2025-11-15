@@ -3,7 +3,7 @@ import { Mail, Instagram, Youtube, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="mt-12 bg-gradient-to-b from-white via-[#1f3492]/5 to-white pt-8 pb-4 border-t relative">
+    <footer className="mt-12 bg-gradient-to-b from-white via-[#1f3492]/5 to-white pt-8 pb-4 border-t relative w-full overflow-x-hidden">
 
       {/* Main footer container */}
       <div className="max-w-6xl mx-auto px-3 sm:px-4 md:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-10 w-full overflow-x-hidden">

@@ -4,7 +4,7 @@ import { Quote, Star } from "lucide-react";
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="mt-20 relative">
+    <section id="testimonials" className="mt-20 relative w-full overflow-x-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#1f3492]/10 via-transparent to-[#c8348f]/10 -z-10 rounded-3xl blur-3xl"></div>
 
@@ -18,8 +18,8 @@ export default function Testimonials() {
       </div>
 
       {/* Scroll container (manual only) */}
-      <div className="mt-8 sm:mt-10 overflow-x-auto pb-6 hide-scrollbar scroll-smooth -mx-2 sm:-mx-4 md:mx-0">
-        <div className="flex gap-3 sm:gap-4 md:gap-6 w-max pl-2 sm:pl-4 md:pl-6 pr-2 sm:pr-4 md:pr-6 py-4">
+      <div className="mt-8 sm:mt-10 overflow-x-auto pb-6 hide-scrollbar scroll-smooth w-full">
+        <div className="flex gap-3 sm:gap-4 md:gap-6 w-max pl-4 sm:pl-6 md:pl-6 pr-4 sm:pr-6 md:pr-6 py-4">
           {testimonials.map((t) => (
             <div
               key={t.id}

@@ -6,11 +6,11 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-0 pb-8 sm:pb-12 md:pb-16 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center"
+      className="relative pt-0 pb-8 sm:pb-12 md:pb-16 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center w-full overflow-hidden"
     >
 
       {/* Background Glow */}
-      <div className="absolute top-0 left-0 w-[400px] h-[400px] sm:w-[500px] sm:h-[500px] md:w-[600px] md:h-[600px] bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/20 to-transparent blur-[100px] sm:blur-[120px] md:blur-[140px] -z-10 rounded-full"></div>
+      <div className="absolute top-0 left-0 w-[300px] h-[300px] xs:w-[350px] xs:h-[350px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/20 to-transparent blur-[100px] sm:blur-[120px] md:blur-[140px] -z-10 rounded-full max-w-[90vw]"></div>
 
       {/* LEFT CONTENT */}
       <div className="px-2 sm:px-0 w-full overflow-x-hidden">
@@ -61,9 +61,9 @@ export default function Hero() {
       </div>
 
       {/* RIGHT SIDE — IMPACT SHOWCASE */}
-      <div className="relative flex justify-center md:justify-end mt-8 sm:mt-10 md:mt-12 lg:mt-0 w-full overflow-hidden">
+      <div className="relative flex justify-center md:justify-end mt-8 sm:mt-10 md:mt-12 lg:mt-0 w-full overflow-hidden max-w-full">
         {/* Background Card - Rotated Gradient with Pattern */}
-        <div className="w-56 h-56 xs:w-64 xs:h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] shadow-2xl transform rotate-12 relative overflow-hidden max-w-full">
+        <div className="w-48 h-48 xs:w-56 xs:h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-3xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] shadow-2xl transform rotate-12 relative overflow-hidden max-w-[90vw] sm:max-w-[85vw] md:max-w-full">
           {/* Dot Pattern */}
           <div className="absolute inset-0 opacity-50" style={{
             backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.5) 1.5px, transparent 1.5px)`,
@@ -79,7 +79,7 @@ export default function Hero() {
         </div>
 
         {/* Foreground Card - Stats & Impact */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 xs:w-56 xs:h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-3xl bg-gradient-to-br from-white via-[#1f3492]/20 to-[#c8348f]/20 backdrop-blur-xl border-2 border-[#1f3492]/40 shadow-2xl flex flex-col items-center justify-center p-3 sm:p-4 md:p-6 lg:p-8 max-w-full">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 xs:w-48 xs:h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-3xl bg-gradient-to-br from-white via-[#1f3492]/20 to-[#c8348f]/20 backdrop-blur-xl border-2 border-[#1f3492]/40 shadow-2xl flex flex-col items-center justify-center p-2 sm:p-3 md:p-4 lg:p-6 xl:p-8 max-w-[85vw] sm:max-w-[80vw] md:max-w-full">
 
           {/* Header */}
           <div className="mb-4 sm:mb-6 md:mb-8">

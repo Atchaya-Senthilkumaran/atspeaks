@@ -9,8 +9,8 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-30 bg-white/70 backdrop-blur-md border-b border-slate-200 w-full overflow-x-hidden">
-      <div className="mx-auto max-w-6xl px-2 sm:px-4 md:px-6 py-2 flex items-center justify-between w-full">
-        <div className="flex items-center -ml-1 sm:-ml-2 md:-ml-[30px] flex-shrink-0">
+      <div className="mx-auto max-w-6xl px-2 sm:px-4 md:px-6 py-2 flex items-center justify-between w-full overflow-x-hidden">
+        <div className="flex items-center ml-0 sm:ml-0 md:-ml-[30px] flex-shrink-0">
           <img
             src="/logo2.png"
             alt="AT Speaks Logo"

@@ -3,7 +3,7 @@ import { Layers, Award, Briefcase, UserCheck } from "lucide-react";
 
 export default function Services() {
   return (
-    <section id="services" className="mt-12 sm:mt-14 md:mt-16">
+    <section id="services" className="mt-12 sm:mt-14 md:mt-16 w-full overflow-x-hidden">
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold flex flex-wrap items-center gap-2 sm:gap-3">
         Services & Courses
         <span className="text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full bg-[#1f3492]/10 text-[#1f3492] font-medium">

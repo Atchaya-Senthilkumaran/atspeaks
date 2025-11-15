@@ -68,7 +68,7 @@ export default function Events() {
   const displayedEvents = showAll ? events : events.slice(0, 3);
 
   return (
-    <section id="events" className="mt-20">
+    <section id="events" className="mt-20 w-full overflow-x-hidden">
 
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-3 sm:gap-2">

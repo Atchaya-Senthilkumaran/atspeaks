@@ -69,7 +69,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="mt-0 py-0 relative">
+    <section id="contact" className="mt-0 py-0 relative w-full overflow-x-hidden">
       {/* Soft Background Glow */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/15 to-[#1f3492]/20 blur-3xl -z-10"></div>
 

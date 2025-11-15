@@ -3,7 +3,7 @@ import { Linkedin, Instagram, Mail } from "lucide-react";
 
 export default function FounderSection() {
   return (
-    <section className="w-full py-12 sm:py-16 md:py-20">
+    <section className="w-full py-12 sm:py-16 md:py-20 overflow-x-hidden">
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">Founder</h2>
       <div className="h-1 w-16 sm:w-20 md:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mb-6 sm:mb-8 md:mb-10"></div>
 

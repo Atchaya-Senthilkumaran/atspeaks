@@ -3,7 +3,7 @@ import { Rocket, Users, MonitorSmartphone, PenTool } from "lucide-react";
 
 export default function About() {
   return (
-    <section id="about" className="mt-8 sm:mt-10 md:mt-12">
+    <section id="about" className="mt-8 sm:mt-10 md:mt-12 w-full overflow-x-hidden">
       {/* Heading */}
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
         About AT Speaks

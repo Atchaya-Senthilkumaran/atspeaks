@@ -3,7 +3,7 @@ import { Users, Building2, Rocket, Handshake } from "lucide-react";
 
 export default function Community() {
   return (
-    <section id="community" className="mt-16 sm:mt-18 md:mt-20">
+    <section id="community" className="mt-16 sm:mt-18 md:mt-20 w-full overflow-x-hidden">
       {/* Section Header */}
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Community & Partnerships</h2>
       <div className="h-1 w-16 sm:w-20 md:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2"></div>
@@ -51,8 +51,8 @@ export default function Community() {
 
       {/* CTA Box */}
       <div className="mt-6 sm:mt-8 p-4 sm:p-6 md:p-8 rounded-2xl bg-gradient-to-br from-[#1f3492]/10 via-[#1f3492]/5 to-[#c8348f]/10 border shadow-sm relative overflow-hidden w-full">
-        <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#1f3492]/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#c8348f]/20 rounded-full blur-3xl"></div>
+        <div className="absolute -top-8 -right-8 sm:-top-10 sm:-right-10 w-32 h-32 sm:w-40 sm:h-40 bg-[#1f3492]/20 rounded-full blur-3xl max-w-[50vw]"></div>
+        <div className="absolute -bottom-8 -left-8 sm:-bottom-10 sm:-left-10 w-32 h-32 sm:w-40 sm:h-40 bg-[#c8348f]/20 rounded-full blur-3xl max-w-[50vw]"></div>
 
         <div className="relative flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 md:gap-6 w-full">
           <div className="flex items-start gap-2 sm:gap-3 md:gap-4 w-full md:w-auto">
