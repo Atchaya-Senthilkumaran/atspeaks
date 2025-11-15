@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-0 pb-8 sm:pb-12 md:pb-16 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center w-full overflow-hidden"
+      className="relative pt-0 pb-8 sm:pb-12 md:pb-16 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center w-full overflow-visible"
     >
 
       {/* Background Glow */}
@@ -61,7 +61,7 @@ export default function Hero() {
       </div>
 
       {/* RIGHT SIDE — IMPACT SHOWCASE */}
-      <div className="relative flex justify-center md:justify-end mt-12 md:mt-0 w-full overflow-hidden max-w-full order-2 md:order-2">
+      <div className="relative flex justify-center md:justify-end mt-12 md:mt-0 w-full overflow-visible max-w-full order-2 md:order-2">
         {/* Background Card - Rotated Gradient with Pattern */}
         <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] shadow-2xl transform rotate-12 relative overflow-hidden">
           {/* Dot Pattern */}

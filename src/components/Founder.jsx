@@ -13,11 +13,10 @@ export default function FounderSection() {
         {/* Left Section */}
         <div className="flex flex-col items-center lg:items-start gap-3 sm:gap-4 md:gap-5">
           <div className="relative w-full flex justify-center lg:justify-start">
-            <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] blur-xl opacity-60"></div>
             <img
               src="/atpic.jpg"
               alt="Founder"
-              className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-52 xl:h-52 object-cover rounded-xl sm:rounded-2xl shadow-xl border border-white/40 hover:scale-105 transition duration-300 max-w-full"
+              className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-52 xl:h-52 object-cover rounded-xl sm:rounded-2xl shadow-xl border border-white/40 hover:scale-105 transition duration-300 max-w-full"
             />
           </div>
 
