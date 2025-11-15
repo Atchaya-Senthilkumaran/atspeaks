@@ -253,8 +253,8 @@ export default function BookingModal({ event, open, onClose }) {
 
   // Booking Form
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center p-2 sm:p-4 bg-black/50 backdrop-blur-sm">
-      <div className="w-full max-w-5xl bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center p-1 sm:p-2 md:p-4 bg-black/50 backdrop-blur-sm overflow-y-auto">
+      <div className="w-full max-w-5xl bg-white rounded-xl sm:rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden max-h-[98vh] sm:max-h-[95vh] md:max-h-[90vh] overflow-y-auto my-2 sm:my-4">
         {/* Header */}
         <div className="flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4 border-b bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white sticky top-0 z-10">
           <h2 className="text-base sm:text-lg md:text-xl font-semibold">
@@ -269,7 +269,7 @@ export default function BookingModal({ event, open, onClose }) {
         </div>
 
         {/* Content */}
-        <div className="p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-[300px,1fr] xl:grid-cols-[350px,1fr] gap-4 sm:gap-6">
+        <div className="p-3 sm:p-4 md:p-6 grid grid-cols-1 lg:grid-cols-[280px,1fr] xl:grid-cols-[320px,1fr] gap-3 sm:gap-4 md:gap-6">
           {/* LEFT SIDE: QR & INFO */}
           <div className="flex flex-col space-y-3 sm:space-y-4">
             <div className="border rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-indigo-50 to-pink-50 shadow-inner">
@@ -279,7 +279,7 @@ export default function BookingModal({ event, open, onClose }) {
               <img
                 src="/recordings/qr.jpg"
                 alt="Payment QR"
-                className="w-full max-w-[250px] mx-auto rounded-xl border shadow-md mb-2 sm:mb-3"
+                className="w-full max-w-[200px] sm:max-w-[250px] mx-auto rounded-xl border shadow-md mb-2 sm:mb-3"
               />
               <p className="text-xs text-slate-600 text-center">
                 After paying, enter the UPI Transaction ID in the form.

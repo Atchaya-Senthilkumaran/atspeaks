@@ -93,9 +93,9 @@ export default function Contact() {
         </div>
       )}
 
-      <div className="mt-6 bg-white shadow-lg rounded-xl p-5 md:p-6 border border-gray-200">
+      <div className="mt-6 bg-white shadow-lg rounded-xl p-4 sm:p-5 md:p-6 border border-gray-200 w-full overflow-x-hidden">
         <form
-          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 w-full"
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col gap-1.5">

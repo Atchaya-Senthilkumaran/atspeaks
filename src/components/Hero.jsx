@@ -13,19 +13,19 @@ export default function Hero() {
       <div className="absolute top-0 left-0 w-[400px] h-[400px] sm:w-[500px] sm:h-[500px] md:w-[600px] md:h-[600px] bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/20 to-transparent blur-[100px] sm:blur-[120px] md:blur-[140px] -z-10 rounded-full"></div>
 
       {/* LEFT CONTENT */}
-      <div className="px-2 sm:px-0">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+      <div className="px-2 sm:px-0 w-full overflow-x-hidden">
+        <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight break-words">
           <span className="bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent">
             AT Speaks
           </span>{" "}
           empowers you to learn
-          <br />
+          <br className="hidden sm:block" />
           <span className="text-slate-900">
             Skills that shape real careers.
           </span>
         </h1>
 
-        <p className="mt-4 sm:mt-5 md:mt-6 text-base sm:text-lg text-slate-700 max-w-xl leading-relaxed">
+        <p className="mt-3 sm:mt-4 md:mt-5 lg:mt-6 text-sm sm:text-base md:text-lg text-slate-700 max-w-xl leading-relaxed break-words">
           Building future-ready minds in design, code, and emerging tech through practical projects that turn learning into confident, lasting action.
           </p>
 
@@ -61,9 +61,9 @@ export default function Hero() {
       </div>
 
       {/* RIGHT SIDE — IMPACT SHOWCASE */}
-      <div className="relative flex justify-center md:justify-end mt-12 md:mt-0">
+      <div className="relative flex justify-center md:justify-end mt-8 sm:mt-10 md:mt-12 lg:mt-0 w-full overflow-hidden">
         {/* Background Card - Rotated Gradient with Pattern */}
-        <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] shadow-2xl transform rotate-12 relative overflow-hidden">
+        <div className="w-56 h-56 xs:w-64 xs:h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-3xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] shadow-2xl transform rotate-12 relative overflow-hidden max-w-full">
           {/* Dot Pattern */}
           <div className="absolute inset-0 opacity-50" style={{
             backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.5) 1.5px, transparent 1.5px)`,
@@ -79,7 +79,7 @@ export default function Hero() {
         </div>
 
         {/* Foreground Card - Stats & Impact */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-3xl bg-gradient-to-br from-white via-[#1f3492]/20 to-[#c8348f]/20 backdrop-blur-xl border-2 border-[#1f3492]/40 shadow-2xl flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 xs:w-56 xs:h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-3xl bg-gradient-to-br from-white via-[#1f3492]/20 to-[#c8348f]/20 backdrop-blur-xl border-2 border-[#1f3492]/40 shadow-2xl flex flex-col items-center justify-center p-3 sm:p-4 md:p-6 lg:p-8 max-w-full">
 
           {/* Header */}
           <div className="mb-4 sm:mb-6 md:mb-8">

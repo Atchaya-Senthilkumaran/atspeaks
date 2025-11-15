@@ -17,7 +17,7 @@ export default function Services() {
         A set of premium learning experiences — designed to help students grow through structured, practical and hands-on learning.
       </p>
 
-      <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 w-full">
 
         {/* BOOTCAMPS */}
         <div className="p-5 sm:p-6 bg-gradient-to-br from-[#1f3492]/10 to-white rounded-xl shadow-sm border hover:shadow-md hover:-translate-y-1 transition">

@@ -2,10 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import responsive styles */
+@import './responsive.css';
+
 /* Ultra-smooth scrolling for the entire page */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
 }
 
 /* Offset scroll position to account for sticky navbar */
@@ -16,11 +27,30 @@ section {
 /* Smooth transitions for all interactive elements */
 * {
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 /* Enhanced smooth scrolling with easing */
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+}
+
+/* Prevent horizontal overflow globally */
+#root {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
+/* Responsive scroll padding for mobile */
+@media screen and (max-width: 768px) {
+  html {
+    scroll-padding-top: 60px;
+  }
+  
+  section {
+    scroll-margin-top: 60px;
   }
 }

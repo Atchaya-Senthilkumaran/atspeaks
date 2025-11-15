@@ -7,8 +7,8 @@ export default function EventDetailModal({ event, onClose }) {
   if (!event) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/60 backdrop-blur-sm">
-      <div className="relative w-full max-w-3xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto bg-white rounded-2xl sm:rounded-3xl shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-1 sm:p-2 md:p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
+      <div className="relative w-full max-w-3xl max-h-[98vh] sm:max-h-[95vh] md:max-h-[90vh] overflow-y-auto bg-white rounded-xl sm:rounded-2xl md:rounded-3xl shadow-2xl my-2 sm:my-4">
 
         {/* Close Button */}
         <button
@@ -23,11 +23,11 @@ export default function EventDetailModal({ event, onClose }) {
 
         <div className="p-4 sm:p-6 md:p-8">
           {/* Event Poster */}
-          <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto overflow-hidden rounded-2xl bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10 shadow-lg">
+          <div className="w-40 h-40 xs:w-48 xs:h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto overflow-hidden rounded-2xl bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10 shadow-lg max-w-full">
             <img
               src={event.poster || "/default_poster.jpg"}
               alt={event.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover max-w-full"
             />
           </div>
 

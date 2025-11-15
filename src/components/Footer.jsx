@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="mt-12 bg-gradient-to-b from-white via-[#1f3492]/5 to-white pt-8 pb-4 border-t relative">
 
       {/* Main footer container */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 md:px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-10 w-full overflow-x-hidden">
 
         {/* Brand */}
         <div className="sm:col-span-2 md:col-span-1">

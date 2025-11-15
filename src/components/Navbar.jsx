@@ -8,37 +8,37 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-30 bg-white/70 backdrop-blur-md border-b border-slate-200">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-2 flex items-center justify-between">
-        <div className="flex items-center -ml-2 sm:-ml-[30px]">
+    <header className="sticky top-0 z-30 bg-white/70 backdrop-blur-md border-b border-slate-200 w-full overflow-x-hidden">
+      <div className="mx-auto max-w-6xl px-2 sm:px-4 md:px-6 py-2 flex items-center justify-between w-full">
+        <div className="flex items-center -ml-1 sm:-ml-2 md:-ml-[30px] flex-shrink-0">
           <img
             src="/logo2.png"
             alt="AT Speaks Logo"
-            className="h-[50px] w-[160px] sm:h-[60px] sm:w-[200px] object-contain"
+            className="h-[40px] w-[120px] xs:h-[45px] xs:w-[140px] sm:h-[50px] sm:w-[160px] md:h-[60px] md:w-[200px] object-contain"
           />
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-medium">
-          <a href="#home" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300">Home</a>
-          <a href="#about" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300">About</a>
-          <a href="#events" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300">Events</a>
-          <a href="#services" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300">Services</a>
-          <a href="#community" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300">Community</a>
-          <a href="#testimonials" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300">Testimonials</a>
-          <a href="#contact" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300">Contact</a>
+        <nav className="hidden md:flex items-center gap-2 lg:gap-4 xl:gap-6 text-xs lg:text-sm font-medium flex-wrap justify-end">
+          <a href="#home" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap">Home</a>
+          <a href="#about" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap">About</a>
+          <a href="#events" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap">Events</a>
+          <a href="#services" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap">Services</a>
+          <a href="#community" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap">Community</a>
+          <a href="#testimonials" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap">Testimonials</a>
+          <a href="#contact" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap">Contact</a>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
           <a
             href="https://chat.whatsapp.com/B9GxPUSs4SFA7rMJUHo84I?mode=wwt"
-            className="hidden md:inline-block rounded-full px-4 py-2 text-sm font-medium bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+            className="hidden md:inline-block rounded-full px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm font-medium bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 whitespace-nowrap"
           >
             Join Now
           </a>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-md bg-slate-100 hover:bg-slate-200 transition-all text-xl"
+            className="md:hidden p-2 min-w-[44px] min-h-[44px] rounded-md bg-slate-100 hover:bg-slate-200 transition-all text-xl flex items-center justify-center"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? "✕" : "☰"}

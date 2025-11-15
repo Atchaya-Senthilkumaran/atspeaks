@@ -13,7 +13,7 @@ export default function Community() {
       </p>
 
       {/* Partnership Cards */}
-      <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 w-full">
 
         {/* Colleges Card */}
         <div className="p-6 rounded-2xl bg-white shadow-sm border hover:shadow-md hover:-translate-y-1 transition">
@@ -50,12 +50,12 @@ export default function Community() {
       </div>
 
       {/* CTA Box */}
-      <div className="mt-6 sm:mt-8 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#1f3492]/10 via-[#1f3492]/5 to-[#c8348f]/10 border shadow-sm relative overflow-hidden">
+      <div className="mt-6 sm:mt-8 p-4 sm:p-6 md:p-8 rounded-2xl bg-gradient-to-br from-[#1f3492]/10 via-[#1f3492]/5 to-[#c8348f]/10 border shadow-sm relative overflow-hidden w-full">
         <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#1f3492]/20 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#c8348f]/20 rounded-full blur-3xl"></div>
 
-        <div className="relative flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
-          <div className="flex items-start gap-3 sm:gap-4 w-full md:w-auto">
+        <div className="relative flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 md:gap-6 w-full">
+          <div className="flex items-start gap-2 sm:gap-3 md:gap-4 w-full md:w-auto">
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow flex items-center justify-center flex-shrink-0">
               <Handshake className="w-5 h-5 sm:w-6 sm:h-6 text-[#1f3492]" />
             </div>

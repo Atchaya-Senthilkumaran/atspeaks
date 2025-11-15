@@ -7,17 +7,17 @@ export default function FounderSection() {
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">Founder</h2>
       <div className="h-1 w-16 sm:w-20 md:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mb-6 sm:mb-8 md:mb-10"></div>
 
-      <div className="bg-white shadow-xl rounded-3xl p-6 sm:p-8 md:p-10 flex flex-col lg:flex-row gap-6 sm:gap-8 md:gap-10 border border-gray-100 relative overflow-hidden">
+      <div className="bg-white shadow-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-10 flex flex-col lg:flex-row gap-4 sm:gap-6 md:gap-8 lg:gap-10 border border-gray-100 relative overflow-hidden w-full">
         <div className="absolute inset-0 bg-gradient-to-r from-[#1f3492]/20 via-[#c8348f]/20 to-[#1f3492]/20 opacity-30 blur-3xl -z-10"></div>
 
         {/* Left Section */}
         <div className="flex flex-col items-center lg:items-start gap-4 sm:gap-5">
-          <div className="relative">
+          <div className="relative w-full flex justify-center lg:justify-start">
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] blur-xl opacity-60"></div>
             <img
               src="/atpic.jpg"
               alt="Founder"
-              className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-52 md:h-52 object-cover rounded-2xl shadow-xl border border-white/40 hover:scale-105 transition duration-300"
+              className="relative w-32 h-32 xs:w-36 xs:h-36 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-52 lg:h-52 object-cover rounded-2xl shadow-xl border border-white/40 hover:scale-105 transition duration-300 max-w-full"
             />
           </div>
 

@@ -85,7 +85,7 @@ export default function Events() {
       </div>
 
       {/* Events Grid */}
-      <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+      <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 w-full">
         {loading ? (
           <div className="col-span-1 sm:col-span-2 lg:col-span-3 text-center py-10 text-slate-600">
             Loading events...
@@ -123,11 +123,11 @@ export default function Events() {
               >
 
                 {/* ✅ Poster (1:1) */}
-                <div className="w-full aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10">
+                <div className="w-full aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10 max-w-full">
                   <img
                     src={e.poster || "/default_poster.jpg"}
                     alt={e.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500 max-w-full"
                   />
                 </div>
 

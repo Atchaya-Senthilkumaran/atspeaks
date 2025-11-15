@@ -11,10 +11,10 @@ export default function About() {
       <div className="h-1 w-16 sm:w-20 md:w-24 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-full mt-2"></div>
 
       {/* Main layout */}
-      <div className="mt-6 sm:mt-8 md:mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
+      <div className="mt-6 sm:mt-8 md:mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10 w-full">
 
         {/* Left: What we do cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6 w-full">
 
           {/* Card 1 */}
           <div className="p-4 sm:p-5 md:p-6 rounded-2xl bg-white shadow-sm border hover:shadow-md transition">

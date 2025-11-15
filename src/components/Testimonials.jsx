@@ -18,12 +18,12 @@ export default function Testimonials() {
       </div>
 
       {/* Scroll container (manual only) */}
-      <div className="mt-10 overflow-x-auto pb-6 hide-scrollbar scroll-smooth">
-        <div className="flex gap-4 sm:gap-6 w-max pl-4 sm:pl-6 pr-4 sm:pr-6 py-4">
+      <div className="mt-8 sm:mt-10 overflow-x-auto pb-6 hide-scrollbar scroll-smooth -mx-2 sm:-mx-4 md:mx-0">
+        <div className="flex gap-3 sm:gap-4 md:gap-6 w-max pl-2 sm:pl-4 md:pl-6 pr-2 sm:pr-4 md:pr-6 py-4">
           {testimonials.map((t) => (
             <div
               key={t.id}
-              className="min-w-[280px] sm:min-w-[320px] md:min-w-[360px] max-w-[280px] sm:max-w-[320px] md:max-w-[380px] group transition-transform duration-300 hover:-translate-y-2"
+              className="min-w-[260px] xs:min-w-[280px] sm:min-w-[300px] md:min-w-[340px] lg:min-w-[360px] max-w-[260px] xs:max-w-[280px] sm:max-w-[300px] md:max-w-[340px] lg:max-w-[380px] group transition-transform duration-300 hover:-translate-y-2 flex-shrink-0"
             >
               <div className="relative p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100">
 
