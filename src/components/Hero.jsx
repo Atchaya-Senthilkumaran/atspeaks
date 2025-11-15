@@ -91,29 +91,29 @@ export default function Hero() {
 
             {/* Stat 1 */}
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full bg-[#1f3567]/40 flex items-center justify-center mb-2 sm:mb-2.5 md:mb-3 lg:mb-4 shadow-md">
-                <Users className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-[#ededef]" strokeWidth={2.5} />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-[#1f3567]/40 flex items-center justify-center mb-2 sm:mb-2.5 md:mb-3 shadow-md">
+                <Users className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#ededef]" strokeWidth={2.5} />
               </div>
-              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white">1000+</div>
-              <div className="text-[10px] sm:text-xs md:text-sm text-white mt-0.5 sm:mt-1 font-semibold">Students</div>
+              <div className="text-lg sm:text-xl md:text-2xl font-bold text-white">1000+</div>
+              <div className="text-[10px] sm:text-xs text-white mt-0.5 sm:mt-1 font-semibold">Students</div>
             </div>
 
             {/* Stat 2 */}
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full bg-[#c8348e]/40 flex items-center justify-center mb-2 sm:mb-2.5 md:mb-3 lg:mb-4 shadow-md">
-                <Award className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-[#ededef]" strokeWidth={2.5} />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-[#c8348e]/40 flex items-center justify-center mb-2 sm:mb-2.5 md:mb-3 shadow-md">
+                <Award className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#ededef]" strokeWidth={2.5} />
               </div>
-              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white">10+</div>
-              <div className="text-[10px] sm:text-xs md:text-sm text-white mt-0.5 sm:mt-1 font-semibold">Events</div>
+              <div className="text-lg sm:text-xl md:text-2xl font-bold text-white">10+</div>
+              <div className="text-[10px] sm:text-xs text-white mt-0.5 sm:mt-1 font-semibold">Events</div>
             </div>
 
             {/* Stat 3 */}
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full bg-[#1f3567]/40 flex items-center justify-center mb-2 sm:mb-2.5 md:mb-3 lg:mb-4 shadow-md">
-                <TrendingUp className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-[#ededef]" strokeWidth={2.5} />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-[#1f3567]/40 flex items-center justify-center mb-2 sm:mb-2.5 md:mb-3 shadow-md">
+                <TrendingUp className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#ededef]" strokeWidth={2.5} />
               </div>
-              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white">5+</div>
-              <div className="text-[10px] sm:text-xs md:text-sm text-white mt-0.5 sm:mt-1 font-semibold">Domains</div>
+              <div className="text-lg sm:text-xl md:text-2xl font-bold text-white">5+</div>
+              <div className="text-[10px] sm:text-xs text-white mt-0.5 sm:mt-1 font-semibold">Domains</div>
             </div>
 
           </div>
