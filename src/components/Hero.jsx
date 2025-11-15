@@ -18,7 +18,7 @@ export default function Hero() {
           <span className="bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent">
             AT Speaks
           </span>{" "}empowers
-           you to learn skills that shape real careers.
+           you to learn skills that shape real 
           <br />
           <span className="text-slate-900">
             {/* Skills that shape real careers. */}
