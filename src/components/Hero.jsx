@@ -13,7 +13,7 @@ export default function Hero() {
 
       {/* LEFT CONTENT */}
       <div className="w-full">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight">
           <span className="bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent">
             AT Speaks
           </span>{" "}
@@ -26,13 +26,13 @@ export default function Hero() {
           <span className="text-slate-900">real careers.</span>
         </h1>
 
-        <p className="mt-4 text-base sm:text-lg text-slate-700 max-w-xl leading-relaxed">
+        <p className="mt-3 text-base sm:text-lg text-slate-700 max-w-xl leading-relaxed">
           Building future-ready minds in design, code, and emerging tech through
           practical projects that turn learning into confident, lasting action.
         </p>
 
         {/* CTA Buttons */}
-        <div className="mt-5 flex flex-wrap gap-3">
+        <div className="mt-4 flex flex-wrap gap-3">
           <a
             href="#events"
             className="rounded-full px-6 py-3 bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white text-base font-semibold shadow hover:brightness-95 transition"
@@ -49,12 +49,12 @@ export default function Hero() {
         </div>
 
         {/* Highlights */}
-        <div className="mt-5">
+        <div className="mt-4">
           <div className="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1">
             What We Offer
           </div>
 
-          <div className="mt-2 flex flex-wrap gap-2">
+          <div className="mt-1.5 flex flex-wrap gap-2">
             <Tag text="Workshops" />
             <Tag text="Webinars" />
             <Tag text="Hands-on Training" />
