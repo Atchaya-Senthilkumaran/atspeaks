@@ -6,14 +6,14 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-6 pb-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full overflow-visible"
+      className="relative pt-3 pb-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full overflow-visible pl-[5px]"
     >
       {/* Background Glow */}
       <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/20 to-transparent blur-[60px] -z-10 rounded-full"></div>
 
       {/* LEFT CONTENT */}
       <div className="w-full">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
           <span className="bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent">
             AT Speaks
           </span>{" "}
@@ -26,13 +26,13 @@ export default function Hero() {
           <span className="text-slate-900">real careers.</span>
         </h1>
 
-        <p className="mt-5 text-base sm:text-lg text-slate-700 max-w-xl leading-relaxed">
+        <p className="mt-4 text-base sm:text-lg text-slate-700 max-w-xl leading-relaxed">
           Building future-ready minds in design, code, and emerging tech through
           practical projects that turn learning into confident, lasting action.
         </p>
 
         {/* CTA Buttons */}
-        <div className="mt-7 flex flex-wrap gap-3">
+        <div className="mt-5 flex flex-wrap gap-3">
           <a
             href="#events"
             className="rounded-full px-6 py-3 bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white text-base font-semibold shadow hover:brightness-95 transition"
@@ -49,12 +49,12 @@ export default function Hero() {
         </div>
 
         {/* Highlights */}
-        <div className="mt-8">
+        <div className="mt-5">
           <div className="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1">
             What We Offer
           </div>
 
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-2 flex flex-wrap gap-2">
             <Tag text="Workshops" />
             <Tag text="Webinars" />
             <Tag text="Hands-on Training" />
@@ -65,7 +65,7 @@ export default function Hero() {
       {/* RIGHT SIDE — IMPACT SHOWCASE */}
       <div className="relative flex justify-center md:justify-end w-full pr-4 sm:pr-6 overflow-visible">
         {/* Background Card */}
-        <div className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-3xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] shadow-2xl rotate-12 relative overflow-hidden">
+        <div className="w-72 h-72 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[22rem] rounded-3xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] shadow-2xl rotate-12 relative overflow-hidden">
           {/* Dot Pattern */}
           <div
             className="absolute inset-0 opacity-40"
@@ -84,7 +84,7 @@ export default function Hero() {
         </div>
 
         {/* Foreground Card */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-3xl bg-gradient-to-br from-white via-[#1f3492]/20 to-[#c8348f]/20 backdrop-blur-xl border-2 border-[#1f3492]/40 shadow-2xl flex flex-col items-center justify-center p-6">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-3xl bg-gradient-to-br from-white via-[#1f3492]/20 to-[#c8348f]/20 backdrop-blur-xl border-2 border-[#1f3492]/40 shadow-2xl flex flex-col items-center justify-center p-6">
           <h3 className="text-lg sm:text-xl font-bold text-white text-center mb-4">
             Our Impact
           </h3>
