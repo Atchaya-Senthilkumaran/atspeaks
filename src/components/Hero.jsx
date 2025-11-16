@@ -18,8 +18,8 @@ export default function Hero() {
             AT Speaks
           </span>{" "}
           empowers you to learn
-          <br />
-          <span className="text-slate-900">Skills that shape real careers.</span>
+          {/* <br /> */}
+          <span className="text-slate-900">skills that shape real careers.</span>
         </h1>
 
         <p className="mt-3 text-base sm:text-lg text-slate-700 max-w-xl leading-relaxed">
