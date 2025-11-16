@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-3 pb-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full overflow-visible -ml-1"
+      className="relative pt-3 pb-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full overflow-visible -ml-3 -mt-2"
     >
       {/* Background Glow */}
       <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/20 to-transparent blur-[60px] -z-10 rounded-full"></div>
