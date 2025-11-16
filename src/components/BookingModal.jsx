@@ -144,16 +144,16 @@ export default function BookingModal({ event, open, onClose }) {
   // Unavailable Screen (for Introduction To Figma)
   if (isUnavailable) {
     return (
-      <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-        <div className="w-full max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-4 bg-black/50 backdrop-blur-sm">
+        <div className="w-full max-w-lg bg-white rounded-2xl shadow-xl overflow-hidden mx-4">
           {/* Header */}
-          <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-white p-8 text-center">
+          <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-white p-6 sm:p-8 text-center">
             <div className="text-5xl mb-3">⚠️</div>
             <h2 className="text-2xl font-bold">Recording Not Available</h2>
           </div>
 
           {/* Content */}
-          <div className="p-8 space-y-6">
+          <div className="p-6 sm:p-8 space-y-5 sm:space-y-6">
             <div className="text-center">
               <p className="text-lg text-slate-700 mb-4">
                 Sorry, this recording is not currently available.
@@ -206,16 +206,16 @@ export default function BookingModal({ event, open, onClose }) {
   // Success Screen
   if (success && successData) {
     return (
-      <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-        <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-4 bg-black/50 backdrop-blur-sm">
+        <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden mx-4">
           {/* Success Header */}
-          <div className="bg-gradient-to-r from-green-500 to-green-600 text-white p-8 text-center">
+          <div className="bg-gradient-to-r from-green-500 to-green-600 text-white p-6 sm:p-8 text-center">
             <div className="text-5xl mb-3">✓</div>
             <h2 className="text-2xl font-bold">Booking Confirmed</h2>
           </div>
 
           {/* Success Content */}
-          <div className="p-6 space-y-4">
+          <div className="p-5 sm:p-6 space-y-4 sm:space-y-4">
             <div className="text-center">
               <p className="text-slate-600 mb-1">Recording booked for</p>
               <h3 className="text-lg font-semibold text-slate-800">
@@ -253,8 +253,8 @@ export default function BookingModal({ event, open, onClose }) {
 
   // Booking Form
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center p-1 sm:p-2 md:p-4 bg-black/50 backdrop-blur-sm overflow-y-auto">
-      <div className="w-full max-w-5xl bg-white rounded-xl sm:rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden max-h-[98vh] sm:max-h-[95vh] md:max-h-[90vh] overflow-y-auto my-2 sm:my-4">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-3 md:p-4 bg-black/50 backdrop-blur-sm overflow-y-auto">
+      <div className="w-full max-w-5xl bg-white rounded-xl sm:rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden max-h-[95vh] sm:max-h-[95vh] md:max-h-[90vh] overflow-y-auto my-4 sm:my-4">
         {/* Header */}
         <div className="flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4 border-b bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white sticky top-0 z-10">
           <h2 className="text-base sm:text-lg md:text-xl font-semibold">
@@ -269,7 +269,7 @@ export default function BookingModal({ event, open, onClose }) {
         </div>
 
         {/* Content */}
-        <div className="p-3 sm:p-4 md:p-6 grid grid-cols-1 lg:grid-cols-[280px,1fr] xl:grid-cols-[320px,1fr] gap-3 sm:gap-4 md:gap-6">
+        <div className="p-5 sm:p-5 md:p-6 grid grid-cols-1 lg:grid-cols-[280px,1fr] xl:grid-cols-[320px,1fr] gap-4 sm:gap-5 md:gap-6">
           {/* LEFT SIDE: QR & INFO */}
           <div className="flex flex-col space-y-3 sm:space-y-4">
             <div className="border rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-indigo-50 to-pink-50 shadow-inner">
@@ -281,7 +281,7 @@ export default function BookingModal({ event, open, onClose }) {
                 alt="Payment QR"
                 className="w-full max-w-[200px] sm:max-w-[250px] mx-auto rounded-xl border shadow-md mb-2 sm:mb-3"
               />
-              <p className="text-xs text-slate-600 text-center">
+              <p className="text-xs sm:text-xs text-slate-600 text-center leading-relaxed">
                 After paying, enter the UPI Transaction ID in the form.
               </p>
             </div>
@@ -289,7 +289,7 @@ export default function BookingModal({ event, open, onClose }) {
             {/* Payment Instructions */}
             <div className="border rounded-2xl p-3 sm:p-4 bg-blue-50">
               <h4 className="font-semibold text-slate-800 mb-2 text-xs sm:text-sm">📋 Instructions</h4>
-              <ul className="text-[11px] sm:text-xs text-slate-600 space-y-1 list-disc list-inside">
+              <ul className="text-xs sm:text-xs text-slate-600 space-y-1.5 list-disc list-inside leading-relaxed">
                 <li>Scan QR code using any UPI app</li>
                 <li>Pay exactly ₹{event?.price || 200}</li>
                 <li>Copy your UPI Transaction ID from payment confirmation</li>
@@ -340,28 +340,28 @@ export default function BookingModal({ event, open, onClose }) {
           </div>
 
           {/* RIGHT SIDE: FORM */}
-          <form onSubmit={submit} className="space-y-3 sm:space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          <form onSubmit={submit} className="space-y-4 sm:space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-4">
               <div>
-                <label className="text-xs sm:text-sm font-medium text-slate-700">Full Name <span className="text-red-500">*</span></label>
+                <label className="text-sm sm:text-sm font-medium text-slate-700">Full Name <span className="text-red-500">*</span></label>
                 <input
                   name="name"
                   value={form.name}
                   onChange={handleChange}
-                  className="w-full border border-slate-300 rounded-lg p-2 sm:p-2.5 mt-1 text-xs sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
+                  className="w-full border border-slate-300 rounded-lg p-2.5 sm:p-2.5 mt-1.5 text-sm sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
                   placeholder="Enter your full name"
                   required
                 />
               </div>
 
               <div>
-                <label className="text-xs sm:text-sm font-medium text-slate-700">Personal Email <span className="text-red-500">*</span></label>
+                <label className="text-sm sm:text-sm font-medium text-slate-700">Personal Email <span className="text-red-500">*</span></label>
                 <input
                   name="email"
                   type="email"
                   value={form.email}
                   onChange={handleChange}
-                  className="w-full border border-slate-300 rounded-lg p-2 sm:p-2.5 mt-1 text-xs sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
+                  className="w-full border border-slate-300 rounded-lg p-2.5 sm:p-2.5 mt-1.5 text-sm sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
                   placeholder="example@gmail.com"
                   required
                 />
@@ -375,33 +375,33 @@ export default function BookingModal({ event, open, onClose }) {
                 type="tel"
                 value={form.whatsapp}
                 onChange={handleChange}
-                className="w-full border border-slate-300 rounded-lg p-2 sm:p-2.5 mt-1 text-xs sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
+                className="w-full border border-slate-300 rounded-lg p-2.5 sm:p-2.5 mt-1.5 text-sm sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
                 placeholder="+91 98765 43210"
                 pattern="[\+0-9\s\-]+"
                 required
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-4">
               <div>
-                <label className="text-xs sm:text-sm font-medium text-slate-700">School / College / Workplace <span className="text-red-500">*</span></label>
+                <label className="text-sm sm:text-sm font-medium text-slate-700">School / College / Workplace <span className="text-red-500">*</span></label>
                 <input
                   name="institution"
                   value={form.institution}
                   onChange={handleChange}
-                  className="w-full border border-slate-300 rounded-lg p-2 sm:p-2.5 mt-1 text-xs sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
+                  className="w-full border border-slate-300 rounded-lg p-2.5 sm:p-2.5 mt-1.5 text-sm sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
                   placeholder="Institution name"
                   required
                 />
               </div>
 
               <div>
-                <label className="text-xs sm:text-sm font-medium text-slate-700">Location <span className="text-red-500">*</span></label>
+                <label className="text-sm sm:text-sm font-medium text-slate-700">Location <span className="text-red-500">*</span></label>
                 <input
                   name="location"
                   value={form.location}
                   onChange={handleChange}
-                  className="w-full border border-slate-300 rounded-lg p-2 sm:p-2.5 mt-1 text-xs sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
+                  className="w-full border border-slate-300 rounded-lg p-2.5 sm:p-2.5 mt-1.5 text-sm sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
                   placeholder="City, State"
                   required
                 />
@@ -414,22 +414,22 @@ export default function BookingModal({ event, open, onClose }) {
                 name="yearOrRole"
                 value={form.yearOrRole}
                 onChange={handleChange}
-                className="w-full border border-slate-300 rounded-lg p-2 sm:p-2.5 mt-1 text-xs sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
+                className="w-full border border-slate-300 rounded-lg p-2.5 sm:p-2.5 mt-1.5 text-sm sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
                 placeholder="e.g., 2nd Year or Software Engineer"
                 required
               />
-              <p className="text-xs text-slate-500 mt-1">Enter your year (1, 2, 3, 4) or your role if working professional</p>
+              <p className="text-xs sm:text-xs text-slate-500 mt-1.5">Enter your year (1, 2, 3, 4) or your role if working professional</p>
             </div>
 
             <div>
-              <label className="text-xs sm:text-sm font-medium text-slate-700">
+              <label className="text-sm sm:text-sm font-medium text-slate-700">
                 Where did you hear about this? <span className="text-red-500">*</span>
               </label>
               <select
                 name="heardFrom"
                 value={form.heardFrom}
                 onChange={handleChange}
-                className="w-full border border-slate-300 rounded-lg p-2 sm:p-2.5 mt-1 text-xs sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
+                className="w-full border border-slate-300 rounded-lg p-2.5 sm:p-2.5 mt-1.5 text-sm sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
               >
                 <option value="website">Website</option>
                 <option value="whatsapp">WhatsApp</option>
@@ -441,7 +441,7 @@ export default function BookingModal({ event, open, onClose }) {
             </div>
 
             <div>
-              <label className="text-xs sm:text-sm font-medium text-slate-700">
+              <label className="text-sm sm:text-sm font-medium text-slate-700">
                 UPI Transaction ID <span className="text-red-500">*</span>
               </label>
               <input
@@ -449,11 +449,11 @@ export default function BookingModal({ event, open, onClose }) {
                 type="text"
                 value={form.upiTransactionId}
                 onChange={handleChange}
-                className="w-full border border-slate-300 rounded-lg p-2 sm:p-2.5 mt-1 text-xs sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
+                className="w-full border border-slate-300 rounded-lg p-2.5 sm:p-2.5 mt-1.5 text-sm sm:text-sm focus:ring-2 focus:ring-[#1f3492] focus:border-transparent"
                 placeholder="Enter your UPI Transaction ID (e.g., 123456789012)"
                 required
               />
-              <p className="text-xs text-slate-500 mt-1">Enter the 12-digit UPI Transaction ID from your payment confirmation</p>
+              <p className="text-xs sm:text-xs text-slate-500 mt-1.5">Enter the 12-digit UPI Transaction ID from your payment confirmation</p>
             </div>
 
             {errorMessage && (
@@ -463,11 +463,11 @@ export default function BookingModal({ event, open, onClose }) {
               </div>
             )}
 
-            <div className="flex gap-3 pt-4 border-t">
+            <div className="flex gap-3 pt-5 border-t mt-2">
               <button
                 type="submit"
                 disabled={submitting}
-                className="flex-1 px-6 py-3 rounded-lg bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white font-semibold shadow-md hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 px-6 py-3 sm:py-3 rounded-lg bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white font-semibold shadow-md hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base min-h-[48px]"
               >
                 {submitting ? (
                   <span className="flex items-center justify-center gap-2">
@@ -482,7 +482,7 @@ export default function BookingModal({ event, open, onClose }) {
               <button
                 type="button"
                 onClick={handleClose}
-                className="px-6 py-3 rounded-lg border-2 border-slate-300 hover:bg-slate-50 font-medium transition-all"
+                className="px-6 py-3 sm:py-3 rounded-lg border-2 border-slate-300 hover:bg-slate-50 font-medium transition-all text-sm sm:text-base min-h-[48px]"
               >
                 Cancel
               </button>

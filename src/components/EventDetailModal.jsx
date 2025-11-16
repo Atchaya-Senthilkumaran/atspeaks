@@ -7,8 +7,8 @@ export default function EventDetailModal({ event, onClose }) {
   if (!event) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-3 md:p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-3xl max-h-[98vh] sm:max-h-[95vh] md:max-h-[90vh] overflow-y-auto bg-white rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-2xl my-2 sm:my-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-3 md:p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
+      <div className="relative w-full max-w-3xl max-h-[95vh] sm:max-h-[95vh] md:max-h-[90vh] overflow-y-auto bg-white rounded-xl sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-2xl my-4 sm:my-4">
 
         {/* Close Button */}
         <button
@@ -21,7 +21,7 @@ export default function EventDetailModal({ event, onClose }) {
           </svg>
         </button>
 
-        <div className="p-3 sm:p-4 md:p-6 lg:p-8">
+        <div className="p-5 sm:p-6 md:p-6 lg:p-8">
           {/* Event Poster - Responsive Image */}
           <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 mx-auto overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10 shadow-lg max-w-full">
             <img
@@ -32,7 +32,7 @@ export default function EventDetailModal({ event, onClose }) {
           </div>
 
           {/* Event Details */}
-          <div className="mt-3 sm:mt-4 md:mt-6">
+          <div className="mt-4 sm:mt-5 md:mt-6">
             {/* Type and Date */}
             <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 text-[10px] sm:text-xs md:text-sm flex-wrap">
               <span className="px-2 sm:px-2.5 md:px-3 py-0.5 sm:py-1 rounded-full bg-[#1f3492]/10 text-[#1f3492] font-medium text-[10px] sm:text-xs">
@@ -129,11 +129,11 @@ export default function EventDetailModal({ event, onClose }) {
             )}
 
             {/* Action Buttons */}
-            <div className="mt-4 sm:mt-6 md:mt-8 flex flex-wrap gap-2 sm:gap-3 md:gap-4 justify-center">
+            <div className="mt-5 sm:mt-6 md:mt-8 flex flex-wrap gap-3 sm:gap-3 md:gap-4 justify-center">
               {event.type === "Past" && (
                 <button
                   onClick={() => setOpenBooking(true)}
-                  className="inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 text-xs sm:text-sm md:text-base rounded-full bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white font-medium shadow-lg hover:shadow-xl hover:brightness-110 transition-all min-h-[44px]"
+                  className="inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 px-4 sm:px-5 md:px-6 py-2.5 sm:py-2.5 md:py-3 text-sm sm:text-sm md:text-base rounded-full bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white font-medium shadow-lg hover:shadow-xl hover:brightness-110 transition-all min-h-[48px]"
                 >
                   <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -145,7 +145,7 @@ export default function EventDetailModal({ event, onClose }) {
               {event.type === "Upcoming" && (
                 <a
                   href="mailto:connect.atspeaks@gmail.com?subject=Event%20Registration"
-                  className="inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 text-xs sm:text-sm md:text-base rounded-full bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white font-medium shadow-lg hover:shadow-xl hover:brightness-110 transition-all min-h-[44px]"
+                  className="inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 px-4 sm:px-5 md:px-6 py-2.5 sm:py-2.5 md:py-3 text-sm sm:text-sm md:text-base rounded-full bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white font-medium shadow-lg hover:shadow-xl hover:brightness-110 transition-all min-h-[48px]"
                 >
                   <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -156,7 +156,7 @@ export default function EventDetailModal({ event, onClose }) {
 
               <a
                 href="mailto:connect.atspeaks@gmail.com"
-                className="inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 text-xs sm:text-sm md:text-base rounded-full border-2 border-[#1f3492] text-[#1f3492] font-medium hover:bg-[#1f3492]/10 transition-all min-h-[44px]"
+                className="inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 px-4 sm:px-5 md:px-6 py-2.5 sm:py-2.5 md:py-3 text-sm sm:text-sm md:text-base rounded-full border-2 border-[#1f3492] text-[#1f3492] font-medium hover:bg-[#1f3492]/10 transition-all min-h-[48px]"
               >
                 <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
