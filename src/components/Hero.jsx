@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-3 pb-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full overflow-visible md:-ml-3 -mt-2"
+      className="relative pt-3 pb-16 px-4 md:px-0 grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full overflow-visible md:-ml-3 md:-mt-2"
     >
       {/* Background Glow */}
       <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/20 to-transparent blur-[60px] -z-10 rounded-full"></div>
@@ -19,7 +19,7 @@ export default function Hero() {
           </span>{" "}
           empowers you to learn
           {/* <br /> */}
-          <span className="text-slate-900">skills that shape real careers.</span>
+          <span className="text-slate-900"> skills that shape real careers.</span>
         </h1>
 
         <p className="mt-3 text-base sm:text-lg text-slate-700 max-w-xl leading-relaxed">
