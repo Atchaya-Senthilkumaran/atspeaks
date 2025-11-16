@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-3 pb-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full overflow-visible -ml-3 -mt-2"
+      className="relative pt-3 pb-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full overflow-visible md:-ml-3 -mt-2"
     >
       {/* Background Glow */}
       <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/20 to-transparent blur-[60px] -z-10 rounded-full"></div>
@@ -17,13 +17,9 @@ export default function Hero() {
           <span className="bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent">
             AT Speaks
           </span>{" "}
-          empowers
+          empowers you to learn
           <br />
-          you to learn
-          <br />
-          <span className="text-slate-900">Skills that shape</span>
-          <br />
-          <span className="text-slate-900">real careers.</span>
+          <span className="text-slate-900">Skills that shape real careers.</span>
         </h1>
 
         <p className="mt-3 text-base sm:text-lg text-slate-700 max-w-xl leading-relaxed">
@@ -63,9 +59,9 @@ export default function Hero() {
       </div>
 
       {/* RIGHT SIDE — IMPACT SHOWCASE */}
-      <div className="relative flex justify-center md:justify-end w-full pr-4 sm:pr-6 overflow-visible">
+      <div className="relative flex justify-center md:justify-end w-full px-4 md:pr-6 overflow-visible">
         {/* Background Card */}
-        <div className="w-72 h-72 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[22rem] rounded-3xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] shadow-2xl rotate-12 relative overflow-hidden">
+        <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] rounded-3xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] shadow-2xl rotate-12 relative overflow-hidden">
           {/* Dot Pattern */}
           <div
             className="absolute inset-0 opacity-40"
@@ -84,37 +80,37 @@ export default function Hero() {
         </div>
 
         {/* Foreground Card */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-3xl bg-gradient-to-br from-white via-[#1f3492]/20 to-[#c8348f]/20 backdrop-blur-xl border-2 border-[#1f3492]/40 shadow-2xl flex flex-col items-center justify-center p-6">
-          <h3 className="text-lg sm:text-xl font-bold text-white text-center mb-4">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-3xl bg-gradient-to-br from-white via-[#1f3492]/20 to-[#c8348f]/20 backdrop-blur-xl border-2 border-[#1f3492]/40 shadow-2xl flex flex-col items-center justify-center p-4 sm:p-6">
+          <h3 className="text-base sm:text-lg md:text-xl font-bold text-white text-center mb-3 sm:mb-4">
             Our Impact
           </h3>
 
-          <div className="grid grid-cols-3 gap-4 w-full">
+          <div className="grid grid-cols-3 gap-3 sm:gap-4 w-full">
             {/* Stat 1 */}
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-[#1f3567]/40 flex items-center justify-center shadow-md mb-2">
-                <Users className="w-6 h-6 text-[#ededef]" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1f3567]/40 flex items-center justify-center shadow-md mb-1.5 sm:mb-2">
+                <Users className="w-5 h-5 sm:w-6 sm:h-6 text-[#ededef]" />
               </div>
-              <div className="text-lg font-bold text-white">1000+</div>
-              <div className="text-[10px] text-white font-semibold">Students</div>
+              <div className="text-base sm:text-lg font-bold text-white">1000+</div>
+              <div className="text-[9px] sm:text-[10px] text-white font-semibold">Students</div>
             </div>
 
             {/* Stat 2 */}
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-[#c8348e]/40 flex items-center justify-center shadow-md mb-2">
-                <Award className="w-6 h-6 text-[#ededef]" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#c8348e]/40 flex items-center justify-center shadow-md mb-1.5 sm:mb-2">
+                <Award className="w-5 h-5 sm:w-6 sm:h-6 text-[#ededef]" />
               </div>
-              <div className="text-lg font-bold text-white">10+</div>
-              <div className="text-[10px] text-white font-semibold">Events</div>
+              <div className="text-base sm:text-lg font-bold text-white">10+</div>
+              <div className="text-[9px] sm:text-[10px] text-white font-semibold">Events</div>
             </div>
 
             {/* Stat 3 */}
             <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-[#1f3567]/40 flex items-center justify-center shadow-md mb-2">
-                <TrendingUp className="w-6 h-6 text-[#ededef]" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1f3567]/40 flex items-center justify-center shadow-md mb-1.5 sm:mb-2">
+                <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-[#ededef]" />
               </div>
-              <div className="text-lg font-bold text-white">5+</div>
-              <div className="text-[10px] text-white font-semibold">Domains</div>
+              <div className="text-base sm:text-lg font-bold text-white">5+</div>
+              <div className="text-[9px] sm:text-[10px] text-white font-semibold">Domains</div>
             </div>
           </div>
         </div>
