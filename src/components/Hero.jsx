@@ -6,14 +6,14 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-6 pb-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full overflow-visible"
+      className="relative pt-8 pb-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
     >
       {/* Background Glow */}
-      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/20 to-transparent blur-[60px] -z-10 rounded-full"></div>
+      <div className="absolute top-0 left-0 w-[450px] h-[450px] bg-gradient-to-br from-[#1f3492]/25 via-[#c8348f]/20 to-transparent blur-[90px] -z-10 rounded-full"></div>
 
       {/* LEFT CONTENT */}
-      <div className="w-full">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+      <div className="pl-2">
+        <h1 className="text-[42px] sm:text-[48px] md:text-[54px] font-extrabold leading-[1.15] tracking-tight">
           <span className="bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent">
             AT Speaks
           </span>{" "}
@@ -21,28 +21,29 @@ export default function Hero() {
           <br />
           you to learn
           <br />
-          <span className="text-slate-900">Skills that shape</span>
+          Skills that shape
           <br />
-          <span className="text-slate-900">real careers.</span>
+          real careers.
         </h1>
 
-        <p className="mt-5 text-base sm:text-lg text-slate-700 max-w-xl leading-relaxed">
-          Building future-ready minds in design, code, and emerging tech through
-          practical projects that turn learning into confident, lasting action.
+        <p className="mt-5 text-lg text-slate-700 max-w-xl leading-relaxed">
+          Building future-ready minds in design, code, and emerging tech
+          through practical projects that turn learning into confident,
+          lasting action.
         </p>
 
         {/* CTA Buttons */}
-        <div className="mt-7 flex flex-wrap gap-3">
+        <div className="mt-7 flex flex-wrap gap-4">
           <a
             href="#events"
-            className="rounded-full px-6 py-3 bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white text-base font-semibold shadow hover:brightness-95 transition"
+            className="rounded-full px-6 py-3 bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white font-semibold shadow hover:brightness-95 transition"
           >
             Explore Events
           </a>
 
           <a
             href="#contact"
-            className="rounded-full px-6 py-3 bg-white/80 backdrop-blur border border-slate-200 text-base font-medium hover:bg-white transition"
+            className="rounded-full px-6 py-3 bg-white/80 backdrop-blur border border-slate-200 font-medium hover:bg-white transition"
           >
             Contact Us
           </a>
@@ -50,11 +51,11 @@ export default function Hero() {
 
         {/* Highlights */}
         <div className="mt-8">
-          <div className="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1">
+          <div className="text-xs uppercase tracking-wide text-slate-500 font-semibold">
             What We Offer
           </div>
 
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-3 flex flex-wrap gap-3">
             <Tag text="Workshops" />
             <Tag text="Webinars" />
             <Tag text="Hands-on Training" />
@@ -62,59 +63,50 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* RIGHT SIDE — IMPACT SHOWCASE */}
-      <div className="relative flex justify-center md:justify-end w-full pr-4 sm:pr-6 overflow-visible">
-        {/* Background Card */}
-        <div className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-3xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] shadow-2xl rotate-12 relative overflow-hidden">
+      {/* RIGHT SIDE — IMPACT CARD (OLD POSITION) */}
+      <div className="relative flex justify-center md:justify-end pr-6">
+        {/* BACK CARD */}
+        <div className="w-72 h-72 rounded-3xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] shadow-2xl rotate-12 relative overflow-hidden">
           {/* Dot Pattern */}
           <div
             className="absolute inset-0 opacity-40"
             style={{
-              backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.5) 1.5px, transparent 1.5px)`,
+              backgroundImage:
+                "radial-gradient(circle, rgba(255,255,255,0.5) 1.4px, transparent 1.4px)",
               backgroundSize: "18px 18px",
-            }}
-          ></div>
-          {/* Lines Pattern */}
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(255,255,255,0.25) 12px, rgba(255,255,255,0.25) 14px)`,
             }}
           ></div>
         </div>
 
-        {/* Foreground Card */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-3xl bg-gradient-to-br from-white via-[#1f3492]/20 to-[#c8348f]/20 backdrop-blur-xl border-2 border-[#1f3492]/40 shadow-2xl flex flex-col items-center justify-center p-6">
-          <h3 className="text-lg sm:text-xl font-bold text-white text-center mb-4">
+        {/* FRONT CARD */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-3xl bg-white/30 backdrop-blur-xl border border-white/40 shadow-2xl flex flex-col items-center justify-center p-6">
+          <h3 className="text-xl font-bold text-slate-900 mb-4">
             Our Impact
           </h3>
 
           <div className="grid grid-cols-3 gap-4 w-full">
-            {/* Stat 1 */}
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-[#1f3567]/40 flex items-center justify-center shadow-md mb-2">
-                <Users className="w-6 h-6 text-[#ededef]" />
+            <div className="flex flex-col items-center">
+              <div className="w-12 h-12 rounded-full bg-[#1f3492]/30 flex items-center justify-center mb-2">
+                <Users className="w-6 h-6 text-white" />
               </div>
-              <div className="text-lg font-bold text-white">1000+</div>
-              <div className="text-[10px] text-white font-semibold">Students</div>
+              <div className="text-lg font-bold text-slate-900">1000+</div>
+              <div className="text-[10px] text-slate-600">Students</div>
             </div>
 
-            {/* Stat 2 */}
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-[#c8348e]/40 flex items-center justify-center shadow-md mb-2">
-                <Award className="w-6 h-6 text-[#ededef]" />
+            <div className="flex flex-col items-center">
+              <div className="w-12 h-12 rounded-full bg-[#c8348f]/30 flex items-center justify-center mb-2">
+                <Award className="w-6 h-6 text-white" />
               </div>
-              <div className="text-lg font-bold text-white">10+</div>
-              <div className="text-[10px] text-white font-semibold">Events</div>
+              <div className="text-lg font-bold text-slate-900">10+</div>
+              <div className="text-[10px] text-slate-600">Events</div>
             </div>
 
-            {/* Stat 3 */}
-            <div className="flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-full bg-[#1f3567]/40 flex items-center justify-center shadow-md mb-2">
-                <TrendingUp className="w-6 h-6 text-[#ededef]" />
+            <div className="flex flex-col items-center">
+              <div className="w-12 h-12 rounded-full bg-[#1f3492]/30 flex items-center justify-center mb-2">
+                <TrendingUp className="w-6 h-6 text-white" />
               </div>
-              <div className="text-lg font-bold text-white">5+</div>
-              <div className="text-[10px] text-white font-semibold">Domains</div>
+              <div className="text-lg font-bold text-slate-900">5+</div>
+              <div className="text-[10px] text-slate-600">Domains</div>
             </div>
           </div>
         </div>
