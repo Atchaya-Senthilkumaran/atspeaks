@@ -10,18 +10,18 @@ const updateEvents = async () => {
 
     // Update events with correct prices and recordingAvailable field
     const updates = [
-      { title: "Data to Dimensions: 3D Data Visualization", price: 299, recordingAvailable: true },
-      { title: "Agentic Frames: From CLI to MCP", price: 499, recordingAvailable: true },
+      { title: "Data to Dimensions: 3D Data Visualization", price: 249, recordingAvailable: true },
+      { title: "Agentic Frames: From CLI to MCP", price: 299, recordingAvailable: true },
       { title: "Campus to Corporate: Hack and Crack Placements", price: 199, recordingAvailable: true },
       { title: "Agentic AI Unlocked", price: 199, recordingAvailable: true },
-      { title: "Resume to Recruiter", price: 149, recordingAvailable: true },
+      { title: "Resume to Recruiter", price: 299, recordingAvailable: true },
       { title: "Figma For Absolute Beginners", price: 399, recordingAvailable: true },
-      { title: "Wordpress Simplified", price: 249, recordingAvailable: true },
-      { title: "Beyond Boundaries: Unlock Your Tech Career Map", price: 199, recordingAvailable: true },
-      { title: "Dear Data Analyst: Begin with Power BI", price: 349, recordingAvailable: true },
-      { title: "Langchain Chatbots", price: 299, recordingAvailable: true },
-      { title: "Design Smarter: Master Figma in 3 Days", price: 299, recordingAvailable: true },
-      { title: "Wordpress Wonders", price: 249, recordingAvailable: true },
+      { title: "Wordpress Simplified", price: 199, recordingAvailable: true },
+      { title: "Beyond Boundaries: Unlock Your Tech Career Map", price: 299, recordingAvailable: true },
+      { title: "Dear Data Analyst: Begin with Power BI", price: 399, recordingAvailable: true },
+      { title: "Langchain Chatbots", price: 199, recordingAvailable: true },
+      { title: "Design Smarter: Master Figma in 3 Days", price: 0, recordingAvailable: false},
+      { title: "Wordpress Wonders", price: 199, recordingAvailable: true },
       { title: "Introduction To Figma", price: 0, recordingAvailable: false },
     ];
 

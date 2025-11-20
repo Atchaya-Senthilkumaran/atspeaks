@@ -90,7 +90,7 @@ export default function Events() {
       </div>
 
       {/* Events Grid - Mobile First: 1 column on mobile, 2 columns on sm+, 3 columns on lg+ */}
-      <div className="mt-4 sm:mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 w-full">
+      <div className="mt-4 sm:mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 w-full">
         {loading ? (
           <div className="col-span-1 sm:col-span-2 lg:col-span-3 text-center py-10 text-slate-600 animate-pulse-slow">
             Loading events...
