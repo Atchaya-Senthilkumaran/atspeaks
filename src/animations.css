@@ -347,6 +347,23 @@
   animation-delay: 0.6s;
 }
 
+/* Additional delay classes for footer animations */
+.delay-150 {
+  animation-delay: 150ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+.delay-1000 {
+  animation-delay: 1000ms;
+}
+
 /* Hover Effects with 3D */
 .hover-lift {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
