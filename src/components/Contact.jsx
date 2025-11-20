@@ -71,10 +71,10 @@ export default function Contact() {
   };
 
   return (
-    <section 
-      id="contact" 
+    <section
+      id="contact"
       ref={sectionRef}
-      className={`mt-8 sm:mt-10 md:mt-12 mb-8 sm:mb-10 md:mb-12 py-0 relative w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`py-5 relative w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       {/* Enhanced Background Glow with 3D */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/15 to-[#1f3492]/20 blur-3xl -z-10 animate-glow-pulse"></div>

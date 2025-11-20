@@ -70,10 +70,10 @@ export default function Events() {
   const displayedEvents = showAll ? events : events.slice(0, 3);
 
   return (
-    <section 
-      id="events" 
+    <section
+      id="events"
       ref={sectionRef}
-      className={`mt-8 sm:mt-10 md:mt-12 mb-8 sm:mb-10 md:mb-12 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`py-5 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3 animate-bounce-in">
