@@ -10,7 +10,7 @@ export default function Testimonials() {
     <section 
       id="testimonials" 
       ref={sectionRef}
-      className={`mt-12 sm:mt-16 md:mt-20 relative w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`mt-4 sm:mt-6 md:mt-8 relative w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       {/* Animated Background glow with 3D effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#1f3492]/10 via-transparent to-[#c8348f]/10 -z-10 rounded-3xl blur-3xl animate-glow-pulse"></div>

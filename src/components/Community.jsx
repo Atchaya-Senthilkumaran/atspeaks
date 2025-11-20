@@ -9,7 +9,7 @@ export default function Community() {
     <section 
       id="community" 
       ref={sectionRef}
-      className={`mt-12 sm:mt-14 md:mt-16 lg:mt-18 xl:mt-20 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`mt-6 sm:mt-8 md:mt-10 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       {/* Section Header with 3D */}
       <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold animate-3d-pop bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent">
@@ -22,7 +22,7 @@ export default function Community() {
       </p>
 
       {/* Partnership Cards - Mobile First: 1 column on mobile, 2 columns on sm+, 3 columns on lg+ */}
-      <div className="mt-4 sm:mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 w-full">
+      <div className="mt-4 sm:mt-5 md:mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 w-full">
         {/* Colleges Card */}
         <div className="p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-white shadow-lg border-2 border-gray-100 hover:shadow-2xl hover:-translate-y-3 hover-3d-tilt transition-all duration-500 perspective-3d animate-bounce-in animate-delay-100 card-flip">
           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#1f3492]/10 to-[#1f3492]/20 flex items-center justify-center mb-3 sm:mb-4 hover:scale-125 hover:rotate-12 transition-all duration-300">
@@ -57,14 +57,11 @@ export default function Community() {
         </div>
       </div>
 
-      {/* CTA Box with enhanced 3D */}
-      <div className="mt-4 sm:mt-6 md:mt-8 p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#1f3492]/10 via-[#1f3492]/5 to-[#c8348f]/10 border-2 border-[#1f3492]/20 shadow-xl relative overflow-hidden w-full hover-3d-tilt transition-all duration-500 perspective-3d animate-slide-up-rotate">
+      {/* CTA Box - Changed to rounded-lg instead of rounded-xl/2xl */}
+      <div className="mt-4 sm:mt-5 md:mt-6 p-4 sm:p-5 md:p-6 lg:p-8 rounded-lg bg-gradient-to-br from-[#1f3492]/10 via-[#1f3492]/5 to-[#c8348f]/10 border-2 border-[#1f3492]/20 shadow-xl relative overflow-hidden w-full hover-3d-tilt transition-all duration-500 perspective-3d animate-slide-up-rotate">
         {/* Enhanced animated glows */}
         <div className="absolute -top-6 -right-6 sm:-top-8 sm:-right-8 md:-top-10 md:-right-10 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 bg-[#1f3492]/20 rounded-full blur-3xl max-w-[50vw] animate-glow-pulse"></div>
         <div className="absolute -bottom-6 -left-6 sm:-bottom-8 sm:-left-8 md:-bottom-10 md:-left-10 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 bg-[#c8348f]/20 rounded-full blur-3xl max-w-[50vw] animate-glow-pulse" style={{ animationDelay: '0.5s' }}></div>
-        
-        {/* Rotating gradient ring */}
-        <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#1f3492]/10 via-[#c8348f]/10 to-[#1f3492]/10 opacity-50 animate-spin" style={{ animationDuration: '20s' }}></div>
 
         <div className="relative flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 md:gap-6 w-full z-10">
           <div className="flex items-start gap-2 sm:gap-3 md:gap-4 w-full md:w-auto">

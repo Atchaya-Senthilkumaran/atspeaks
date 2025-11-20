@@ -8,12 +8,12 @@ export default function FounderSection() {
   return (
     <section 
       ref={sectionRef}
-      className={`w-full py-8 sm:py-12 md:py-16 lg:py-20 overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`w-full py-4 sm:py-6 md:py-8 overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 animate-3d-pop">Founder</h2>
-      <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mb-4 sm:mb-6 md:mb-8 lg:mb-10 animate-glow-pulse"></div>
+      <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mb-3 sm:mb-4 animate-glow-pulse"></div>
 
-      <div className="bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 xl:p-10 flex flex-col lg:flex-row gap-4 sm:gap-5 md:gap-6 lg:gap-8 xl:gap-10 border border-gray-100 relative overflow-hidden w-full hover-3d-tilt transition-all duration-500 perspective-3d animate-bounce-in">
+      <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 flex flex-col lg:flex-row gap-4 sm:gap-5 md:gap-6 border border-gray-100 relative overflow-hidden w-full hover-3d-tilt transition-all duration-500 perspective-3d animate-bounce-in">
         {/* Animated Background Glow */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#1f3492]/20 via-[#c8348f]/20 to-[#1f3492]/20 opacity-30 blur-3xl -z-10 animate-glow-pulse"></div>
         
@@ -24,32 +24,30 @@ export default function FounderSection() {
         <div className="absolute bottom-10 right-10 w-3 h-3 bg-[#c8348f]/30 rounded-full animate-float" style={{ animationDelay: '1.5s' }}></div>
 
         {/* Left Section */}
-        <div className="flex flex-col items-center lg:items-start gap-3 sm:gap-4 md:gap-5">
+        <div className="flex flex-col items-center lg:items-start gap-3 sm:gap-4">
           <div className="relative w-full flex justify-center lg:justify-start perspective-3d">
-            {/* Animated Gradient Border - No Shadow */}
-            <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#1f3492] via-[#c8348f] to-[#1f3492] opacity-60 blur-xl animate-glow-pulse"></div>
-            {/* Rotating Gradient Ring */}
-            <div className="absolute -inset-2 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#1f3492] via-[#c8348f] to-[#1f3492] opacity-20 animate-spin" style={{ animationDuration: '8s' }}></div>
+            {/* Simple gradient border - no shadow, no blur */}
+            <div className="absolute -inset-1 rounded-lg sm:rounded-xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] opacity-40 animate-glow-pulse"></div>
+            {/* Pulsing ring effect */}
+            <div className="absolute -inset-1 rounded-lg sm:rounded-xl border-2 border-[#1f3492]/30 animate-pulse-slow"></div>
             <img
               src="/atpic.jpg"
               alt="Founder"
-              className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-52 xl:h-52 object-cover rounded-xl sm:rounded-2xl border-4 border-white/80 hover:scale-110 hover:rotate-3 transition-all duration-500 max-w-full animate-3d-pop hover-3d-tilt"
+              className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-52 xl:h-52 object-cover rounded-lg sm:rounded-xl border-2 border-white hover:scale-110 hover:rotate-2 transition-all duration-500 max-w-full animate-3d-pop hover-3d-tilt"
             />
-            {/* Shimmer Effect */}
-            <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ transform: 'translateX(-100%)', animation: 'shimmer 3s infinite' }}></div>
           </div>
 
           {/* Stats with 3D Effects */}
-          <div className="grid grid-cols-3 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4 text-center w-full mt-2 sm:mt-3 md:mt-4">
-            <div className="p-2 sm:p-2.5 md:p-3 bg-gradient-to-br from-gray-50 to-white rounded-lg sm:rounded-xl border border-gray-200 hover:scale-110 hover:rotate-2 hover-3d-tilt transition-all duration-300 animate-bounce-in animate-delay-100 perspective-3d">
+          <div className="grid grid-cols-3 gap-2 sm:gap-2.5 md:gap-3 text-center w-full mt-2 sm:mt-3">
+            <div className="p-2 sm:p-2.5 md:p-3 bg-gradient-to-br from-gray-50 to-white rounded-lg border border-gray-200 hover:scale-110 hover:rotate-2 hover-3d-tilt transition-all duration-300 animate-bounce-in animate-delay-100 perspective-3d">
               <p className="text-base sm:text-lg md:text-xl font-bold text-[#1f3492] animate-pulse-slow">10+</p>
               <p className="text-[9px] sm:text-[10px] md:text-xs text-gray-600">Events</p>
             </div>
-            <div className="p-2 sm:p-2.5 md:p-3 bg-gradient-to-br from-gray-50 to-white rounded-lg sm:rounded-xl border border-gray-200 hover:scale-110 hover:rotate-2 hover-3d-tilt transition-all duration-300 animate-bounce-in animate-delay-200 perspective-3d">
+            <div className="p-2 sm:p-2.5 md:p-3 bg-gradient-to-br from-gray-50 to-white rounded-lg border border-gray-200 hover:scale-110 hover:rotate-2 hover-3d-tilt transition-all duration-300 animate-bounce-in animate-delay-200 perspective-3d">
               <p className="text-base sm:text-lg md:text-xl font-bold text-[#1f3492] animate-pulse-slow">1000+</p>
               <p className="text-[9px] sm:text-[10px] md:text-xs text-gray-600">Learners</p>
             </div>
-            <div className="p-2 sm:p-2.5 md:p-3 bg-gradient-to-br from-gray-50 to-white rounded-lg sm:rounded-xl border border-gray-200 hover:scale-110 hover:rotate-2 hover-3d-tilt transition-all duration-300 animate-bounce-in animate-delay-300 perspective-3d">
+            <div className="p-2 sm:p-2.5 md:p-3 bg-gradient-to-br from-gray-50 to-white rounded-lg border border-gray-200 hover:scale-110 hover:rotate-2 hover-3d-tilt transition-all duration-300 animate-bounce-in animate-delay-300 perspective-3d">
               <p className="text-base sm:text-lg md:text-xl font-bold text-[#1f3492] animate-pulse-slow">3+</p>
               <p className="text-[9px] sm:text-[10px] md:text-xs text-gray-600">Domains</p>
             </div>
@@ -61,16 +59,16 @@ export default function FounderSection() {
           <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-1 bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent animate-glow-pulse">
             Atchaya Senthilkumaran
           </h3>
-          <p className="text-xs sm:text-sm md:text-base text-gray-600 font-medium mb-3 sm:mb-4 md:mb-5 animate-fade-in animate-delay-100">Founder & CEO — AT Speaks</p>
+          <p className="text-xs sm:text-sm md:text-base text-gray-600 font-medium mb-3 sm:mb-4 animate-fade-in animate-delay-100">Founder & CEO — AT Speaks</p>
 
-          <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed mb-2 sm:mb-3 md:mb-4 animate-fade-in animate-delay-200">
+          <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed mb-2 sm:mb-3 animate-fade-in animate-delay-200">
             Atchaya is a visionary educator and tech enthusiast, known for delivering hands-on
             learning experiences that blend creativity, design thinking, and real-world development.
             Her journey with AT Speaks started with a mission to empower students to build practical
             skills and confidence through community-driven sessions.
           </p>
 
-          <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed mb-3 sm:mb-4 md:mb-6 animate-fade-in animate-delay-300">
+          <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed mb-3 sm:mb-4 animate-fade-in animate-delay-300">
             With a strong background in UI/UX, Web development, Data visualization and Emerging Ai Techonologies, she has
             mentored 1000+ learners, hosted multiple workshops, and continues to push forward
             impactful education for the next generation.
