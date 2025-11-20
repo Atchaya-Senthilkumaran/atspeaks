@@ -1,6 +1,6 @@
 import React from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
-import { Linkedin, Instagram, Mail, Sparkles, Crown } from "lucide-react";
+import { Linkedin, Instagram, Mail, Crown } from "lucide-react";
 
 export default function FounderSection() {
   const [sectionRef, isRevealed] = useScrollReveal({ threshold: 0.1 });
@@ -10,29 +10,15 @@ export default function FounderSection() {
       ref={sectionRef}
       className={`relative py-7 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''} overflow-hidden`}
     >
-      {/* Decorative floating gradient blobs */}
-      <div className="absolute top-0 right-20 w-36 h-36 bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10 rounded-full blur-3xl animate-pulse -z-10"></div>
-      <div className="absolute bottom-20 left-10 w-40 h-40 bg-gradient-to-br from-[#c8348f]/10 to-[#1f3492]/10 rounded-full blur-3xl animate-pulse delay-700 -z-10"></div>
-
       <div className="relative inline-block">
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-3d-pop break-words inline-flex items-center gap-2">
           <Crown className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#c8348f] animate-pulse" />
           Founder
         </h2>
-        <Sparkles className="absolute -top-2 -right-6 w-5 h-5 text-[#1f3492] animate-pulse delay-300" />
         <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mb-3 sm:mb-4 animate-glow-pulse shadow-lg shadow-[#c8348f]/30"></div>
       </div>
 
       <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 flex flex-col lg:flex-row gap-4 sm:gap-5 md:gap-6 border border-gray-100 relative overflow-hidden w-full hover-3d-tilt transition-all duration-500 perspective-3d animate-bounce-in">
-        {/* Animated Background Glow */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1f3492]/20 via-[#c8348f]/20 to-[#1f3492]/20 opacity-30 blur-3xl -z-10 animate-glow-pulse"></div>
-        
-        {/* Floating Particles Effect */}
-        <div className="absolute top-10 left-10 w-2 h-2 bg-[#1f3492]/30 rounded-full animate-float"></div>
-        <div className="absolute top-20 right-20 w-3 h-3 bg-[#c8348f]/30 rounded-full animate-float" style={{ animationDelay: '0.5s' }}></div>
-        <div className="absolute bottom-20 left-20 w-2 h-2 bg-[#1f3492]/30 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-10 right-10 w-3 h-3 bg-[#c8348f]/30 rounded-full animate-float" style={{ animationDelay: '1.5s' }}></div>
-
         {/* Left Section */}
         <div className="flex flex-col items-center lg:items-start gap-3 sm:gap-4">
           <div className="relative w-full flex justify-center lg:justify-start">

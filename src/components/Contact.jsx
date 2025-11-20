@@ -76,13 +76,6 @@ export default function Contact() {
       ref={sectionRef}
       className={`py-7 relative w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
-      {/* Enhanced Background Glow with 3D */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/15 to-[#1f3492]/20 blur-3xl -z-10 animate-glow-pulse"></div>
-      
-      {/* Floating gradient orbs */}
-      <div className="absolute top-10 left-10 w-48 h-48 bg-[#1f3492]/10 rounded-full blur-3xl animate-float"></div>
-      <div className="absolute bottom-10 right-10 w-48 h-48 bg-[#c8348f]/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
-
       <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-3d-pop break-words">
         Get in touch
       </h2>

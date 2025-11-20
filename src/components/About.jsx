@@ -1,6 +1,6 @@
 import React from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
-import { Rocket, Users, MonitorSmartphone, PenTool, Sparkles } from "lucide-react";
+import { Rocket, Users, MonitorSmartphone, PenTool } from "lucide-react";
 
 export default function About() {
   const [sectionRef, isRevealed] = useScrollReveal({ threshold: 0.1 });
@@ -11,16 +11,11 @@ export default function About() {
       ref={sectionRef}
       className={`relative py-7 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''} overflow-hidden`}
     >
-      {/* Decorative floating gradient blobs */}
-      <div className="absolute top-10 right-0 w-32 h-32 bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10 rounded-full blur-3xl animate-pulse -z-10"></div>
-      <div className="absolute bottom-20 left-0 w-40 h-40 bg-gradient-to-br from-[#c8348f]/10 to-[#1f3492]/10 rounded-full blur-3xl animate-pulse delay-700 -z-10"></div>
-
       {/* Heading - Mobile First */}
       <div className="relative inline-block">
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-3d-pop break-words">
           About AT Speaks
         </h2>
-        <Sparkles className="absolute -top-2 -right-6 w-5 h-5 text-[#c8348f] animate-pulse" />
         <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-full mt-2 animate-glow-pulse shadow-lg shadow-pink-500/30"></div>
       </div>
 

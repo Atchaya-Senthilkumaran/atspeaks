@@ -4,16 +4,11 @@ import { Users, Award, TrendingUp, Sparkles, Zap } from "lucide-react";
 
 export default function Hero() {
   const cardRef = useRef(null);
-  const glowRef = useRef(null);
 
   useEffect(() => {
     // Add animation to the impact card
     if (cardRef.current) {
       cardRef.current.style.animation = 'popIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards';
-    }
-    // Animate glow
-    if (glowRef.current) {
-      glowRef.current.style.animation = 'pulse 3s ease-in-out infinite';
     }
   }, []);
 
@@ -22,21 +17,6 @@ export default function Hero() {
       id="home"
       className="relative py-7 px-4 md:px-0 grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full perspective-3d overflow-hidden"
     >
-      {/* Background Glow - Animated with 3D effect */}
-      <div
-        ref={glowRef}
-        className="absolute top-0 left-0 w-[400px] h-[400px] bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/20 to-transparent blur-[60px] -z-10 rounded-full animate-glow-pulse"
-      ></div>
-
-      {/* Additional decorative gradient blobs */}
-      <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-[#c8348f]/10 to-[#1f3492]/10 rounded-full blur-3xl animate-pulse delay-500 -z-10"></div>
-      <div className="absolute bottom-10 left-1/3 w-40 h-40 bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10 rounded-full blur-3xl animate-pulse delay-1000 -z-10"></div>
-
-      {/* Floating sparkle elements */}
-      <Sparkles className="absolute top-10 left-10 w-5 h-5 text-[#c8348f] animate-pulse opacity-60" />
-      <Sparkles className="absolute top-1/3 right-1/4 w-4 h-4 text-[#1f3492] animate-pulse delay-300 opacity-60" />
-      <Zap className="absolute bottom-20 left-1/4 w-5 h-5 text-[#c8348f] animate-pulse delay-700 opacity-60" />
-
       {/* LEFT CONTENT - Fade in animation with 3D */}
       <div className="w-full animate-zoom-in-blur">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight break-words">

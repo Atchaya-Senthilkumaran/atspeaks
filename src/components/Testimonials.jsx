@@ -1,7 +1,7 @@
 import React from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { testimonials } from "../data/data";
-import { Quote, Star, Sparkles } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 
 export default function Testimonials() {
   const [sectionRef, isRevealed] = useScrollReveal({ threshold: 0.1 });
@@ -12,21 +12,12 @@ export default function Testimonials() {
       ref={sectionRef}
       className={`py-7 relative w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''} overflow-hidden`}
     >
-      {/* Animated Background glow with 3D effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1f3492]/10 via-transparent to-[#c8348f]/10 -z-10 rounded-3xl blur-3xl animate-glow-pulse"></div>
-
-      {/* Floating gradient orbs */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-[#1f3492]/10 rounded-full blur-3xl animate-float"></div>
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#c8348f]/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
-
       {/* Heading with 3D effect */}
       <div className="text-center max-w-2xl mx-auto px-2 animate-3d-pop">
         <div className="relative inline-block">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-glow-pulse break-words">
             What learners say
           </h2>
-          <Sparkles className="absolute -top-2 -left-6 w-5 h-5 text-[#1f3492] animate-pulse" />
-          <Sparkles className="absolute -top-2 -right-6 w-4 h-4 text-[#c8348f] animate-pulse delay-300" />
           <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mx-auto animate-glow-pulse shadow-lg shadow-[#c8348f]/30"></div>
         </div>
         <p className="text-xs sm:text-sm md:text-base text-slate-600 mt-2 sm:mt-3 animate-zoom-in-blur animate-delay-100">
