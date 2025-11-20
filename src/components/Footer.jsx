@@ -91,9 +91,9 @@ export default function Footer() {
 
           {/* Quick Links - Centered on mobile */}
           <div className="flex flex-col items-center sm:items-start">
-            <h4 className="relative text-sm sm:text-sm md:text-base font-bold text-slate-800 mb-4 sm:mb-4">
+            <h4 className="relative text-sm sm:text-sm md:text-base font-bold text-slate-800 mb-4 sm:mb-4 pb-2">
               Quick Links
-              <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-[#1f3492] to-[#c8348f]"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#1f3492] to-[#c8348f]"></div>
             </h4>
             <ul className="space-y-2.5 sm:space-y-2.5 md:space-y-3 text-slate-600 text-xs sm:text-sm md:text-sm">
               <li>
@@ -125,9 +125,9 @@ export default function Footer() {
 
           {/* Company - Centered on mobile */}
           <div className="flex flex-col items-center sm:items-start">
-            <h4 className="relative text-sm sm:text-sm md:text-base font-bold text-slate-800 mb-4 sm:mb-4">
+            <h4 className="relative text-sm sm:text-sm md:text-base font-bold text-slate-800 mb-4 sm:mb-4 pb-2">
               Company
-              <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-[#c8348f] to-[#1f3492]"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#c8348f] to-[#1f3492]"></div>
             </h4>
             <ul className="space-y-2.5 sm:space-y-2.5 md:space-y-3 text-slate-600 text-xs sm:text-sm md:text-sm">
               <li>
@@ -159,9 +159,9 @@ export default function Footer() {
 
           {/* Contact - Centered on mobile */}
           <div className="flex flex-col items-center sm:items-start">
-            <h4 className="relative text-sm sm:text-sm md:text-base font-bold text-slate-800 mb-4 sm:mb-4">
+            <h4 className="relative text-sm sm:text-sm md:text-base font-bold text-slate-800 mb-4 sm:mb-4 pb-2">
               Get In Touch
-              <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-[#1f3492] to-[#c8348f]"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#1f3492] to-[#c8348f]"></div>
             </h4>
             <div className="relative p-4 bg-gradient-to-br from-[#1f3492]/5 to-[#c8348f]/5 rounded-xl border border-[#1f3492]/10 backdrop-blur-sm">
               <p className="text-slate-600 text-xs sm:text-sm md:text-sm leading-relaxed max-w-xs mb-3">

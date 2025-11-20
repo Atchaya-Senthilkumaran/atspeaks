@@ -1,6 +1,6 @@
 import React from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
-import { Layers, Award, Briefcase, UserCheck } from "lucide-react";
+import { Layers, Award, Briefcase, UserCheck, Sparkles, Zap } from "lucide-react";
 
 export default function Services() {
   const [sectionRef, isRevealed] = useScrollReveal({ threshold: 0.1 });
@@ -9,16 +9,23 @@ export default function Services() {
     <section
       id="services"
       ref={sectionRef}
-      className={`py-7 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`relative py-7 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''} overflow-hidden`}
     >
-      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 flex flex-wrap items-center gap-2 sm:gap-3 animate-3d-pop break-words">
-        Services & Courses
-        <span className="text-[10px] sm:text-xs md:text-sm px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#1f3492]/10 text-[#1f3492] font-medium animate-glow-pulse">
-          Coming Soon
-        </span>
-      </h2>
+      {/* Decorative floating gradient blobs */}
+      <div className="absolute top-0 left-10 w-36 h-36 bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10 rounded-full blur-3xl animate-pulse delay-300 -z-10"></div>
+      <div className="absolute bottom-10 right-10 w-40 h-40 bg-gradient-to-br from-[#c8348f]/10 to-[#1f3492]/10 rounded-full blur-3xl animate-pulse -z-10"></div>
 
-      <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 animate-glow-pulse"></div>
+      <div className="relative inline-block">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 flex flex-wrap items-center gap-2 sm:gap-3 animate-3d-pop break-words">
+          Services & Courses
+          <span className="relative text-[10px] sm:text-xs md:text-sm px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-r from-[#1f3492]/10 to-[#c8348f]/10 text-[#1f3492] font-medium animate-glow-pulse border border-[#1f3492]/20">
+            <Zap className="inline w-3 h-3 mr-1" />
+            Coming Soon
+          </span>
+        </h2>
+        <Sparkles className="absolute -top-2 -left-6 w-5 h-5 text-[#1f3492] animate-pulse delay-150" />
+        <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 animate-glow-pulse shadow-lg shadow-[#c8348f]/30"></div>
+      </div>
 
       <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-slate-600 max-w-2xl animate-zoom-in-blur animate-delay-100">
         A set of premium learning experiences — designed to help students grow through structured, practical and hands-on learning.
