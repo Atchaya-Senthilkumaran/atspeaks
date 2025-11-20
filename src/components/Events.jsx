@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 import EventDetailModal from "./EventDetailModal";
 import BookingModal from "./BookingModal";
 import API_URL from "../config/api";
@@ -10,6 +11,7 @@ export default function Events() {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [bookingEvent, setBookingEvent] = useState(null);
   const [openBooking, setOpenBooking] = useState(false);
+  const [sectionRef, isRevealed] = useScrollReveal({ threshold: 0.1 });
 
   // Fetch events from API
   useEffect(() => {
@@ -68,17 +70,20 @@ export default function Events() {
   const displayedEvents = showAll ? events : events.slice(0, 3);
 
   return (
-    <section id="events" className="mt-12 sm:mt-16 md:mt-20 w-full overflow-x-hidden">
-
+    <section 
+      id="events" 
+      ref={sectionRef}
+      className={`mt-12 sm:mt-16 md:mt-20 w-full overflow-x-hidden scroll-reveal ${isRevealed ? 'revealed' : ''}`}
+    >
       {/* Header */}
-      <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3">
+      <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3 animate-fade-in">
         <div>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">Events</h2>
           <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2"></div>
         </div>
         <button
           onClick={() => setShowAll(!showAll)}
-          className="text-[10px] sm:text-xs md:text-sm font-medium text-[#1f3492] hover:underline cursor-pointer px-2 py-1"
+          className="text-[10px] sm:text-xs md:text-sm font-medium text-[#1f3492] hover:underline cursor-pointer px-2 py-1 hover:scale-105 transition-transform duration-300"
         >
           {showAll ? "Show less" : "View all"}
         </button>
@@ -95,20 +100,16 @@ export default function Events() {
             No events found.
           </div>
         ) : (
-          displayedEvents.map((e) => (
+          displayedEvents.map((e, index) => {
+            const delay = index * 0.1;
+            return (
             <div
               key={e._id}
-              className="
-                p-[1px]
-                rounded-xl sm:rounded-2xl
-                bg-gradient-to-br
-                from-[#1f3492]/20
-                via-[#c8348f]/10
-                to-transparent
-                hover:shadow-lg
-                transition-all
-                w-full
-              "
+              className="p-[1px] rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/10 to-transparent hover:shadow-lg transition-all duration-300 w-full hover-lift"
+              style={{ 
+                animation: `fadeIn 0.6s ease-out ${delay}s forwards`,
+                opacity: 0
+              }}
             >
               <div
                 className="
@@ -120,16 +121,16 @@ export default function Events() {
                   border border-white/60
                   hover:-translate-y-1
                   transition-all
+                  duration-300
                   w-full
                 "
               >
-
                 {/* Poster - Responsive Image */}
                 <div className="w-full aspect-square overflow-hidden rounded-lg sm:rounded-xl bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10">
                   <img
                     src={e.poster || "/default_poster.jpg"}
                     alt={e.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                   />
                 </div>
 
@@ -166,8 +167,11 @@ export default function Events() {
                       font-medium
                       shadow
                       hover:brightness-95
+                      hover:scale-105
                       cursor-pointer
                       whitespace-nowrap
+                      transition-all
+                      duration-300
                     "
                   >
                     Details
@@ -189,18 +193,21 @@ export default function Events() {
                         text-xs sm:text-sm font-medium
                         shadow-sm
                         hover:bg-[#1f3492]/10
+                        hover:scale-105
                         cursor-pointer
                         whitespace-nowrap
+                        transition-all
+                        duration-300
                       "
                     >
                       Book Recording
                     </button>
                   )}
                 </div>
-
               </div>
             </div>
-          ))
+            );
+          })
         )}
       </div>
 

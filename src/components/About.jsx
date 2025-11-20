@@ -1,11 +1,18 @@
 import React from "react";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 import { Rocket, Users, MonitorSmartphone, PenTool } from "lucide-react";
 
 export default function About() {
+  const [sectionRef, isRevealed] = useScrollReveal({ threshold: 0.1 });
+
   return (
-    <section id="about" className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 w-full overflow-x-hidden">
+    <section 
+      id="about" 
+      ref={sectionRef}
+      className={`mt-6 sm:mt-8 md:mt-10 lg:mt-12 w-full overflow-x-hidden scroll-reveal ${isRevealed ? 'revealed' : ''}`}
+    >
       {/* Heading - Mobile First */}
-      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold animate-fade-in">
         About AT Speaks
       </h2>
       <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-full mt-2"></div>
@@ -15,10 +22,9 @@ export default function About() {
 
         {/* Left: What we do cards - Mobile First: 1 column on mobile, 2 columns on sm+ */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6 w-full">
-
           {/* Card 1 */}
-          <div className="p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white shadow-sm border hover:shadow-md transition">
-            <Rocket className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-indigo-600" />
+          <div className="p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white shadow-sm border hover:shadow-md hover:-translate-y-1 hover-lift transition-all duration-300 animate-fade-in animate-delay-100">
+            <Rocket className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-indigo-600 animate-float" />
             <h3 className="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg font-semibold">Hands-on Workshops</h3>
             <p className="text-slate-600 mt-1 text-xs sm:text-sm">
               Practical sessions in tech, UI/UX & real-world tools.
@@ -26,8 +32,8 @@ export default function About() {
           </div>
 
           {/* Card 2 */}
-          <div className="p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white shadow-sm border hover:shadow-md transition">
-            <MonitorSmartphone className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-pink-600" />
+          <div className="p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white shadow-sm border hover:shadow-md hover:-translate-y-1 hover-lift transition-all duration-300 animate-fade-in animate-delay-200">
+            <MonitorSmartphone className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-pink-600 animate-float" />
             <h3 className="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg font-semibold">Project-Driven Learning</h3>
             <p className="text-slate-600 mt-1 text-xs sm:text-sm">
               Helping learners build meaningful portfolio-ready work.
@@ -35,8 +41,8 @@ export default function About() {
           </div>
 
           {/* Card 3 */}
-          <div className="p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white shadow-sm border hover:shadow-md transition">
-            <Users className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-indigo-600" />
+          <div className="p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white shadow-sm border hover:shadow-md hover:-translate-y-1 hover-lift transition-all duration-300 animate-fade-in animate-delay-300">
+            <Users className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-indigo-600 animate-float" />
             <h3 className="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg font-semibold">Community Sessions</h3>
             <p className="text-slate-600 mt-1 text-xs sm:text-sm">
               Webinars, Q&As, and open learning spaces for students.
@@ -44,18 +50,17 @@ export default function About() {
           </div>
 
           {/* Card 4 */}
-          <div className="p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white shadow-sm border hover:shadow-md transition">
-            <PenTool className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-pink-600" />
+          <div className="p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white shadow-sm border hover:shadow-md hover:-translate-y-1 hover-lift transition-all duration-300 animate-fade-in animate-delay-400">
+            <PenTool className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-pink-600 animate-float" />
             <h3 className="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg font-semibold">Design & Tech Guidance</h3>
             <p className="text-slate-600 mt-1 text-xs sm:text-sm">
               Portfolio help, career clarity, and personal mentoring.
             </p>
           </div>
-
         </div>
 
         {/* Right: Highlighted founder-led mission */}
-        <div className="p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-indigo-50 to-pink-50 border shadow-sm hover:shadow-md transition">
+        <div className="p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-indigo-50 to-pink-50 border shadow-sm hover:shadow-md hover-lift transition-all duration-300 animate-slide-in-right">
           <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 sm:mb-3">A Founder-Led Edutech Startup</h3>
 
           <p className="text-xs sm:text-sm md:text-base text-slate-700 leading-relaxed">
@@ -72,21 +77,20 @@ export default function About() {
 
           {/* Stats */}
           <div className="mt-4 sm:mt-5 md:mt-6 grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 text-center">
-            <div>
+            <div className="animate-fade-in animate-delay-100">
               <h4 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-indigo-600">10+</h4>
               <p className="text-[10px] sm:text-xs md:text-sm text-slate-600">Events</p>
             </div>
-            <div>
+            <div className="animate-fade-in animate-delay-200">
               <h4 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-indigo-600">1000+</h4>
               <p className="text-[10px] sm:text-xs md:text-sm text-slate-600">Learners</p>
             </div>
-            <div>
+            <div className="animate-fade-in animate-delay-300">
               <h4 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-indigo-600">Practical</h4>
               <p className="text-[10px] sm:text-xs md:text-sm text-slate-600">Approach</p>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

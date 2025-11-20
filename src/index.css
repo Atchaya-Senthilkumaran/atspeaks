@@ -4,6 +4,8 @@
 
 /* Import responsive styles - must be before other CSS rules */
 @import './responsive.css';
+/* Import animations */
+@import './animations.css';
 
 /* Ultra-smooth scrolling for the entire page - Mobile First */
 html {
