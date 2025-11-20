@@ -34,7 +34,7 @@ export default function Hero() {
           <span className="bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent animate-glow-pulse">
             AT Speaks
           </span>{" "}
-          empowers you to learn
+          <span className="inline-block">empowers</span> you to learn
           <span className="text-slate-900"> skills that shape real careers.</span>
         </h1>
 
