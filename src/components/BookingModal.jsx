@@ -165,20 +165,16 @@ export default function BookingModal({ event, open, onClose }) {
 
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
               <h3 className="font-bold text-slate-800 mb-3 flex items-center gap-2">
-                <span>💡</span> Check Out Our Other Figma Events
+                <span>💡</span> Check Out Our Available Course
               </h3>
               <ul className="text-sm text-slate-700 space-y-2">
                 <li className="flex items-start gap-2">
                   <span className="text-green-600 mt-0.5">✓</span>
                   <span><strong>Figma For Absolute Beginners</strong> - ₹399</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-green-600 mt-0.5">✓</span>
-                  <span><strong>Design Smarter: Master Figma in 3 Days</strong> - ₹299</span>
-                </li>
               </ul>
               <p className="text-xs text-slate-600 mt-4">
-                Scroll through our events page to book these recordings!
+                Scroll through our events page to book this recording!
               </p>
             </div>
 
@@ -258,7 +254,7 @@ export default function BookingModal({ event, open, onClose }) {
         {/* Header */}
         <div className="flex justify-between items-center px-4 sm:px-6 py-3 sm:py-4 border-b bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white sticky top-0 z-10">
           <h2 className="text-base sm:text-lg md:text-xl font-semibold">
-            Book Recording - ₹{event?.price || 200}
+            Book Recording - ₹{event?.price}
           </h2>
           <button
             onClick={handleClose}
@@ -274,7 +270,7 @@ export default function BookingModal({ event, open, onClose }) {
           <div className="flex flex-col space-y-3 sm:space-y-4">
             <div className="border rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-indigo-50 to-pink-50 shadow-inner">
               <h3 className="text-sm sm:text-base font-semibold text-slate-800 mb-2 sm:mb-3 text-center">
-                Scan to Pay ₹{event?.price || 200}
+                Scan to Pay ₹{event?.price}
               </h3>
               <img
                 src="/recordings/qr.jpg"
@@ -291,7 +287,7 @@ export default function BookingModal({ event, open, onClose }) {
               <h4 className="font-semibold text-slate-800 mb-2 text-xs sm:text-sm">📋 Instructions</h4>
               <ul className="text-xs sm:text-xs text-slate-600 space-y-1.5 list-disc list-inside leading-relaxed">
                 <li>Scan QR code using any UPI app</li>
-                <li>Pay exactly ₹{event?.price || 200}</li>
+                <li>Pay exactly ₹{event?.price}</li>
                 <li>Copy your UPI Transaction ID from payment confirmation</li>
                 <li>Enter the Transaction ID in the form below</li>
                 <li>You'll receive recording link within 24-72 hours</li>
