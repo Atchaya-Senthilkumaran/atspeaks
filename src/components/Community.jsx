@@ -9,7 +9,7 @@ export default function Community() {
     <section 
       id="community" 
       ref={sectionRef}
-      className={`mt-6 sm:mt-8 md:mt-10 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`mt-8 sm:mt-10 md:mt-12 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       {/* Section Header with 3D */}
       <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold animate-3d-pop bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent">

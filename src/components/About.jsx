@@ -9,7 +9,7 @@ export default function About() {
     <section 
       id="about" 
       ref={sectionRef}
-      className={`mt-4 sm:mt-6 md:mt-8 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`mt-8 sm:mt-10 md:mt-12 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       {/* Heading - Mobile First */}
       <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold animate-3d-pop">

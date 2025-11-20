@@ -73,7 +73,7 @@ export default function Events() {
     <section 
       id="events" 
       ref={sectionRef}
-      className={`mt-4 sm:mt-6 md:mt-8 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`mt-8 sm:mt-10 md:mt-12 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3 animate-bounce-in">
