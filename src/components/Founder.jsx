@@ -1,6 +1,6 @@
 import React from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
-import { Linkedin, Instagram, Mail, Crown } from "lucide-react";
+import { Linkedin, Instagram, Mail } from "lucide-react";
 
 export default function FounderSection() {
   const [sectionRef, isRevealed] = useScrollReveal({ threshold: 0.1 });
@@ -11,8 +11,7 @@ export default function FounderSection() {
       className={`relative py-7 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''} overflow-hidden`}
     >
       <div className="relative inline-block">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-3d-pop break-words inline-flex items-center gap-2">
-          <Crown className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#c8348f] animate-pulse" />
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-3d-pop break-words">
           Founder
         </h2>
         <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mb-3 sm:mb-4 animate-glow-pulse shadow-lg shadow-[#c8348f]/30"></div>

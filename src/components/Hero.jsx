@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Tag from "./Tag";
-import { Users, Award, TrendingUp, Sparkles, Zap } from "lucide-react";
+import { Users, Award, TrendingUp } from "lucide-react";
 
 export default function Hero() {
   const cardRef = useRef(null);
@@ -38,9 +38,8 @@ export default function Hero() {
             href="#events"
             className="group relative rounded-full px-6 py-3 bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white text-base font-semibold shadow-lg hover:brightness-110 hover:scale-110 hover:shadow-2xl transition-all duration-300 hover-3d-tilt animate-glow-pulse overflow-hidden"
           >
-            <span className="relative z-10 inline-flex items-center gap-2">
+            <span className="relative z-10">
               Explore Events
-              <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
             </span>
             {/* Shimmer effect on hover */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
@@ -50,9 +49,8 @@ export default function Hero() {
             href="#contact"
             className="group relative rounded-full px-6 py-3 bg-white/90 backdrop-blur border-2 border-slate-200 text-base font-medium hover:bg-white hover:scale-110 hover:shadow-xl hover:border-[#1f3492]/30 transition-all duration-300 hover-rotate"
           >
-            <span className="inline-flex items-center gap-2">
+            <span>
               Contact Us
-              <Zap className="w-4 h-4 group-hover:text-[#c8348f] transition-colors duration-300" />
             </span>
           </a>
         </div>
