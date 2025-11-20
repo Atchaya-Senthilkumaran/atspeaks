@@ -73,7 +73,7 @@ export default function Events() {
     <section
       id="events"
       ref={sectionRef}
-      className={`py-5 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`py-7 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3 animate-bounce-in">

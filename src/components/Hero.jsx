@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative py-5 px-4 md:px-0 grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full perspective-3d"
+      className="relative py-7 px-4 md:px-0 grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full perspective-3d"
     >
       {/* Background Glow - Animated with 3D effect */}
       <div 

@@ -8,7 +8,7 @@ export default function FounderSection() {
   return (
     <section
       ref={sectionRef}
-      className={`py-5 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`py-7 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-3d-pop break-words">Founder</h2>
       <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mb-3 sm:mb-4 animate-glow-pulse"></div>

@@ -9,7 +9,7 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className={`py-5 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`py-7 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       {/* Heading - Mobile First */}
       <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-3d-pop break-words">
