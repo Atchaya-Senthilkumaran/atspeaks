@@ -1,5 +1,5 @@
 /* ============================================
-   ANIMATIONS & TRANSITIONS
+   ANIMATIONS & TRANSITIONS - 2D & 3D
    ============================================ */
 
 /* Fade In Animation */
@@ -103,6 +103,140 @@
   }
 }
 
+/* 3D ROTATE Y - Card Flip Effect */
+@keyframes rotateY {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(-90deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0deg);
+  }
+}
+
+/* 3D ROTATE X - Flip Up */
+@keyframes rotateX {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(-90deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg);
+  }
+}
+
+/* 3D SCALE & ROTATE - Pop In */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) scale(0.5) rotateY(-180deg);
+  }
+  50% {
+    transform: perspective(1000px) scale(1.1) rotateY(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) scale(1) rotateY(0deg);
+  }
+}
+
+/* 3D TILT - Dynamic Perspective */
+@keyframes tilt {
+  0%, 100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+  }
+  50% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+  75% {
+    transform: perspective(1000px) rotateX(-5deg) rotateY(-5deg);
+  }
+}
+
+/* BOUNCE IN - Elastic Effect */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(-50px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) translateY(0);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* SLIDE UP WITH ROTATE */
+@keyframes slideUpRotate {
+  from {
+    opacity: 0;
+    transform: translateY(50px) rotate(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* ZOOM IN WITH BLUR */
+@keyframes zoomInBlur {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* SPIN & FADE */
+@keyframes spinFade {
+  from {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* WIGGLE - Fun Animation */
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+}
+
+/* GLOW PULSE */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(31, 52, 146, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(200, 52, 143, 0.6);
+  }
+}
+
 /* Utility Classes */
 .animate-fade-in {
   animation: fadeIn 0.6s ease-out forwards;
@@ -128,6 +262,42 @@
   animation: pulse 2s ease-in-out infinite;
 }
 
+/* 3D Animations */
+.animate-3d-rotate-y {
+  animation: rotateY 0.8s ease-out forwards;
+  transform-style: preserve-3d;
+}
+
+.animate-3d-rotate-x {
+  animation: rotateX 0.8s ease-out forwards;
+  transform-style: preserve-3d;
+}
+
+.animate-3d-pop {
+  animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  transform-style: preserve-3d;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-slide-up-rotate {
+  animation: slideUpRotate 0.7s ease-out forwards;
+}
+
+.animate-zoom-in-blur {
+  animation: zoomInBlur 0.6s ease-out forwards;
+}
+
+.animate-spin-fade {
+  animation: spinFade 0.8s ease-out forwards;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
 /* Scroll Reveal - Will be triggered by Intersection Observer */
 .scroll-reveal {
   opacity: 0;
@@ -138,6 +308,18 @@
 .scroll-reveal.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* 3D Scroll Reveal */
+.scroll-reveal-3d {
+  opacity: 0;
+  transform: perspective(1000px) rotateY(-15deg) translateZ(-50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal-3d.revealed {
+  opacity: 1;
+  transform: perspective(1000px) rotateY(0deg) translateZ(0);
 }
 
 /* Stagger Animation Delays */
@@ -157,7 +339,15 @@
   animation-delay: 0.4s;
 }
 
-/* Hover Effects */
+.animate-delay-500 {
+  animation-delay: 0.5s;
+}
+
+.animate-delay-600 {
+  animation-delay: 0.6s;
+}
+
+/* Hover Effects with 3D */
 .hover-lift {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -165,6 +355,15 @@
 .hover-lift:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.hover-3d-tilt {
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.hover-3d-tilt:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(10px);
 }
 
 .hover-glow {
@@ -175,6 +374,22 @@
   box-shadow: 0 0 20px rgba(31, 52, 146, 0.3);
 }
 
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-rotate {
+  transition: transform 0.3s ease;
+}
+
+.hover-rotate:hover {
+  transform: rotate(5deg) scale(1.05);
+}
+
 /* Smooth Transitions */
 * {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -182,3 +397,18 @@
   transition-duration: 150ms;
 }
 
+/* 3D Perspective Container */
+.perspective-3d {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Card Flip Effect */
+.card-flip {
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card-flip:hover {
+  transform: rotateY(10deg) rotateX(5deg);
+}
