@@ -8,7 +8,7 @@ export default function FounderSection() {
   return (
     <section 
       ref={sectionRef}
-      className={`w-full py-6 sm:py-8 md:py-10 overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`mt-8 sm:mt-10 md:mt-12 w-full py-6 sm:py-8 md:py-10 overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 animate-3d-pop">Founder</h2>
       <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mb-3 sm:mb-4 animate-glow-pulse"></div>
@@ -25,16 +25,17 @@ export default function FounderSection() {
 
         {/* Left Section */}
         <div className="flex flex-col items-center lg:items-start gap-3 sm:gap-4">
-          <div className="relative w-full flex justify-center lg:justify-start perspective-3d">
-            {/* Simple gradient border - no shadow, no blur */}
-            <div className="absolute -inset-1 rounded-lg sm:rounded-xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] opacity-40 animate-glow-pulse"></div>
-            {/* Pulsing ring effect */}
-            <div className="absolute -inset-1 rounded-lg sm:rounded-xl border-2 border-[#1f3492]/30 animate-pulse-slow"></div>
-            <img
-              src="/atpic.jpg"
-              alt="Founder"
-              className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-52 xl:h-52 object-cover rounded-lg sm:rounded-xl border-2 border-white hover:scale-110 hover:rotate-2 transition-all duration-500 max-w-full animate-3d-pop hover-3d-tilt"
-            />
+          <div className="relative w-full flex justify-center lg:justify-start">
+            {/* Clean circular frame with gradient border */}
+            <div className="relative p-1 rounded-full bg-gradient-to-br from-[#1f3492] via-[#c8348f] to-[#1f3492] animate-glow-pulse">
+              <div className="rounded-full bg-white p-1">
+                <img
+                  src="/atpic.jpg"
+                  alt="Founder"
+                  className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-52 xl:h-52 object-cover rounded-full hover:scale-105 transition-all duration-500 max-w-full"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Stats with 3D Effects */}
