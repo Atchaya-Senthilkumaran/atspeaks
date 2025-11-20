@@ -10,8 +10,8 @@ const updateEvents = async () => {
 
     // Update events with correct prices and recordingAvailable field
     const updates = [
-      { title: "Data to Dimensions: 3D Data Visualization", price: 249, recordingAvailable: true },
-      { title: "Agentic Frames: From CLI to MCP", price: 299, recordingAvailable: true },
+      { title: "Data to Dimensions: 3D Data Visualization", price: 199, recordingAvailable: true },
+      { title: "Agentic Frames: From CLI to MCP", price: 199, recordingAvailable: true },
       { title: "Campus to Corporate: Hack and Crack Placements", price: 199, recordingAvailable: true },
       { title: "Agentic AI Unlocked", price: 199, recordingAvailable: true },
       { title: "Resume to Recruiter", price: 299, recordingAvailable: true },
