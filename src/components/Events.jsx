@@ -78,7 +78,7 @@ export default function Events() {
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3 animate-bounce-in">
         <div>
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold break-words">Events</h2>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold break-words section-title">Events</h2>
           <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 animate-glow-pulse"></div>
         </div>
         <button

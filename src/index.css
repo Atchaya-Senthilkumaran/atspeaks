@@ -80,6 +80,31 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button {
   hyphens: auto;
 }
 
+/* Utility for ellipsis */
+.text-overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@layer components {
+  .section-title {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 leading-snug;
+  }
+}
+
+/* Global text overflow handling */
+* {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, div, a, button {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
 /* Ensure text doesn't overflow */
 .text-overflow-ellipsis {
   overflow: hidden;
