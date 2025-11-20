@@ -10,34 +10,43 @@ export default function Testimonials() {
     <section 
       id="testimonials" 
       ref={sectionRef}
-      className={`mt-12 sm:mt-16 md:mt-20 relative w-full overflow-x-hidden scroll-reveal ${isRevealed ? 'revealed' : ''}`}
+      className={`mt-12 sm:mt-16 md:mt-20 relative w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
-      {/* Background glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1f3492]/10 via-transparent to-[#c8348f]/10 -z-10 rounded-3xl blur-3xl animate-pulse-slow"></div>
+      {/* Animated Background glow with 3D effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1f3492]/10 via-transparent to-[#c8348f]/10 -z-10 rounded-3xl blur-3xl animate-glow-pulse"></div>
+      
+      {/* Floating gradient orbs */}
+      <div className="absolute top-0 left-0 w-64 h-64 bg-[#1f3492]/10 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#c8348f]/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
 
-      {/* Heading */}
-      <div className="text-center max-w-2xl mx-auto px-2 animate-fade-in">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">What learners say</h2>
-        <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mx-auto"></div>
-        <p className="text-xs sm:text-sm md:text-base text-slate-600 mt-2 sm:mt-3">
+      {/* Heading with 3D effect */}
+      <div className="text-center max-w-2xl mx-auto px-2 animate-3d-pop">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent animate-glow-pulse">
+          What learners say
+        </h2>
+        <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mx-auto animate-glow-pulse"></div>
+        <p className="text-xs sm:text-sm md:text-base text-slate-600 mt-2 sm:mt-3 animate-zoom-in-blur animate-delay-100">
           Real feedback from students who've experienced our workshops and sessions.
         </p>
       </div>
 
-      {/* Scroll container (manual only) */}
+      {/* Scroll container with enhanced animations */}
       <div className="mt-6 sm:mt-8 md:mt-10 overflow-x-auto pb-6 hide-scrollbar scroll-smooth w-full">
         <div className="flex gap-3 sm:gap-4 md:gap-6 w-max pl-4 sm:pl-6 md:pl-6 pr-4 sm:pr-6 md:pr-6 py-4">
-          {testimonials.map((t, index) => (
+          {testimonials.map((t, index) => {
+            const delay = index * 0.15;
+            const animationType = index % 3 === 0 ? 'animate-3d-pop' : index % 3 === 1 ? 'animate-bounce-in' : 'animate-slide-up-rotate';
+            return (
             <div
               key={t.id}
-              className="min-w-[240px] sm:min-w-[280px] md:min-w-[320px] lg:min-w-[360px] max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[380px] group transition-transform duration-300 hover:-translate-y-2 flex-shrink-0 animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`min-w-[240px] sm:min-w-[280px] md:min-w-[320px] lg:min-w-[360px] max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[380px] group transition-all duration-500 hover:-translate-y-3 flex-shrink-0 perspective-3d ${animationType}`}
+              style={{ animationDelay: `${delay}s` }}
             >
-              <div className="relative p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover-lift">
+              <div className="relative p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover-3d-tilt card-flip">
 
-                {/* Top Section - Quote + Stars */}
+                {/* Top Section - Quote + Stars with 3D */}
                 <div className="flex items-center justify-between mb-3 sm:mb-4">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#1f3492] to-[#c8348f] flex items-center justify-center shadow-lg animate-scale-in">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#1f3492] to-[#c8348f] flex items-center justify-center shadow-xl hover:scale-125 hover:rotate-12 transition-all duration-300 animate-bounce-in">
                     <Quote className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="white" />
                   </div>
 
@@ -45,7 +54,7 @@ export default function Testimonials() {
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className={`w-3 h-3 sm:w-4 sm:h-4 transition-all duration-300 ${
+                        className={`w-3 h-3 sm:w-4 sm:h-4 transition-all duration-300 hover:scale-125 ${
                           i < t.rating ? "text-yellow-400 animate-pulse-slow" : "text-gray-300"
                         }`}
                         fill={i < t.rating ? "#FACC15" : "none"}
@@ -56,24 +65,24 @@ export default function Testimonials() {
                   </div>
                 </div>
 
-                {/* Quote Text */}
-                <blockquote className="text-slate-700 leading-relaxed text-xs sm:text-sm md:text-[15px] min-h-[80px] sm:min-h-[100px]">
+                {/* Quote Text with fade effect */}
+                <blockquote className="text-slate-700 leading-relaxed text-xs sm:text-sm md:text-[15px] min-h-[80px] sm:min-h-[100px] group-hover:text-[#1f3492] transition-colors duration-300">
                   "{t.quote}"
                 </blockquote>
 
-                {/* Divider */}
-                <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent my-3 sm:my-4 md:my-5"></div>
+                {/* Animated Divider */}
+                <div className="h-px bg-gradient-to-r from-transparent via-[#1f3492]/30 to-transparent my-3 sm:my-4 md:my-5 group-hover:via-[#c8348f]/50 transition-all duration-300"></div>
 
-                {/* Author Info */}
+                {/* Author Info with 3D effects */}
                 <div className="flex items-center gap-2 sm:gap-3">
                   {t.pic ? (
                     <img
                       src={t.pic}
                       alt={t.name}
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover shadow-md border-2 border-white hover:scale-110 transition-transform duration-300"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover shadow-lg border-2 border-white hover:scale-125 hover:rotate-12 transition-all duration-300 hover-3d-tilt"
                     />
                   ) : (
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#1f3492] to-[#c8348f] flex items-center justify-center text-white font-bold text-sm sm:text-lg shadow-md hover:scale-110 transition-transform duration-300">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#1f3492] to-[#c8348f] flex items-center justify-center text-white font-bold text-sm sm:text-lg shadow-lg hover:scale-125 hover:rotate-12 transition-all duration-300 hover-3d-tilt animate-pulse-slow">
                       {t.name
                         .split(" ")
                         .map((n) => n[0])
@@ -84,24 +93,28 @@ export default function Testimonials() {
                   )}
 
                   <div>
-                    <div className="text-xs sm:text-sm font-bold text-slate-900">
+                    <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-[#1f3492] transition-colors duration-300">
                       {t.name}
                     </div>
                     <div className="text-[10px] sm:text-xs text-slate-500">{t.role}</div>
                   </div>
                 </div>
 
-                {/* Accent gradient hover effect */}
-                <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#1f3492]/0 to-[#c8348f]/0 group-hover:from-[#1f3492]/5 group-hover:to-[#c8348f]/5 transition-all duration-300 pointer-events-none"></div>
+                {/* Enhanced gradient hover effect */}
+                <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#1f3492]/0 via-[#c8348f]/0 to-[#1f3492]/0 group-hover:from-[#1f3492]/10 group-hover:via-[#c8348f]/10 group-hover:to-[#1f3492]/10 transition-all duration-500 pointer-events-none"></div>
+                
+                {/* Shimmer effect on hover */}
+                <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ transform: 'translateX(-100%)', animation: 'shimmer 2s infinite' }}></div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
-      {/* Scroll Hint */}
-      <div className="text-center mt-3 sm:mt-4 animate-fade-in">
-        <p className="text-[10px] sm:text-xs md:text-sm text-slate-400 font-medium">← Scroll to explore →</p>
+      {/* Scroll Hint with animation */}
+      <div className="text-center mt-3 sm:mt-4 animate-bounce-in">
+        <p className="text-[10px] sm:text-xs md:text-sm text-slate-400 font-medium animate-pulse-slow">← Scroll to explore →</p>
       </div>
 
       {/* Hide scrollbar */}
