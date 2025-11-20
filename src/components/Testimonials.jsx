@@ -21,7 +21,7 @@ export default function Testimonials() {
 
       {/* Heading with 3D effect */}
       <div className="text-center max-w-2xl mx-auto px-2 animate-3d-pop">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold animate-glow-pulse break-words section-title">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-glow-pulse break-words">
           What learners say
         </h2>
         <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mx-auto animate-glow-pulse"></div>

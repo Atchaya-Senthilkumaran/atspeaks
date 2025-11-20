@@ -9,9 +9,9 @@ export default function Services() {
     <section 
       id="services" 
       ref={sectionRef}
-      className={`mt-8 sm:mt-10 md:mt-12 mb-12 sm:mb-16 md:mb-20 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`mt-8 sm:mt-10 md:mt-12 mb-8 sm:mb-10 md:mb-12 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
-      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold flex flex-wrap items-center gap-2 sm:gap-3 animate-3d-pop break-words section-title">
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 flex flex-wrap items-center gap-2 sm:gap-3 animate-3d-pop break-words">
         Services & Courses
         <span className="text-[10px] sm:text-xs md:text-sm px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#1f3492]/10 text-[#1f3492] font-medium animate-glow-pulse">
           Coming Soon

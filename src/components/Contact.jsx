@@ -83,7 +83,7 @@ export default function Contact() {
       <div className="absolute top-10 left-10 w-48 h-48 bg-[#1f3492]/10 rounded-full blur-3xl animate-float"></div>
       <div className="absolute bottom-10 right-10 w-48 h-48 bg-[#c8348f]/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
 
-      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold animate-3d-pop break-words section-title">
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-3d-pop break-words">
         Get in touch
       </h2>
       <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 animate-glow-pulse"></div>
