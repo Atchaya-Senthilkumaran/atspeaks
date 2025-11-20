@@ -9,10 +9,10 @@ export default function About() {
     <section 
       id="about" 
       ref={sectionRef}
-      className={`mt-8 sm:mt-10 md:mt-12 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`mt-8 sm:mt-10 md:mt-12 mb-12 sm:mb-16 md:mb-20 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       {/* Heading - Mobile First */}
-      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold animate-3d-pop">
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold animate-3d-pop break-words">
         About AT Speaks
       </h2>
       <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-full mt-2 animate-glow-pulse"></div>
@@ -25,8 +25,8 @@ export default function About() {
           {/* Card 1 */}
           <div className="p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white shadow-sm border hover:shadow-xl hover:-translate-y-2 hover-3d-tilt transition-all duration-500 animate-bounce-in animate-delay-100 perspective-3d">
             <Rocket className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-indigo-600 animate-float hover:rotate-12 transition-transform duration-300" />
-            <h3 className="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg font-semibold">Hands-on Workshops</h3>
-            <p className="text-slate-600 mt-1 text-xs sm:text-sm">
+            <h3 className="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg font-semibold break-words">Hands-on Workshops</h3>
+            <p className="text-slate-600 mt-1 text-xs sm:text-sm break-words">
               Practical sessions in tech, UI/UX & real-world tools.
             </p>
           </div>
@@ -34,8 +34,8 @@ export default function About() {
           {/* Card 2 */}
           <div className="p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white shadow-sm border hover:shadow-xl hover:-translate-y-2 hover-3d-tilt transition-all duration-500 animate-bounce-in animate-delay-200 perspective-3d">
             <MonitorSmartphone className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-pink-600 animate-float hover:rotate-12 transition-transform duration-300" />
-            <h3 className="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg font-semibold">Project-Driven Learning</h3>
-            <p className="text-slate-600 mt-1 text-xs sm:text-sm">
+            <h3 className="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg font-semibold break-words">Project-Driven Learning</h3>
+            <p className="text-slate-600 mt-1 text-xs sm:text-sm break-words">
               Helping learners build meaningful portfolio-ready work.
             </p>
           </div>
@@ -43,8 +43,8 @@ export default function About() {
           {/* Card 3 */}
           <div className="p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white shadow-sm border hover:shadow-xl hover:-translate-y-2 hover-3d-tilt transition-all duration-500 animate-bounce-in animate-delay-300 perspective-3d">
             <Users className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-indigo-600 animate-float hover:rotate-12 transition-transform duration-300" />
-            <h3 className="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg font-semibold">Community Sessions</h3>
-            <p className="text-slate-600 mt-1 text-xs sm:text-sm">
+            <h3 className="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg font-semibold break-words">Community Sessions</h3>
+            <p className="text-slate-600 mt-1 text-xs sm:text-sm break-words">
               Webinars, Q&As, and open learning spaces for students.
             </p>
           </div>
@@ -52,8 +52,8 @@ export default function About() {
           {/* Card 4 */}
           <div className="p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white shadow-sm border hover:shadow-xl hover:-translate-y-2 hover-3d-tilt transition-all duration-500 animate-bounce-in animate-delay-400 perspective-3d">
             <PenTool className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-pink-600 animate-float hover:rotate-12 transition-transform duration-300" />
-            <h3 className="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg font-semibold">Design & Tech Guidance</h3>
-            <p className="text-slate-600 mt-1 text-xs sm:text-sm">
+            <h3 className="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg font-semibold break-words">Design & Tech Guidance</h3>
+            <p className="text-slate-600 mt-1 text-xs sm:text-sm break-words">
               Portfolio help, career clarity, and personal mentoring.
             </p>
           </div>
@@ -61,16 +61,16 @@ export default function About() {
 
         {/* Right: Highlighted founder-led mission */}
         <div className="p-4 sm:p-5 md:p-6 lg:p-7 xl:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-indigo-50 to-pink-50 border shadow-sm hover:shadow-xl hover-3d-tilt transition-all duration-500 animate-slide-up-rotate perspective-3d">
-          <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 sm:mb-3">A Founder-Led Edutech Startup</h3>
+          <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 break-words">A Founder-Led Edutech Startup</h3>
 
-          <p className="text-xs sm:text-sm md:text-base text-slate-700 leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base text-slate-700 leading-relaxed break-words">
             AT Speaks is a growing edutech startup led by
             Atchaya Senthilkumaran — focused on delivering
             practical, industry-aligned learning for students across
             design and technology.
           </p>
 
-          <p className="text-xs sm:text-sm md:text-base text-slate-700 leading-relaxed mt-2 sm:mt-3 md:mt-4">
+          <p className="text-xs sm:text-sm md:text-base text-slate-700 leading-relaxed mt-2 sm:mt-3 md:mt-4 break-words">
             Everything we teach comes from doing, not just theory.
             We aim to make learning accessible, simple, and deeply hands-on.
           </p>

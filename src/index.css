@@ -68,6 +68,25 @@ body > * {
   max-width: 100%;
 }
 
+/* Global text overflow handling */
+* {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, div, a, button {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Ensure text doesn't overflow */
+.text-overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* Responsive scroll padding for mobile */
 @media screen and (max-width: 768px) {
   html {

@@ -74,7 +74,7 @@ export default function Contact() {
     <section 
       id="contact" 
       ref={sectionRef}
-      className={`mt-8 sm:mt-10 md:mt-12 py-0 relative w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`mt-8 sm:mt-10 md:mt-12 mb-8 sm:mb-10 md:mb-12 py-0 relative w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       {/* Enhanced Background Glow with 3D */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/15 to-[#1f3492]/20 blur-3xl -z-10 animate-glow-pulse"></div>
@@ -83,11 +83,11 @@ export default function Contact() {
       <div className="absolute top-10 left-10 w-48 h-48 bg-[#1f3492]/10 rounded-full blur-3xl animate-float"></div>
       <div className="absolute bottom-10 right-10 w-48 h-48 bg-[#c8348f]/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
 
-      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 animate-3d-pop bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent">
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 animate-3d-pop bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent break-words">
         Get in touch
       </h2>
       <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 animate-glow-pulse"></div>
-      <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-2xl animate-zoom-in-blur animate-delay-100">
+      <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-2xl animate-zoom-in-blur animate-delay-100 break-words">
         Have a collaboration idea, need a workshop at your college, or want recordings/access?
         Send us a message — we're always happy to connect.
       </p>

@@ -9,10 +9,10 @@ export default function Community() {
     <section 
       id="community" 
       ref={sectionRef}
-      className={`mt-8 sm:mt-10 md:mt-12 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`mt-8 sm:mt-10 md:mt-12 mb-12 sm:mb-16 md:mb-20 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       {/* Section Header with 3D */}
-      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold animate-3d-pop bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent">
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold animate-3d-pop bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent break-words">
         Community & Partnerships
       </h2>
       <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 animate-glow-pulse"></div>
@@ -28,8 +28,8 @@ export default function Community() {
           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#1f3492]/10 to-[#1f3492]/20 flex items-center justify-center mb-3 sm:mb-4 hover:scale-125 hover:rotate-12 transition-all duration-300">
             <Building2 className="w-5 h-5 sm:w-6 sm:h-6 text-[#1f3492] animate-float" />
           </div>
-          <h3 className="text-base sm:text-lg font-semibold mb-2 hover:text-[#1f3492] transition-colors duration-300">College Workshops</h3>
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          <h3 className="text-base sm:text-lg font-semibold mb-2 hover:text-[#1f3492] transition-colors duration-300 break-words">College Workshops</h3>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed break-words">
             Bring hands-on tech and design sessions to your campus. Tailored workshops for students.
           </p>
         </div>
@@ -39,8 +39,8 @@ export default function Community() {
           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#c8348f]/10 to-[#c8348f]/20 flex items-center justify-center mb-3 sm:mb-4 hover:scale-125 hover:rotate-12 transition-all duration-300">
             <Users className="w-5 h-5 sm:w-6 sm:h-6 text-[#c8348f] animate-float" />
           </div>
-          <h3 className="text-base sm:text-lg font-semibold mb-2 hover:text-[#c8348f] transition-colors duration-300">Student Communities</h3>
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          <h3 className="text-base sm:text-lg font-semibold mb-2 hover:text-[#c8348f] transition-colors duration-300 break-words">Student Communities</h3>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed break-words">
             Collaborate with your club or community for exclusive learning events and sessions.
           </p>
         </div>
@@ -50,8 +50,8 @@ export default function Community() {
           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#1f3492]/10 to-[#1f3492]/20 flex items-center justify-center mb-3 sm:mb-4 hover:scale-125 hover:rotate-12 transition-all duration-300">
             <Rocket className="w-5 h-5 sm:w-6 sm:h-6 text-[#1f3492] animate-float" />
           </div>
-          <h3 className="text-base sm:text-lg font-semibold mb-2 hover:text-[#1f3492] transition-colors duration-300">Startup Collaborations</h3>
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          <h3 className="text-base sm:text-lg font-semibold mb-2 hover:text-[#1f3492] transition-colors duration-300 break-words">Startup Collaborations</h3>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed break-words">
             Partner with us for skill development programs and team training initiatives.
           </p>
         </div>
@@ -69,10 +69,10 @@ export default function Community() {
               <Handshake className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#1f3492] animate-float" />
             </div>
             <div className="flex-1">
-              <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent">
+              <h3 className="text-base sm:text-lg md:text-xl font-bold mb-1 sm:mb-2 bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent break-words">
                 Ready to Collaborate?
               </h3>
-              <p className="text-xs sm:text-sm md:text-base text-slate-700 max-w-xl">
+              <p className="text-xs sm:text-sm md:text-base text-slate-700 max-w-xl break-words">
                 Whether you're an educational institution or a growing startup, let's work together to empower learners.
               </p>
             </div>

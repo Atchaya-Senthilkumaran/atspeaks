@@ -30,7 +30,7 @@ export default function Hero() {
 
       {/* LEFT CONTENT - Fade in animation with 3D */}
       <div className="w-full animate-zoom-in-blur">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight break-words">
           <span className="bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent animate-glow-pulse">
             AT Speaks
           </span>{" "}
@@ -38,7 +38,7 @@ export default function Hero() {
           <span className="text-slate-900"> skills that shape real careers.</span>
         </h1>
 
-        <p className="mt-3 text-base sm:text-lg text-slate-700 max-w-xl leading-relaxed animate-fade-in animate-delay-200">
+        <p className="mt-3 text-base sm:text-lg text-slate-700 max-w-xl leading-relaxed break-words animate-fade-in animate-delay-200">
           Building future-ready minds in design, code, and emerging tech through
           practical projects that turn learning into confident, lasting action.
         </p>

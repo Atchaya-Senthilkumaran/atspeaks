@@ -10,7 +10,7 @@ export default function Testimonials() {
     <section 
       id="testimonials" 
       ref={sectionRef}
-      className={`mt-8 sm:mt-10 md:mt-12 relative w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`mt-8 sm:mt-10 md:mt-12 mb-8 sm:mb-10 md:mb-12 relative w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       {/* Animated Background glow with 3D effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#1f3492]/10 via-transparent to-[#c8348f]/10 -z-10 rounded-3xl blur-3xl animate-glow-pulse"></div>
@@ -21,7 +21,7 @@ export default function Testimonials() {
 
       {/* Heading with 3D effect */}
       <div className="text-center max-w-2xl mx-auto px-2 animate-3d-pop">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent animate-glow-pulse">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent animate-glow-pulse break-words">
           What learners say
         </h2>
         <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mx-auto animate-glow-pulse"></div>
@@ -66,7 +66,7 @@ export default function Testimonials() {
                 </div>
 
                 {/* Quote Text with fade effect */}
-                <blockquote className="text-slate-700 leading-relaxed text-xs sm:text-sm md:text-[15px] min-h-[80px] sm:min-h-[100px] group-hover:text-[#1f3492] transition-colors duration-300">
+                <blockquote className="text-slate-700 leading-relaxed text-xs sm:text-sm md:text-[15px] min-h-[80px] sm:min-h-[100px] group-hover:text-[#1f3492] transition-colors duration-300 break-words">
                   "{t.quote}"
                 </blockquote>
 

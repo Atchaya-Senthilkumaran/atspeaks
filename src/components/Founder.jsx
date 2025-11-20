@@ -8,9 +8,9 @@ export default function FounderSection() {
   return (
     <section 
       ref={sectionRef}
-      className={`mt-8 sm:mt-10 md:mt-12 w-full py-6 sm:py-8 md:py-10 overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`mt-8 sm:mt-10 md:mt-12 mb-8 sm:mb-10 md:mb-12 w-full py-6 sm:py-8 md:py-10 overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
-      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 animate-3d-pop">Founder</h2>
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 animate-3d-pop break-words">Founder</h2>
       <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mb-3 sm:mb-4 animate-glow-pulse"></div>
 
       <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 flex flex-col lg:flex-row gap-4 sm:gap-5 md:gap-6 border border-gray-100 relative overflow-hidden w-full hover-3d-tilt transition-all duration-500 perspective-3d animate-bounce-in">
@@ -57,19 +57,19 @@ export default function FounderSection() {
 
         {/* Right Section */}
         <div className="flex-1 animate-slide-up-rotate">
-          <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-1 bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent animate-glow-pulse">
+          <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-1 bg-gradient-to-r from-[#1f3492] to-[#c8348f] bg-clip-text text-transparent animate-glow-pulse break-words">
             Atchaya Senthilkumaran
           </h3>
-          <p className="text-xs sm:text-sm md:text-base text-gray-600 font-medium mb-3 sm:mb-4 animate-fade-in animate-delay-100">Founder & CEO — AT Speaks</p>
+          <p className="text-xs sm:text-sm md:text-base text-gray-600 font-medium mb-3 sm:mb-4 animate-fade-in animate-delay-100 break-words">Founder & CEO — AT Speaks</p>
 
-          <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed mb-2 sm:mb-3 animate-fade-in animate-delay-200">
+          <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed mb-2 sm:mb-3 animate-fade-in animate-delay-200 break-words">
             Atchaya is a visionary educator and tech enthusiast, known for delivering hands-on
             learning experiences that blend creativity, design thinking, and real-world development.
             Her journey with AT Speaks started with a mission to empower students to build practical
             skills and confidence through community-driven sessions.
           </p>
 
-          <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed mb-3 sm:mb-4 animate-fade-in animate-delay-300">
+          <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed mb-3 sm:mb-4 animate-fade-in animate-delay-300 break-words">
             With a strong background in UI/UX, Web development, Data visualization and Emerging Ai Techonologies, she has
             mentored 1000+ learners, hosted multiple workshops, and continues to push forward
             impactful education for the next generation.

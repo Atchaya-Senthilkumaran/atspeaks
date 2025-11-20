@@ -73,12 +73,12 @@ export default function Events() {
     <section 
       id="events" 
       ref={sectionRef}
-      className={`mt-8 sm:mt-10 md:mt-12 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
+      className={`mt-8 sm:mt-10 md:mt-12 mb-12 sm:mb-16 md:mb-20 w-full overflow-x-hidden scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3 animate-bounce-in">
         <div>
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">Events</h2>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold break-words">Events</h2>
           <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 animate-glow-pulse"></div>
         </div>
         <button
@@ -146,12 +146,12 @@ export default function Events() {
                 </div>
 
                 {/* Title */}
-                <h3 className="mt-2 sm:mt-3 text-base sm:text-lg font-semibold text-slate-900 leading-snug hover:text-[#1f3492] transition-colors duration-300">
+                <h3 className="mt-2 sm:mt-3 text-base sm:text-lg font-semibold text-slate-900 leading-snug hover:text-[#1f3492] transition-colors duration-300 break-words">
                   {e.title}
                 </h3>
 
                 {/* Description */}
-                <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
+                <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3 break-words">
                   {e.description}
                 </p>
 
