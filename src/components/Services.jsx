@@ -11,15 +11,17 @@ export default function Services() {
       ref={sectionRef}
       className={`relative py-7 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''} overflow-hidden`}
     >
-      <div className="relative inline-block">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 flex flex-wrap items-center gap-2 sm:gap-3 animate-3d-pop break-words">
-          Services & Courses
-          <span className="relative text-[10px] sm:text-xs md:text-sm px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-r from-[#1f3492]/10 to-[#c8348f]/10 text-[#1f3492] font-medium animate-glow-pulse border border-[#1f3492]/20">
-            <Zap className="inline w-3 h-3 mr-1" />
-            Coming Soon
-          </span>
-        </h2>
-        <div className="h-1 w-full bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 animate-glow-pulse shadow-lg shadow-[#c8348f]/30"></div>
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+        <div className="relative inline-block">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-3d-pop break-words">
+            Services & Courses
+          </h2>
+          <div className="h-1 w-full bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 animate-glow-pulse shadow-lg shadow-[#c8348f]/30"></div>
+        </div>
+        <span className="relative text-[10px] sm:text-xs md:text-sm px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-r from-[#1f3492]/10 to-[#c8348f]/10 text-[#1f3492] font-medium animate-glow-pulse border border-[#1f3492]/20 self-start mt-1">
+          <Zap className="inline w-3 h-3 mr-1" />
+          Coming Soon
+        </span>
       </div>
 
       <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-slate-600 max-w-2xl animate-zoom-in-blur animate-delay-100">
