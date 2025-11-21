@@ -33,10 +33,10 @@ export default function Hero() {
         </p>
 
         {/* CTA Buttons - Slide in with 3D */}
-        <div className="mt-4 flex flex-wrap gap-3 animate-slide-up-rotate animate-delay-300">
+        <div className="mt-4 flex flex-wrap gap-3 pl-1 animate-slide-up-rotate animate-delay-300">
           <a
             href="#events"
-            className="group relative rounded-full px-6 py-3 bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white text-base font-semibold shadow-lg hover:brightness-110 hover:scale-110 hover:shadow-2xl transition-all duration-300 hover-3d-tilt animate-glow-pulse overflow-hidden"
+            className="group relative rounded-full px-6 py-3 bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white text-base font-semibold shadow-lg hover:brightness-110 hover:scale-110 hover:shadow-2xl transition-all duration-300 origin-center hover-3d-tilt animate-glow-pulse overflow-hidden"
           >
             <span className="relative z-10">
               Explore Events
