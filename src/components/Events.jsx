@@ -79,7 +79,7 @@ export default function Events() {
       <div className="flex items-center justify-between flex-wrap gap-2 sm:gap-3 animate-bounce-in">
         <div className="inline-block">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 break-words">Events</h2>
-          <div className="h-1 w-full bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 animate-glow-pulse"></div>
+          <div className="h-1 w-full bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 animate-glow-pulse shadow-lg shadow-[#c8348f]/30"></div>
         </div>
         <button
           onClick={() => setShowAll(!showAll)}

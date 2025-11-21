@@ -7,6 +7,7 @@ export default function FounderSection() {
 
   return (
     <section
+      id="founder"
       ref={sectionRef}
       className={`relative py-7 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''} overflow-hidden`}
     >

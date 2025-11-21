@@ -143,7 +143,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#team" className="group inline-flex items-center gap-2 hover:text-[#1f3492] transition-all duration-300 hover:translate-x-1">
+                <a href="#founder" className="group inline-flex items-center gap-2 hover:text-[#1f3492] transition-all duration-300 hover:translate-x-1">
                   <span className="w-1 h-1 rounded-full bg-[#c8348f] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   Founder
                 </a>
