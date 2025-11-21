@@ -16,7 +16,7 @@ export default function About() {
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-3d-pop break-words">
           About AT Speaks
         </h2>
-        <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-full mt-2 animate-glow-pulse shadow-lg shadow-pink-500/30"></div>
+        <div className="h-1 w-full bg-gradient-to-r from-indigo-500 to-pink-500 rounded-full mt-2 animate-glow-pulse shadow-lg shadow-pink-500/30"></div>
       </div>
 
       {/* Main layout - Mobile First: 1 column on mobile, 2 columns on lg+ */}

@@ -14,7 +14,7 @@ export default function FounderSection() {
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-3d-pop break-words">
           Founder
         </h2>
-        <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mb-3 sm:mb-4 animate-glow-pulse shadow-lg shadow-[#c8348f]/30"></div>
+        <div className="h-1 w-full bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mb-3 sm:mb-4 animate-glow-pulse shadow-lg shadow-[#c8348f]/30"></div>
       </div>
 
       <div className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 flex flex-col lg:flex-row gap-4 sm:gap-5 md:gap-6 border border-gray-100 relative overflow-hidden w-full hover-3d-tilt transition-all duration-500 perspective-3d animate-bounce-in">

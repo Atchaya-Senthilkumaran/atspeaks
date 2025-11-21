@@ -76,10 +76,12 @@ export default function Contact() {
       ref={sectionRef}
       className={`py-7 relative w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''}`}
     >
-      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-3d-pop break-words">
-        Get in touch
-      </h2>
-      <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 animate-glow-pulse"></div>
+      <div className="inline-block">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-3d-pop break-words">
+          Get in touch
+        </h2>
+        <div className="h-1 w-full bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 animate-glow-pulse"></div>
+      </div>
       <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 max-w-2xl animate-zoom-in-blur animate-delay-100 break-words">
         Have a collaboration idea, need a workshop at your college, or want recordings/access?
         Send us a message — we're always happy to connect.

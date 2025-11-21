@@ -18,7 +18,7 @@ export default function Testimonials() {
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 animate-glow-pulse break-words">
             What learners say
           </h2>
-          <div className="h-1 w-12 sm:w-16 md:w-20 lg:w-24 bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 mx-auto animate-glow-pulse shadow-lg shadow-[#c8348f]/30"></div>
+          <div className="h-1 w-full bg-gradient-to-r from-[#1f3492] to-[#c8348f] rounded-full mt-2 animate-glow-pulse shadow-lg shadow-[#c8348f]/30"></div>
         </div>
         <p className="text-xs sm:text-sm md:text-base text-slate-600 mt-2 sm:mt-3 animate-zoom-in-blur animate-delay-100">
           Real feedback from students who've experienced our workshops and sessions.
