@@ -7,13 +7,13 @@
 /* Import animations */
 @import './animations.css';
 
-/* Custom Cursor - Theme Colors */
+/* Custom Cursor - Gradient Arrow */
 * {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='8' fill='%231f3492' opacity='0.8'/%3E%3Ccircle cx='12' cy='12' r='4' fill='%23c8348f'/%3E%3C/svg%3E") 12 12, auto;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231f3492'/%3E%3Cstop offset='100%25' stop-color='%23c8348f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M4 2L20 12L12 14L10 22L4 2Z' fill='url(%23g)' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 4 2, auto;
 }
 
 a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-pointer {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ccircle cx='14' cy='14' r='12' fill='%23c8348f' opacity='0.9'/%3E%3Ccircle cx='14' cy='14' r='6' fill='%231f3492'/%3E%3C/svg%3E") 14 14, pointer;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3ClinearGradient id='h' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23c8348f'/%3E%3Cstop offset='100%25' stop-color='%231f3492'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M8 4L8 20L12 16L16 24L18 23L14 15L20 15L8 4Z' fill='url(%23h)' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E") 8 4, pointer;
 }
 
 /* Ultra-smooth scrolling for the entire page - Mobile First */
