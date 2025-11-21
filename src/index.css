@@ -7,6 +7,15 @@
 /* Import animations */
 @import './animations.css';
 
+/* Custom Cursor - Theme Colors */
+* {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='8' fill='%231f3492' opacity='0.8'/%3E%3Ccircle cx='12' cy='12' r='4' fill='%23c8348f'/%3E%3C/svg%3E") 12 12, auto;
+}
+
+a, button, [role="button"], input[type="submit"], input[type="button"], .cursor-pointer {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ccircle cx='14' cy='14' r='12' fill='%23c8348f' opacity='0.9'/%3E%3Ccircle cx='14' cy='14' r='6' fill='%231f3492'/%3E%3C/svg%3E") 14 14, pointer;
+}
+
 /* Ultra-smooth scrolling for the entire page - Mobile First */
 html {
   scroll-behavior: smooth;
