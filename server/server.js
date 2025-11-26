@@ -9,6 +9,7 @@ const eventRoutes = require('./routes/eventRoutes');
 const testimonialRoutes = require('./routes/testimonialRoutes');
 const contactRoutes = require('./routes/contactRoutes');
 const recordingRoutes = require('./routes/recordingRoutes');
+const registrationRoutes = require('./routes/registrationRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -92,6 +93,7 @@ app.use('/api/events', eventRoutes);
 app.use('/api/testimonials', testimonialRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/recordings', recordingRoutes);
+app.use('/api/registrations', registrationRoutes);
 
 // Health check endpoint
 app.get('/api/health', async (req, res) => {

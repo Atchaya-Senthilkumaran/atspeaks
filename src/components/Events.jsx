@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import EventDetailModal from "./EventDetailModal";
 import BookingModal from "./BookingModal";
+import RegistrationModal from "./RegistrationModal";
 import API_URL from "../config/api";
 
 export default function Events() {
@@ -11,6 +12,8 @@ export default function Events() {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [bookingEvent, setBookingEvent] = useState(null);
   const [openBooking, setOpenBooking] = useState(false);
+  const [registrationEvent, setRegistrationEvent] = useState(null);
+  const [openRegistration, setOpenRegistration] = useState(false);
   const [sectionRef, isRevealed] = useScrollReveal({ threshold: 0.1 });
 
   // Fetch events from API
@@ -185,7 +188,10 @@ export default function Events() {
                   {/* Register Now for Upcoming events with registration URL */}
                   {e.type === "Upcoming" && e.registrationUrl && (
                     <button
-                      onClick={() => window.open(e.registrationUrl, '_blank')}
+                      onClick={() => {
+                        setRegistrationEvent(e);
+                        setOpenRegistration(true);
+                      }}
                       className="
                         inline-block
                         px-3 sm:px-4 py-1.5 sm:py-2
@@ -261,6 +267,16 @@ export default function Events() {
         onClose={() => {
           setOpenBooking(false);
           setBookingEvent(null);
+        }}
+      />
+
+      {/* Registration Modal */}
+      <RegistrationModal
+        event={registrationEvent}
+        open={openRegistration}
+        onClose={() => {
+          setOpenRegistration(false);
+          setRegistrationEvent(null);
         }}
       />
     </section>

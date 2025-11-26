@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import BookingModal from "./BookingModal";
+import RegistrationModal from "./RegistrationModal";
 
 export default function EventDetailModal({ event, onClose }) {
   const [openBooking, setOpenBooking] = useState(false);
+  const [openRegistration, setOpenRegistration] = useState(false);
 
   if (!event) return null;
 
@@ -171,17 +173,15 @@ export default function EventDetailModal({ event, onClose }) {
               )}
 
               {event.type === "Upcoming" && event.registrationUrl && (
-                <a
-                  href={event.registrationUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => setOpenRegistration(true)}
                   className="inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 px-4 sm:px-5 md:px-6 py-2.5 sm:py-2.5 md:py-3 text-sm sm:text-sm md:text-base rounded-full bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white font-medium shadow-lg hover:shadow-xl hover:brightness-110 transition-all min-h-[48px]"
                 >
                   <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   Register Now
-                </a>
+                </button>
               )}
 
               {event.type === "Upcoming" && !event.registrationUrl && (
@@ -212,6 +212,9 @@ export default function EventDetailModal({ event, onClose }) {
 
       {/* Booking Modal */}
       <BookingModal event={event} open={openBooking} onClose={() => setOpenBooking(false)} />
+
+      {/* Registration Modal */}
+      <RegistrationModal event={event} open={openRegistration} onClose={() => setOpenRegistration(false)} />
     </div>
   );
 }
