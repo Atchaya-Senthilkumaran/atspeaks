@@ -77,6 +77,7 @@ export default function RegistrationModal({ event, open, onClose }) {
       });
 
     } catch (err) {
+      console.error('❌ Registration error:', err);
       setError(err.message || "Something went wrong. Please try again.");
     } finally {
       setLoading(false);
@@ -413,7 +414,7 @@ export default function RegistrationModal({ event, open, onClose }) {
               disabled={loading}
               className="flex-1 px-6 py-3 bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white rounded-full font-medium hover:brightness-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? "Submitting..." : "Register Now"}
+              {loading ? "Submitting..." : "Submit"}
             </button>
           </div>
         </form>
