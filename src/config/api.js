@@ -1,5 +1,5 @@
-// API Configuration - Production
-const API_URL = 'https://atspeaksplease.vercel.app';
+// API Configuration - Local Development
+const API_URL = 'http://localhost:5000';
 
 console.log('🔗 API URL configured as:', API_URL);
 

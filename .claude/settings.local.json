@@ -37,7 +37,9 @@
       "Bash(git commit:*)",
       "Bash(git push)",
       "Bash(git checkout:*)",
-      "Bash(pkill:*)"
+      "Bash(pkill:*)",
+      "Bash(powershell -Command:*)",
+      "mcp__ide__getDiagnostics"
     ],
     "deny": [],
     "ask": []
