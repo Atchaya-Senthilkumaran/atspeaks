@@ -300,13 +300,13 @@ export default function RegistrationModal({ event, open, onClose }) {
               >
                 <option value="">Select Type</option>
                 <option value="Workshop Only - Free">Workshop Only - Free</option>
-                <option value="Workshop + Certificate - Rs 50">Workshop + Certificate - Rs 50</option>
-                <option value="Workshop + Certificate + Recording - Rs 150">Workshop + Certificate + Recording - Rs 150</option>
+                <option value="Workshop + Certificate - ₹50">Workshop + Certificate - ₹50</option>
+                <option value="Workshop + Certificate + Recording - ₹150">Workshop + Certificate + Recording - ₹150</option>
               </select>
             </div>
 
             {/* Payment Section - Only show for paid registrations */}
-            {(formData.registrationType === "Workshop + Certificate - Rs 50" || formData.registrationType === "Workshop + Certificate + Recording - Rs 150") && (
+            {(formData.registrationType === "Workshop + Certificate - ₹50" || formData.registrationType === "Workshop + Certificate + Recording - ₹150") && (
               <>
                 {/* Payment QR Code */}
                 <div className="bg-gradient-to-br from-indigo-50 to-pink-50 rounded-lg p-4 border border-indigo-200">
@@ -314,7 +314,7 @@ export default function RegistrationModal({ event, open, onClose }) {
                     {/* QR Code */}
                     <div className="flex flex-col items-center">
                       <h4 className="text-sm font-semibold text-slate-800 mb-2">
-                        Scan to Pay {formData.registrationType === "Workshop + Certificate - Rs 50" ? "₹50" : "₹150"}
+                        Scan to Pay {formData.registrationType === "Workshop + Certificate - ₹50" ? "₹50" : "₹150"}
                       </h4>
                       <img
                         src="/recordings/qr.jpg"
@@ -328,7 +328,7 @@ export default function RegistrationModal({ event, open, onClose }) {
                       <h4 className="text-sm font-semibold text-slate-800 mb-2">📋 Payment Instructions</h4>
                       <ul className="text-xs text-slate-700 space-y-1.5 list-disc list-inside">
                         <li>Scan QR code using any UPI app</li>
-                        <li>Pay exactly {formData.registrationType === "Workshop + Certificate - Rs 50" ? "₹50" : "₹150"}</li>
+                        <li>Pay exactly {formData.registrationType === "Workshop + Certificate - ₹50" ? "₹50" : "₹150"}</li>
                         <li>Copy UPI Transaction ID (12 digits)</li>
                         <li>Enter the Transaction ID below</li>
                       </ul>
