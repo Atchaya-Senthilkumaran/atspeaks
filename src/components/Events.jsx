@@ -182,6 +182,33 @@ export default function Events() {
                     Details
                   </button>
 
+                  {/* Register Now for Upcoming events with registration URL */}
+                  {e.type === "Upcoming" && e.registrationUrl && (
+                    <button
+                      onClick={() => window.open(e.registrationUrl, '_blank')}
+                      className="
+                        inline-block
+                        px-3 sm:px-4 py-1.5 sm:py-2
+                        rounded-full
+                        border-2 border-[#1f3492]
+                        text-[#1f3492]
+                        text-xs sm:text-sm font-medium
+                        shadow-md
+                        hover:bg-[#1f3492]
+                        hover:text-white
+                        hover:scale-110
+                        hover:shadow-xl
+                        cursor-pointer
+                        whitespace-nowrap
+                        transition-all
+                        duration-300
+                        hover-rotate
+                      "
+                    >
+                      Register Now
+                    </button>
+                  )}
+
                   {/* Book Recording for Past events only */}
                   {e.type === "Past" && (
                     <button

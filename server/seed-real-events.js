@@ -1,6 +1,6 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-const connectDB = require("./config/db");
+const { connectDB } = require("./config/db");
 const Event = require("./models/Event");
 
 const seed = async () => {
@@ -12,6 +12,38 @@ const seed = async () => {
 
     // Insert real AT Speaks events from frontend
     const events = [
+      {
+        title: "Portfolio Launchpad",
+        date: "2025-11-30",
+        type: "Upcoming",
+        price: 0,
+        recordingAvailable: false,
+        registrationUrl: "https://forms.gle/FGZKLzmWFZtpPL3c7",
+        whatsappGroupUrl: "https://chat.whatsapp.com/Cfcb4NK4CipLVxl6Ojs6YV",
+        description:
+          "Build and launch your own professional portfolio website using AI in just one hour. Join us for this exciting hands-on session!",
+        poster: "/posters/14.jpg",
+        highlights: [
+          "Build your portfolio website using AI",
+          "Launch your professional online presence",
+          "Complete in just one hour",
+          "Hands-on practical session",
+        ],
+        speakers: [
+          {
+            role: "Founder",
+            name: "Atchaya Senthilkumaran",
+            title: "Founder & CEO - AT Speaks",
+            bio: "Tech educator and founder of AT Speaks",
+          },
+          {
+            role: "Speaker",
+            name: "Bharath K",
+            title: "Full Stack Developer, Scrapify Ecotech Pvt Ltd",
+            bio: "Experienced full stack developer specializing in modern web technologies",
+          },
+        ],
+      },
       {
         title: "Data to Dimensions: 3D Data Visualization",
         date: "2025-11-01",
