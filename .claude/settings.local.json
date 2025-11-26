@@ -41,7 +41,8 @@
       "Bash(powershell -Command:*)",
       "mcp__ide__getDiagnostics",
       "Bash(del nul)",
-      "Bash(del servernul)"
+      "Bash(del servernul)",
+      "WebFetch(domain:atspeaksplease.vercel.app)"
     ],
     "deny": [],
     "ask": []
