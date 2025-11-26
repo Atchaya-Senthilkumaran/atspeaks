@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const { connectDB, ensureConnection } = require('./config/db');
+// Portfolio Launchpad event deployment - 2025-11-26
 
 const eventRoutes = require('./routes/eventRoutes');
 const testimonialRoutes = require('./routes/testimonialRoutes');
