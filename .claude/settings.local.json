@@ -39,7 +39,9 @@
       "Bash(git checkout:*)",
       "Bash(pkill:*)",
       "Bash(powershell -Command:*)",
-      "mcp__ide__getDiagnostics"
+      "mcp__ide__getDiagnostics",
+      "Bash(del nul)",
+      "Bash(del servernul)"
     ],
     "deny": [],
     "ask": []
