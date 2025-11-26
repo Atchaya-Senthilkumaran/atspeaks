@@ -34,6 +34,9 @@ export default function RegistrationModal({ event, open, onClose }) {
     setError("");
 
     try {
+      console.log('📤 Submitting registration to:', `${API_URL}/api/registrations`);
+      console.log('📝 Form data:', { eventId: event._id, ...formData });
+
       // Submit to backend
       const response = await fetch(`${API_URL}/api/registrations`, {
         method: "POST",
@@ -46,25 +49,20 @@ export default function RegistrationModal({ event, open, onClose }) {
         }),
       });
 
+      console.log('📡 Response status:', response.status);
+
       const data = await response.json();
+      console.log('📡 Response data:', data);
 
       if (!response.ok) {
         throw new Error(data.message || "Registration failed");
       }
 
-      // If backend submission successful, submit to Google Form
-      if (event.registrationUrl && event.registrationUrl.includes('forms.gle')) {
-        try {
-          // Open Google Form in new tab for user to submit as backup
-          window.open(event.registrationUrl, '_blank');
-        } catch (err) {
-          console.error("Google Form submission error:", err);
-        }
-      }
+      console.log('✅ Registration successful:', data);
 
       // Show success message
       setSuccess(true);
-      setWhatsappGroupUrl(data.data.whatsappGroupUrl);
+      setWhatsappGroupUrl(data.data?.whatsappGroupUrl || event.whatsappGroupUrl);
 
       // Reset form
       setFormData({
