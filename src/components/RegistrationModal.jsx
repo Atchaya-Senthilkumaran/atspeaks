@@ -306,23 +306,59 @@ export default function RegistrationModal({ event, open, onClose }) {
               </select>
             </div>
 
-            {/* Transaction ID */}
+            {/* Payment Section - Only show for paid registrations */}
             {(formData.registrationType === "Workshop + Certificate - Rs 50" || formData.registrationType === "Workshop + Certificate + Recording - Rs 150") && (
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  Payment Transaction ID <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="transactionId"
-                  value={formData.transactionId}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#1f3492] focus:border-transparent outline-none transition-all"
-                  placeholder="Enter your payment transaction ID"
-                />
-                <p className="text-xs text-slate-500 mt-1">Enter the transaction ID from your payment confirmation</p>
-              </div>
+              <>
+                {/* Payment QR Code */}
+                <div className="bg-gradient-to-br from-indigo-50 to-pink-50 rounded-lg p-4 border border-indigo-200">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* QR Code */}
+                    <div className="flex flex-col items-center">
+                      <h4 className="text-sm font-semibold text-slate-800 mb-2">
+                        Scan to Pay {formData.registrationType === "Workshop + Certificate - Rs 50" ? "₹50" : "₹150"}
+                      </h4>
+                      <img
+                        src="/recordings/qr.jpg"
+                        alt="Payment QR Code"
+                        className="w-40 h-40 sm:w-48 sm:h-48 rounded-lg border-2 border-white shadow-lg"
+                      />
+                    </div>
+
+                    {/* Payment Instructions */}
+                    <div>
+                      <h4 className="text-sm font-semibold text-slate-800 mb-2">📋 Payment Instructions</h4>
+                      <ul className="text-xs text-slate-700 space-y-1.5 list-disc list-inside">
+                        <li>Scan QR code using any UPI app</li>
+                        <li>Pay exactly {formData.registrationType === "Workshop + Certificate - Rs 50" ? "₹50" : "₹150"}</li>
+                        <li>Copy UPI Transaction ID (12 digits)</li>
+                        <li>Enter the Transaction ID below</li>
+                      </ul>
+                      <div className="mt-3 bg-amber-50 border border-amber-200 rounded-lg p-2">
+                        <p className="text-xs text-amber-800">
+                          <strong>Note:</strong> You will receive the certificate/recording link within 24-72 hours after payment verification
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* UPI Transaction ID */}
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                    UPI Transaction ID <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="transactionId"
+                    value={formData.transactionId}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#1f3492] focus:border-transparent outline-none transition-all"
+                    placeholder="Enter your 12-digit UPI Transaction ID (e.g., 123456789012)"
+                  />
+                  <p className="text-xs text-slate-500 mt-1">Enter the 12-digit UPI Transaction ID from your payment confirmation</p>
+                </div>
+              </>
             )}
 
             {/* WhatsApp Group Reminder */}
