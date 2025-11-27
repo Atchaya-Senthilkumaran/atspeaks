@@ -35,14 +35,8 @@ exports.createRegistration = async (req, res) => {
       });
     }
 
-    // Check if user already registered for this event
-    const existingRegistration = await Registration.findOne({ eventId, email });
-    if (existingRegistration) {
-      return res.status(400).json({
-        success: false,
-        message: 'You have already registered for this event'
-      });
-    }
+    // Note: Allowing multiple registrations from same email as per requirement
+    // Users can register multiple times if needed
 
     // Create registration
     const registration = new Registration({
@@ -79,14 +73,34 @@ exports.createRegistration = async (req, res) => {
       }
     }
 
-    // Send emails (don't wait for them, send in background)
-    sendAdminNotification(registration.toObject())
-      .then(() => console.log('✅ Admin notification sent'))
-      .catch(err => console.error('❌ Admin notification failed:', err));
+    // Send emails - We'll try to send them and log results
+    console.log('📧 Attempting to send emails...');
+    console.log('   EMAIL_USER configured:', !!process.env.EMAIL_USER);
+    console.log('   EMAIL_PASS configured:', !!process.env.EMAIL_PASS);
 
-    sendUserAcknowledgement(registration.toObject(), event.whatsappGroupUrl)
-      .then(() => console.log('✅ User acknowledgement sent'))
-      .catch(err => console.error('❌ User acknowledgement failed:', err));
+    // Send admin notification
+    try {
+      const adminEmailResult = await sendAdminNotification(registration.toObject());
+      if (adminEmailResult.success) {
+        console.log('✅ Admin notification sent successfully to connect.atspeaks@gmail.com');
+      } else {
+        console.log('⚠️ Admin notification failed:', adminEmailResult.error);
+      }
+    } catch (err) {
+      console.error('❌ Admin notification error:', err.message);
+    }
+
+    // Send user acknowledgement
+    try {
+      const userEmailResult = await sendUserAcknowledgement(registration.toObject(), event.whatsappGroupUrl);
+      if (userEmailResult.success) {
+        console.log('✅ User acknowledgement sent successfully to', registration.email);
+      } else {
+        console.log('⚠️ User acknowledgement failed:', userEmailResult.error);
+      }
+    } catch (err) {
+      console.error('❌ User acknowledgement error:', err.message);
+    }
 
     // Return success response
     res.status(201).json({
