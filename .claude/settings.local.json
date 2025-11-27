@@ -43,7 +43,8 @@
       "Bash(del nul)",
       "Bash(del servernul)",
       "WebFetch(domain:atspeaksplease.vercel.app)",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "Bash(del \"C:\\Users\\atcha\\OneDrive\\Desktop\\AT Speaks\\atspeaks\\server\\test-nodemailer.js\")"
     ],
     "deny": [],
     "ask": []
