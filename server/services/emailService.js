@@ -1,30 +1,23 @@
 const nodemailer = require('nodemailer');
 
-let cachedTransporter = null;
-
 // Create transporter using Gmail
-const getTransporter = () => {
+const createTransporter = () => {
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
     console.warn('⚠️ Email credentials not configured');
     return null;
   }
-
-  if (!cachedTransporter) {
-    cachedTransporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-      }
-    });
-  }
-
-  return cachedTransporter;
+  return nodemailer.createTransporter({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS
+    }
+  });
 };
 
 // Send registration notification to admin
 const sendAdminNotification = async (registrationData) => {
-  const transporter = getTransporter();
+  const transporter = createTransporter();
 
   if (!transporter) {
     console.log('⚠️ Skipping admin notification - email not configured');
@@ -103,7 +96,7 @@ const sendAdminNotification = async (registrationData) => {
 
 // Send acknowledgement email to user
 const sendUserAcknowledgement = async (registrationData, whatsappGroupUrl) => {
-  const transporter = getTransporter();
+  const transporter = createTransporter();
 
   if (!transporter) {
     console.log('⚠️ Skipping user acknowledgement - email not configured');

@@ -9,7 +9,7 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className={`mt-8 sm:mt-10 md:mt-12 mb-12 sm:mb-16 md:mb-20 relative py-7 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''} overflow-hidden`}
+      className={`relative py-7 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''} overflow-hidden`}
     >
       {/* Heading - Mobile First */}
       <div className="relative inline-block">

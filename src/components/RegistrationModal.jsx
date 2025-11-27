@@ -17,7 +17,6 @@ export default function RegistrationModal({ event, open, onClose }) {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
   const [whatsappGroupUrl, setWhatsappGroupUrl] = useState("");
-  const [successDetails, setSuccessDetails] = useState(null);
 
   if (!open || !event) return null;
 
@@ -35,15 +34,8 @@ export default function RegistrationModal({ event, open, onClose }) {
     setError("");
 
     try {
-      const eventId = event?._id || event?.id || event?.eventId;
-      if (!eventId) {
-        setError("Event reference missing. Please refresh and try again.");
-        setLoading(false);
-        return;
-      }
-
       console.log('📤 Submitting registration to:', `${API_URL}/api/registrations`);
-      console.log('📝 Form data:', { eventId, ...formData });
+      console.log('📝 Form data:', { eventId: event._id, ...formData });
 
       // Submit to backend
       const response = await fetch(`${API_URL}/api/registrations`, {
@@ -52,7 +44,7 @@ export default function RegistrationModal({ event, open, onClose }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          eventId,
+          eventId: event._id,
           ...formData
         }),
       });
@@ -71,12 +63,6 @@ export default function RegistrationModal({ event, open, onClose }) {
       // Show success message
       setSuccess(true);
       setWhatsappGroupUrl(data.data?.whatsappGroupUrl || event.whatsappGroupUrl);
-      setSuccessDetails({
-        eventTitle: data.data?.eventTitle || event.title,
-        email: formData.email,
-        fullName: formData.fullName,
-        message: data.message || "Registration successful!"
-      });
 
       // Reset form
       setFormData({
@@ -102,7 +88,6 @@ export default function RegistrationModal({ event, open, onClose }) {
     setSuccess(false);
     setError("");
     setWhatsappGroupUrl("");
-    setSuccessDetails(null);
     onClose();
   };
 
@@ -119,14 +104,9 @@ export default function RegistrationModal({ event, open, onClose }) {
           </div>
 
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">Registration Successful!</h2>
-          <p className="text-sm sm:text-base text-slate-600 mb-4">
-            {successDetails?.message}
-          </p>
-          <p className="text-xs sm:text-sm text-slate-500">
-            Confirmation email sent to <strong>{successDetails?.email}</strong>.
-          </p>
           <p className="text-sm sm:text-base text-slate-600 mb-6">
-            You've successfully registered for <strong>{successDetails?.eventTitle || event.title}</strong>. Check your inbox for the full confirmation.
+            You've successfully registered for <strong>{event.title}</strong>.
+            Check your email for confirmation details.
           </p>
 
           {whatsappGroupUrl && (
