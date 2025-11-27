@@ -1,0 +1,14 @@
+node_modules
+.env
+*.md
+uploads
+publicrecordings
+.gitignore
+test-*.js
+seed*.js
+check-db.js
+import-events.js
+reimport-events.js
+update-events.js
+verify-speakers.js
+bookings-backup.json
