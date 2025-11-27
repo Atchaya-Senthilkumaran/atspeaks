@@ -1,6 +1,7 @@
 const Registration = require('../models/Registration');
 const Event = require('../models/Event');
 const { sendAdminNotification, sendUserAcknowledgement } = require('../services/emailService');
+const mongoose = require('mongoose');
 
 // POST /api/registrations
 // Create a new event registration
@@ -10,8 +11,6 @@ exports.createRegistration = async (req, res) => {
     console.log('📥 Request body:', JSON.stringify(req.body, null, 2));
     console.log('🔌 MongoDB connection state:', mongoose.connection.readyState);
     console.log('   (0=disconnected, 1=connected, 2=connecting, 3=disconnecting)');
-
-    const mongoose = require('mongoose');
 
     const {
       eventId,
