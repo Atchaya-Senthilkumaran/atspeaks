@@ -74,6 +74,7 @@ exports.createRegistration = async (req, res) => {
     console.log('   Registration ID (after save):', savedRegistration._id);
     console.log('   Event Title:', savedRegistration.eventTitle);
     console.log('   User Email:', savedRegistration.email);
+    console.log('   event id:',savedRegistration.eventId);
 
     // Submit to Google Form (if URL is provided)
     let googleFormSuccess = false;
