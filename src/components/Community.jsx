@@ -9,7 +9,7 @@ export default function Community() {
     <section
       id="community"
       ref={sectionRef}
-      className={`relative py-7 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''} overflow-hidden`}
+      className={`relative mt-12 sm:mt-14 md:mt-16 mb-12 sm:mb-16 md:mb-20 py-7 w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''} overflow-hidden`}
     >
       {/* Section Header with 3D */}
       <div className="relative inline-block">

@@ -1,11 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Import responsive styles - must be before other CSS rules */
 @import './responsive.css';
 /* Import animations */
 @import './animations.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Custom Cursor - Gradient Arrow */
 * {
