@@ -69,8 +69,23 @@ export default function Events() {
     fetchEvents();
   }, []);
 
+  // Normalize events to ensure Portfolio Launchpad is treated as past with recordings
+  const normalizedEvents = events.map((e) => {
+    if (e?.title?.toLowerCase() === "portfolio launchpad") {
+      return {
+        ...e,
+        type: "Past",
+        recordingAvailable: true,
+        registrationUrl: null,
+        whatsappGroupUrl: null,
+        price: e.price && e.price > 0 ? e.price : 199,
+      };
+    }
+    return e;
+  });
+
   // Show only first 3 events initially, or all if showAll is true
-  const displayedEvents = showAll ? events : events.slice(0, 3);
+  const displayedEvents = showAll ? normalizedEvents : normalizedEvents.slice(0, 3);
 
   return (
     <section
