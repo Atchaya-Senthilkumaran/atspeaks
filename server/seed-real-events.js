@@ -15,11 +15,9 @@ const seed = async () => {
       {
         title: "Portfolio Launchpad",
         date: "2025-11-30",
-        type: "Upcoming",
-        price: 0,
-        recordingAvailable: false,
-        registrationUrl: "https://forms.gle/FGZKLzmWFZtpPL3c7",
-        whatsappGroupUrl: "https://chat.whatsapp.com/Cfcb4NK4CipLVxl6Ojs6YV",
+        type: "Past",
+        price: 199,
+        recordingAvailable: true,
         description:
           "Build and launch your own professional portfolio website using AI in just one hour. Join us for this exciting hands-on session!",
         poster: "/posters/14.jpg",

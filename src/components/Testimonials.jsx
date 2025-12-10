@@ -10,7 +10,7 @@ export default function Testimonials() {
     <section
       id="testimonials"
       ref={sectionRef}
-      className={`mt-14 sm:mt-16 md:mt-20 mb-8 sm:mb-10 md:mb-12 py-7 relative w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''} overflow-hidden`}
+      className={`py-7 relative w-full scroll-reveal-3d ${isRevealed ? 'revealed' : ''} overflow-hidden`}
     >
       {/* Heading with 3D effect */}
       <div className="text-center max-w-2xl mx-auto px-2 animate-3d-pop">
