@@ -10,6 +10,15 @@ const updateEvents = async () => {
 
     // Update events with correct prices and recordingAvailable field
     const updates = [
+      // Move Portfolio Launchpad to past and enable recordings
+      {
+        title: "Portfolio Launchpad",
+        price: 199,
+        recordingAvailable: true,
+        type: "Past",
+        registrationUrl: null,
+        whatsappGroupUrl: null,
+      },
       { title: "Data to Dimensions: 3D Data Visualization", price: 199, recordingAvailable: true },
       { title: "Agentic Frames: From CLI to MCP", price: 199, recordingAvailable: true },
       { title: "Campus to Corporate: Hack and Crack Placements", price: 199, recordingAvailable: true },
@@ -28,14 +37,23 @@ const updateEvents = async () => {
     console.log('📝 Updating events with prices and recordingAvailable...');
 
     for (const update of updates) {
+      // Build dynamic update doc so we don't overwrite fields unintentionally
+      const setFields = {
+        price: update.price,
+        recordingAvailable: update.recordingAvailable,
+      };
+
+      if (update.type) setFields.type = update.type;
+      if (Object.prototype.hasOwnProperty.call(update, "registrationUrl")) {
+        setFields.registrationUrl = update.registrationUrl;
+      }
+      if (Object.prototype.hasOwnProperty.call(update, "whatsappGroupUrl")) {
+        setFields.whatsappGroupUrl = update.whatsappGroupUrl;
+      }
+
       const result = await Event.updateOne(
         { title: update.title },
-        {
-          $set: {
-            price: update.price,
-            recordingAvailable: update.recordingAvailable
-          }
-        }
+        { $set: setFields }
       );
 
       if (result.matchedCount > 0) {
