@@ -66,7 +66,7 @@ export default function Footer() {
                 <Linkedin className="w-4 h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 text-[#1f3492] group-hover:scale-110 transition-transform duration-300" />
               </a>
               <a
-                href="https://www.youtube.com/@ATSpeaksofficial"
+                href="https://www.youtube.com/@theatspeaks"
                 className="group relative p-2 sm:p-2 md:p-2.5 bg-white border-2 border-transparent rounded-full shadow-md hover:-translate-y-1 hover:shadow-xl transition-all duration-300 min-w-[44px] min-h-[44px] flex items-center justify-center hover:border-[#1f3492]/20 hover:bg-gradient-to-br hover:from-[#1f3492]/5 hover:to-[#c8348f]/5"
                 aria-label="YouTube"
               >
