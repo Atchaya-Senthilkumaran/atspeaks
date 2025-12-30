@@ -8,7 +8,7 @@ import API_URL from "../config/api";
 export default function Events() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showAll, setShowAll] = useState(false);
+  const [showAll, setShowAll] = useState(true); // Show all events by default
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [bookingEvent, setBookingEvent] = useState(null);
   const [openBooking, setOpenBooking] = useState(false);
@@ -99,7 +99,7 @@ export default function Events() {
   console.log(`📊 Normalized events: ${normalizedEvents.length}`);
   console.log(`📊 Events to display: ${showAll ? normalizedEvents.length : Math.min(3, normalizedEvents.length)}`);
 
-  // Show only first 3 events initially, or all if showAll is true
+  // Show all events by default, or limit to 3 if showAll is false
   const displayedEvents = showAll ? normalizedEvents : normalizedEvents.slice(0, 3);
 
   return (
