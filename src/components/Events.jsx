@@ -70,19 +70,34 @@ export default function Events() {
   }, []);
 
   // Normalize events to ensure Portfolio Launchpad is treated as past with recordings
-  const normalizedEvents = events.map((e) => {
-    if (e?.title?.toLowerCase() === "portfolio launchpad") {
-      return {
-        ...e,
-        type: "Past",
-        recordingAvailable: true,
-        registrationUrl: null,
-        whatsappGroupUrl: null,
-        price: e.price && e.price > 0 ? e.price : 199,
-      };
-    }
-    return e;
-  });
+  // Also filter out any events with missing required fields
+  const normalizedEvents = events
+    .filter((e) => {
+      // Filter out events that are missing critical fields
+      if (!e || !e._id || !e.title) {
+        console.warn('⚠️ Skipping event with missing data:', e);
+        return false;
+      }
+      return true;
+    })
+    .map((e) => {
+      if (e?.title?.toLowerCase() === "portfolio launchpad") {
+        return {
+          ...e,
+          type: "Past",
+          recordingAvailable: true,
+          registrationUrl: null,
+          whatsappGroupUrl: null,
+          price: e.price && e.price > 0 ? e.price : 199,
+        };
+      }
+      return e;
+    });
+
+  // Log total events for debugging
+  console.log(`📊 Total events fetched: ${events.length}`);
+  console.log(`📊 Normalized events: ${normalizedEvents.length}`);
+  console.log(`📊 Events to display: ${showAll ? normalizedEvents.length : Math.min(3, normalizedEvents.length)}`);
 
   // Show only first 3 events initially, or all if showAll is true
   const displayedEvents = showAll ? normalizedEvents : normalizedEvents.slice(0, 3);
@@ -119,11 +134,17 @@ export default function Events() {
           </div>
         ) : (
           displayedEvents.map((e, index) => {
+            // Skip rendering if event data is invalid
+            if (!e || !e._id || !e.title) {
+              console.warn(`⚠️ Skipping invalid event at index ${index}:`, e);
+              return null;
+            }
+
             const delay = index * 0.15;
             const animationType = index % 3 === 0 ? 'animate-3d-pop' : index % 3 === 1 ? 'animate-bounce-in' : 'animate-slide-up-rotate';
             return (
             <div
-              key={e._id}
+              key={e._id || `event-${index}`}
               className={`p-[1px] rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/10 to-transparent hover:shadow-2xl transition-all duration-500 w-full hover-3d-tilt perspective-3d ${animationType}`}
               style={{ 
                 animationDelay: `${delay}s`,
@@ -260,7 +281,7 @@ export default function Events() {
               </div>
             </div>
             );
-          })
+          }).filter(Boolean) // Remove any null entries from invalid events
         )}
       </div>
 
