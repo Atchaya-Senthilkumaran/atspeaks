@@ -1,4 +1,20 @@
-[
+  {
+    "title": "Founders Unfiltered",
+    "date": "2025-12-27",
+    "type": "Past",
+    "description": "If you're someone who wants to start something but doesn't know where to begin, this session will give you clarity, direction, and the confidence to take your first step.",
+    "poster": "/posters/15.png",
+    "price": 300,
+    "recordingAvailable": true,
+    "highlights": ["Get clarity on starting your own venture", "Learn from successful founders' experiences", "Gain direction for your entrepreneurial journey", "Build confidence to take your first step"],
+    "speakers": [
+      {"role": "Speaker", "name": "Swayam Prakash Annamalai S", "title": "Founder & CEO, WeDigi", "bio": "Experienced entrepreneur sharing insights on starting and scaling businesses"},
+      {"role": "Speaker", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO, AT Speaks", "bio": "Tech educator and founder providing guidance on entrepreneurship"},
+      {"role": "Speaker", "name": "Sujan Saitej", "title": "Founder & CEO, DiffuseAI Solutions", "bio": "AI industry leader sharing startup experiences"},
+      {"role": "Speaker", "name": "Prajein C K", "title": "Co-Founder & COO, Kenesis", "bio": "Business operations expert providing entrepreneurial insights"},
+      {"role": "Speaker", "name": "Gamaliel Das", "title": "Founder, CodeHunters Academy", "bio": "Education entrepreneur sharing startup lessons"}
+    ]
+  },
   {
     "title": "Data to Dimensions: 3D Data Visualization",
     "date": "2025-11-01",
