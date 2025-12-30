@@ -331,6 +331,55 @@ const seed = async () => {
           bio: "UI/UX design educator introducing students to the world of Figma",
         },
       },
+      {
+        title: "Founders Unfiltered",
+        date: "2025-12-27",
+        type: "Past",
+        price: 199,
+        recordingAvailable: true,
+        description:
+          "If you're someone who wants to start something but doesn't know where to begin, this session will give you clarity, direction, and the confidence to take your first step.",
+        poster: "/posters/15.png",
+        highlights: [
+          "Learn from successful founders",
+          "Get clarity on starting your journey",
+          "Gain direction and confidence",
+          "Real insights from multiple founders",
+          "Practical advice for aspiring entrepreneurs",
+        ],
+        speakers: [
+          {
+            role: "Speaker",
+            name: "Swayam Prakash Annamalai S",
+            title: "Founder & CEO, WeDigi",
+            bio: "Entrepreneur and founder leading digital innovation",
+          },
+          {
+            role: "Host",
+            name: "Atchaya Senthilkumaran",
+            title: "Founder & CEO, AT Speaks",
+            bio: "Tech educator and founder of AT Speaks",
+          },
+          {
+            role: "Speaker",
+            name: "Sujan Saitej",
+            title: "Founder & CEO, DiffuseAI Solutions",
+            bio: "Industry expert in Agentic AI and automation solutions",
+          },
+          {
+            role: "Speaker",
+            name: "Prajein C K",
+            title: "Co-Founder & COO, Kenesis",
+            bio: "Business leader and co-founder driving innovation",
+          },
+          {
+            role: "Speaker",
+            name: "Gamaliel Das",
+            title: "Founder, CodeHunters Academy",
+            bio: "Education entrepreneur and founder",
+          },
+        ],
+      },
     ];
 
     await Event.insertMany(events);

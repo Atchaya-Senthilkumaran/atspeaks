@@ -32,6 +32,7 @@ const updateEvents = async () => {
       { title: "Design Smarter: Master Figma in 3 Days", price: 0, recordingAvailable: false},
       { title: "Wordpress Wonders", price: 199, recordingAvailable: true },
       { title: "Introduction To Figma", price: 0, recordingAvailable: false },
+      { title: "Founders Unfiltered", price: 199, recordingAvailable: true },
     ];
 
     console.log('📝 Updating events with prices and recordingAvailable...');

@@ -98,9 +98,21 @@ export default function Events() {
   console.log(`📊 Total events fetched: ${events.length}`);
   console.log(`📊 Normalized events: ${normalizedEvents.length}`);
   console.log(`📊 Events to display: ${showAll ? normalizedEvents.length : Math.min(3, normalizedEvents.length)}`);
+  
+  // Log each event title with index for debugging
+  console.log('📋 All events list:');
+  normalizedEvents.forEach((e, idx) => {
+    console.log(`  ${idx + 1}. ${e.title} (ID: ${e._id}, Type: ${e.type})`);
+  });
 
   // Show all events by default, or limit to 3 if showAll is false
   const displayedEvents = showAll ? normalizedEvents : normalizedEvents.slice(0, 3);
+  
+  // Log which events will be displayed
+  console.log(`📺 Displaying ${displayedEvents.length} events:`);
+  displayedEvents.forEach((e, idx) => {
+    console.log(`  ${idx + 1}. ${e.title}`);
+  });
 
   return (
     <section
@@ -123,7 +135,8 @@ export default function Events() {
       </div>
 
       {/* Events Grid - Mobile First: 1 column on mobile, 2 columns on sm+, 3 columns on lg+ */}
-      <div className="mt-4 sm:mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 w-full">
+      {/* Ensure no overflow or hidden elements */}
+      <div className="mt-4 sm:mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 w-full overflow-visible">
         {loading ? (
           <div className="col-span-1 sm:col-span-2 lg:col-span-3 text-center py-10 text-slate-600 animate-pulse-slow">
             Loading events...
@@ -140,11 +153,16 @@ export default function Events() {
               return null;
             }
 
+            // Log each event being rendered
+            console.log(`🎨 Rendering event ${index + 1}/${displayedEvents.length}: ${e.title}`);
+
             const delay = index * 0.15;
             const animationType = index % 3 === 0 ? 'animate-3d-pop' : index % 3 === 1 ? 'animate-bounce-in' : 'animate-slide-up-rotate';
             return (
             <div
               key={e._id || `event-${index}`}
+              data-event-index={index + 1}
+              data-event-title={e.title}
               className={`p-[1px] rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/10 to-transparent hover:shadow-2xl transition-all duration-500 w-full hover-3d-tilt perspective-3d ${animationType}`}
               style={{ 
                 animationDelay: `${delay}s`,
