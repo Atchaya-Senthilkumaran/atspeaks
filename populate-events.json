@@ -3,11 +3,11 @@
     "title": "LinkedIn Wrapped",
     "date": "2026-01-30",
     "type": "Upcoming",
-    "description": "LinkedIn Wrapped event - a special year-end recap and networking session. This is a placeholder that should be updated with actual event details.",
+    "description": "LinkedIn profile building strategies session. Learn how to optimize your LinkedIn presence for career growth and networking opportunities.",
     "poster": "/posters/16.png",
-    "price": 0,
-    "recordingAvailable": false,
-    "highlights": ["LinkedIn networking tips", "Year-end professional recap", "Networking strategies"],
+    "price": 299,
+    "recordingAvailable": true,
+    "highlights": ["LinkedIn profile optimization", "Professional networking strategies", "Career growth tactics"],
     "speakers": [
       {"role": "Speaker", "name": "Speaker Name", "title": "Speaker Title", "bio": "Speaker bio information"}
     ]
@@ -35,8 +35,8 @@
     "type": "Past",
     "description": "Comprehensive portfolio building workshop to showcase your skills and projects effectively. This is a placeholder that should be updated with actual event details.",
     "poster": "/posters/14.jpg",
-    "price": 0,
-    "recordingAvailable": false,
+    "price": 199,
+    "recordingAvailable": true,
     "highlights": ["Portfolio building strategies", "Project presentation skills", "Showcasing technical skills"],
     "speakers": [
       {"role": "Speaker", "name": "Speaker Name", "title": "Speaker Title", "bio": "Speaker bio information"}
