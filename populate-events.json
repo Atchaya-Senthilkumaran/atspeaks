@@ -1,15 +1,15 @@
 [
   {
     "title": "LinkedIn Wrapped",
-    "date": "2026-01-30",
-    "type": "Upcoming",
+    "date": "2025-01-25",
+    "type": "Past",
     "description": "LinkedIn profile building strategies session. Learn how to optimize your LinkedIn presence for career growth and networking opportunities.",
     "poster": "/posters/16.png",
     "price": 299,
     "recordingAvailable": true,
     "highlights": ["LinkedIn profile optimization", "Professional networking strategies", "Career growth tactics"],
     "speakers": [
-      {"role": "Speaker", "name": "Speaker Name", "title": "Speaker Title", "bio": "Speaker bio information"}
+      {"role": "Speaker", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO, AT Speaks", "bio": "Tech educator and founder specializing in career development and professional networking strategies"}
     ]
   },
   {
@@ -31,7 +31,7 @@
   },
   {
     "title": "Portfolio Launchpad",
-    "date": "2025-11-15",
+    "date": "2025-11-30",
     "type": "Past",
     "description": "Comprehensive portfolio building workshop to showcase your skills and projects effectively. This is a placeholder that should be updated with actual event details.",
     "poster": "/posters/14.jpg",
@@ -39,7 +39,8 @@
     "recordingAvailable": true,
     "highlights": ["Portfolio building strategies", "Project presentation skills", "Showcasing technical skills"],
     "speakers": [
-      {"role": "Speaker", "name": "Speaker Name", "title": "Speaker Title", "bio": "Speaker bio information"}
+      {"role": "Speaker", "name": "Bharath K", "title": "Full Stack Developer, Scrapify Ecotech Pvt Ltd", "bio": "Experienced full stack developer with expertise in portfolio development and showcasing technical skills"},
+      {"role": "Host", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO, AT Speaks", "bio": "Tech educator and founder specializing in career development and portfolio building strategies"}
     ]
   },
   {
