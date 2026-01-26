@@ -80,7 +80,7 @@ export default function About() {
           {/* Stats */}
           <div className="mt-4 sm:mt-5 md:mt-6 grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 text-center">
             <div className="animate-bounce-in animate-delay-100 hover:scale-110 transition-transform duration-300">
-              <h4 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-indigo-600">10+</h4>
+              <h4 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-indigo-600">15+</h4>
               <p className="text-[10px] sm:text-xs md:text-sm text-slate-600">Events</p>
             </div>
             <div className="animate-bounce-in animate-delay-200 hover:scale-110 transition-transform duration-300">

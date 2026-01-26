@@ -114,7 +114,7 @@ export default function Hero() {
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#c8348e]/40 flex items-center justify-center shadow-md mb-1.5 sm:mb-2 hover:scale-125 hover:rotate-12 transition-all duration-300">
                 <Award className="w-5 h-5 sm:w-6 sm:h-6 text-[#ededef]" />
               </div>
-              <div className="text-base sm:text-lg font-bold text-white">10+</div>
+              <div className="text-base sm:text-lg font-bold text-white">15+</div>
               <div className="text-[9px] sm:text-[10px] text-white font-semibold">Events</div>
             </div>
 
@@ -123,7 +123,7 @@ export default function Hero() {
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1f3567]/40 flex items-center justify-center shadow-md mb-1.5 sm:mb-2 hover:scale-125 hover:rotate-12 transition-all duration-300">
                 <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-[#ededef]" />
               </div>
-              <div className="text-base sm:text-lg font-bold text-white">5+</div>
+              <div className="text-base sm:text-lg font-bold text-white">10+</div>
               <div className="text-[9px] sm:text-[10px] text-white font-semibold">Domains</div>
             </div>
           </div>
