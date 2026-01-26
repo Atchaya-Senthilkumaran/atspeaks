@@ -1,8 +1,8 @@
 [
   {
     "title": "LinkedIn Wrapped",
-    "date": "2026-01-25",
-    "type": "Upcoming",
+    "date": "2025-01-25",
+    "type": "Past",
     "description": "LinkedIn profile building strategies session. Learn how to optimize your LinkedIn presence for career growth and networking opportunities.",
     "poster": "/posters/16.png",
     "price": 299,
@@ -33,7 +33,7 @@
     "title": "Portfolio Launchpad",
     "date": "2025-11-30",
     "type": "Past",
-    "description": "Comprehensive portfolio building workshop to showcase your skills and projects effectively. This is a placeholder that should be updated with actual event details.",
+    "description": "Master the art of creating compelling portfolios that stand out to employers and clients. This workshop covers best practices for showcasing your skills, organizing your projects, and presenting your work in a way that highlights your strengths and achievements.",
     "poster": "/posters/14.jpg",
     "price": 199,
     "recordingAvailable": true,
