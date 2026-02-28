@@ -382,11 +382,12 @@ const seed = async () => {
         ],
       },
       {
-        title: "INTERNMANIA",
+        title: "InternMania",
         date: "2026-02-22",
         type: "Past",
         price: 299,
         recordingAvailable: true,
+        isVisible: true,
         description:
           "A focused session designed to help students secure internships in 2026. The event covers practical, actionable guidance on where to apply, how to apply, resume preparation, in-demand skills, and securing internships with stipend.",
         poster: "/posters/17.png",
