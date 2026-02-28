@@ -15,6 +15,7 @@ const EventSchema = new mongoose.Schema({
   poster: { type: String }, // URL or path to poster
   price: { type: Number, default: 0 }, // Recording price in rupees
   recordingAvailable: { type: Boolean, default: true }, // Whether recording can be booked
+  isVisible: { type: Boolean, default: true }, // To show/hide events from the frontend
   registrationUrl: { type: String }, // Google Form or external registration URL
   whatsappGroupUrl: { type: String }, // WhatsApp group invite link
   highlights: [{ type: String }],

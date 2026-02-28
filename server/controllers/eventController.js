@@ -66,7 +66,13 @@ exports.getEvents = async (req, res) => {
     console.log('✅ MongoDB is connected, fetching events from database...');
     
     try {
-      const events = await Event.find().sort({ date: -1, createdAt: -1 })
+      // Fetch events where isVisible is true (or field doesn't exist yet for backward compatibility)
+      const events = await Event.find({ 
+        $or: [
+          { isVisible: true }, 
+          { isVisible: { $exists: false } }
+        ] 
+      }).sort({ date: -1, createdAt: -1 })
         .maxTimeMS(10000) // 10 second timeout
         .lean(); // Use lean for better performance
       

@@ -202,7 +202,7 @@ if (process.env.NODE_ENV !== 'production') {
   }
   
   // Start server for local development
-  app.listen(PORT, () => {
+  app.listen(PORT, async () => {
     console.log(`🚀 Server running on port ${PORT}`);
     console.log(`📊 MongoDB URI: ${MONGO_URI ? 'Set' : 'Not set'}`);
     console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
@@ -211,8 +211,12 @@ if (process.env.NODE_ENV !== 'production') {
     // Log the number of events in the database
     if (mongoose.connection.readyState === 1) {
       const Event = require('./models/Event');
-      const eventCount = await Event.countDocuments();
-      console.log(`📊 Total events in database: ${eventCount}`);
+      try {
+        const eventCount = await Event.countDocuments();
+        console.log(`📊 Total events in database: ${eventCount}`);
+      } catch (countErr) {
+        console.log('⚠️ Failed to count events:', countErr.message);
+      }
     } else {
       console.log('⚠️ Cannot count events: MongoDB not connected on startup.');
     }

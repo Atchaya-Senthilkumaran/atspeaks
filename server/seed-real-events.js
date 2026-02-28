@@ -18,6 +18,7 @@ const seed = async () => {
         type: "Past",
         price: 199,
         recordingAvailable: true,
+        isVisible: true,
         description:
           "Build and launch your own professional portfolio website using AI in just one hour. Join us for this exciting hands-on session!",
         poster: "/posters/14.jpg",

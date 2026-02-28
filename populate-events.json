@@ -1,12 +1,14 @@
 [
   {
     "title": "InternMania",
-    "date": "2026-02-22",
-    "type": "Past",
+    "date": "2026-03-15",
+    "type": "Upcoming",
     "description": "InternMania is a career-focused session designed to help students discover where and how to apply for internships, build strong resumes, and position themselves strategically to get selected.",
     "poster": "/posters/17.png",
     "price": 299,
-    "recordingAvailable": true,
+    "recordingAvailable": false,
+    "isVisible": true,
+    "registrationUrl": "https://forms.gle/test",
     "highlights": ["Internship application strategies", "Resume building techniques", "Strategic positioning for selection"],
     "speakers": [
       {"role": "Speaker", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO, AT Speaks", "bio": "Tech educator and founder specializing in career development and professional networking strategies"}
@@ -20,6 +22,7 @@
     "poster": "/posters/16.png",
     "price": 299,
     "recordingAvailable": true,
+    "isVisible": true,
     "highlights": ["LinkedIn profile optimization", "Professional networking strategies", "Career growth tactics"],
     "speakers": [
       {"role": "Speaker", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO, AT Speaks", "bio": "Tech educator and founder specializing in career development and professional networking strategies"}
@@ -33,6 +36,7 @@
     "poster": "/posters/15.png",
     "price": 300,
     "recordingAvailable": true,
+    "isVisible": true,
     "highlights": ["Get clarity on starting your own venture", "Learn from successful founders' experiences", "Gain direction for your entrepreneurial journey", "Build confidence to take your first step"],
     "speakers": [
       {"role": "Speaker", "name": "Swayam Prakash Annamalai S", "title": "Founder & CEO, WeDigi", "bio": "Experienced entrepreneur sharing insights on starting and scaling businesses"},
@@ -50,6 +54,7 @@
     "poster": "/posters/14.jpg",
     "price": 199,
     "recordingAvailable": true,
+    "isVisible": true,
     "highlights": ["Portfolio building strategies", "Project presentation skills", "Showcasing technical skills"],
     "speakers": [
       {"role": "Speaker", "name": "Bharath K", "title": "Full Stack Developer, Scrapify Ecotech Pvt Ltd", "bio": "Experienced full stack developer with expertise in portfolio development and showcasing technical skills"},
@@ -64,6 +69,7 @@
     "poster": "/posters/13.png",
     "price": 199,
     "recordingAvailable": true,
+    "isVisible": true,
     "highlights": ["Turn data into immersive 3D visuals", "Build with React + Three.js", "Map, optimize & visualize data interactively"],
     "speakers": [{"role": "Speaker", "name": "Keerthana M G", "title": "AI/ML Content Strategist", "bio": "Expert in data visualization and content strategy"}, {"role": "Host", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO - AT Speaks", "bio": "Tech educator and founder of AT Speaks"}]
   },
@@ -75,6 +81,7 @@
     "poster": "/posters/12.png",
     "price": 299,
     "recordingAvailable": true,
+    "isVisible": true,
     "highlights": ["Master command-line interfaces", "Understand agentic frameworks", "Explore Model Context Protocol (MCP)", "Build automated workflows"],
     "speakers": [{"role": "Speaker & Host", "name": "Atchaya Senthilkumaran", "title": "Founder - AT Speaks | AI Tech Associate - C2A.AI", "bio": "Expert in agentic frameworks and AI automation"}]
   },
@@ -86,6 +93,7 @@
     "poster": "/posters/11.png",
     "price": 199,
     "recordingAvailable": true,
+    "isVisible": true,
     "highlights": ["Master placement preparation strategies", "Learn from Amazon Application Engineer", "Campus to corporate transition guidance", "Crack your dream job interviews"],
     "speakers": [{"role": "Speaker", "name": "Siva Santosh", "title": "Application Engineer - Amazon", "bio": "Industry expert sharing placement insights"}, {"role": "Host", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO - AT Speaks", "bio": "Career mentor and tech educator"}]
   },
@@ -97,6 +105,7 @@
     "poster": "/posters/10.png",
     "price": 199,
     "recordingAvailable": true,
+    "isVisible": true,
     "highlights": ["Automate repetitive tasks efficiently", "Execute complex workflows", "Real-world industry use cases", "Explore emerging Agentic AI tools"],
     "speakers": [{"role": "Speaker", "name": "Mr. Sujan Saijiej", "title": "Founder & CEO - DiffuseAI Solutions", "bio": "Industry expert in Agentic AI and automation solutions"}, {"role": "Host", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO - AT Speaks", "bio": "Tech educator and AI enthusiast"}]
   },
@@ -108,6 +117,7 @@
     "poster": "/posters/9.jpg",
     "price": 299,
     "recordingAvailable": true,
+    "isVisible": true,
     "highlights": ["Craft a killer resume that stands out", "Learn internship application strategies", "Professional resume writing techniques", "Get noticed by recruiters"],
     "speakers": [{"role": "Speaker & Host", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO - AT Speaks", "bio": "Career coach and resume expert helping students land internships"}]
   },
@@ -119,6 +129,7 @@
     "poster": "/posters/8.png",
     "price": 399,
     "recordingAvailable": true,
+    "isVisible": true,
     "highlights": ["Hands-on UI/UX training from basic to advanced", "Master Figma tools and features", "Learn design principles and best practices", "Build real-world design projects"],
     "speakers": [{"role": "Speaker & Host", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO - AT Speaks", "bio": "UI/UX design expert specializing in Figma training"}]
   },
@@ -130,6 +141,7 @@
     "poster": "/posters/7.png",
     "price": 199,
     "recordingAvailable": true,
+    "isVisible": true,
     "highlights": ["Build your first website with no code required", "Master WordPress fundamentals", "Create professional-looking websites", "Learn website customization techniques"],
     "speakers": [{"role": "Speaker & Host", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO - AT Speaks", "bio": "Web development expert specializing in no-code solutions"}]
   },
@@ -141,6 +153,7 @@
     "poster": "/posters/6.png",
     "price": 299,
     "recordingAvailable": true,
+    "isVisible": true,
     "highlights": ["Explore various career domains in tech", "Identify your ideal tech role", "Get detailed skillset breakdown", "Build a personalized career roadmap"],
     "speakers": [{"role": "Speaker & Host", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO - AT Speaks", "bio": "Tech career mentor helping students navigate their career paths"}]
   },
@@ -152,6 +165,7 @@
     "poster": "/posters/5.png",
     "price": 399,
     "recordingAvailable": true,
+    "isVisible": true,
     "highlights": ["Basics of Power BI platform", "Master Power BI tools and features", "Work on real sample projects", "Learn data visualization techniques"],
     "speakers": [{"role": "Speaker & Host", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO - AT Speaks", "bio": "Data analytics expert specializing in Power BI and data visualization"}]
   },
@@ -163,6 +177,7 @@
     "poster": "/posters/4.png",
     "price": 199,
     "recordingAvailable": true,
+    "isVisible": true,
     "highlights": ["Build chatbots without external APIs", "Learn LangChain framework", "Code smart bots using Python", "Practical hands-on implementation"],
     "speakers": [{"role": "Speaker & Host", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO - AT Speaks", "bio": "AI and chatbot development expert specializing in LangChain"}]
   },
@@ -174,6 +189,7 @@
     "poster": "/posters/3.png",
     "price": 299,
     "recordingAvailable": true,
+    "isVisible": true,
     "highlights": ["Master Figma in just 3 days", "Advanced design techniques", "Professional design workflows", "Real-world project experience"],
     "speakers": [{"role": "Speaker & Host", "name": "Atchaya Senthilkumaran", "title": "UI/UX Enthusiast | Founder & CEO - AT Speaks", "bio": "Passionate design educator helping students master Figma"}]
   },
@@ -185,6 +201,7 @@
     "poster": "/posters/2.png",
     "price": 199,
     "recordingAvailable": true,
+    "isVisible": true,
     "highlights": ["Build websites faster than ever", "WordPress fundamentals and best practices", "Hands-on website creation", "Launch your first website"],
     "speakers": [{"role": "Speaker & Host", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO - AT Speaks", "bio": "WordPress expert helping beginners build their first websites"}]
   },
@@ -196,6 +213,7 @@
     "poster": "/posters/1.jpg",
     "price": 0,
     "recordingAvailable": false,
+    "isVisible": true,
     "highlights": ["Designing with Figma fundamentals", "Figma tools & features overview", "Work on sample projects", "UI/UX career path guidance", "Bonus: 5 AI Tools for Students + 1 Free Udemy Course"],
     "speakers": [{"role": "Speaker & Host", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO - AT Speaks", "bio": "UI/UX design educator introducing students to the world of Figma"}]
   }
