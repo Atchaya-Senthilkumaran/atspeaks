@@ -5,7 +5,11 @@ const Event = require("./models/Event");
 
 const seed = async () => {
   try {
-    await connectDB(process.env.MONGO_URI);
+    const uri = process.env.MONGODB_URI || process.env.MONGO_URI;
+    if (!uri) {
+      throw new Error('MONGODB_URI or MONGO_URI not defined in .env');
+    }
+    await connectDB(uri);
 
     // Clear old data
     await Event.deleteMany();

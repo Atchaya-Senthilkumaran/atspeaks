@@ -7,7 +7,12 @@ const path = require('path');
 const importEvents = async () => {
   try {
     // Connect to MongoDB
-    await mongoose.connect(process.env.MONGO_URI);
+    const uri = process.env.MONGODB_URI || process.env.MONGO_URI;
+    if (!uri) {
+      throw new Error('MONGODB_URI is not defined in .env file');
+    }
+    
+    await mongoose.connect(uri);
     console.log('✅ MongoDB connected');
 
     // Read events from JSON file
