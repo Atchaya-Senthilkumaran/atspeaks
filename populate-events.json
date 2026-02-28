@@ -1,5 +1,18 @@
 [
   {
+    "title": "InternMania",
+    "date": "2026-02-22",
+    "type": "Past",
+    "description": "InternMania is a career-focused session designed to help students discover where and how to apply for internships, build strong resumes, and position themselves strategically to get selected.",
+    "poster": "/posters/17.png",
+    "price": 299,
+    "recordingAvailable": true,
+    "highlights": ["Internship application strategies", "Resume building techniques", "Strategic positioning for selection"],
+    "speakers": [
+      {"role": "Speaker", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO, AT Speaks", "bio": "Tech educator and founder specializing in career development and professional networking strategies"}
+    ]
+  },
+  {
     "title": "LinkedIn Wrapped",
     "date": "2026-01-25",
     "type": "Past",

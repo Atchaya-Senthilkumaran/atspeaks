@@ -207,6 +207,15 @@ if (process.env.NODE_ENV !== 'production') {
     console.log(`📊 MongoDB URI: ${MONGO_URI ? 'Set' : 'Not set'}`);
     console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
     console.log(`📡 Ready to handle requests`);
+
+    // Log the number of events in the database
+    if (mongoose.connection.readyState === 1) {
+      const Event = require('./models/Event');
+      const eventCount = await Event.countDocuments();
+      console.log(`📊 Total events in database: ${eventCount}`);
+    } else {
+      console.log('⚠️ Cannot count events: MongoDB not connected on startup.');
+    }
   });
 }
 
