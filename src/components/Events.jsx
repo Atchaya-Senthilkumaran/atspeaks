@@ -8,7 +8,7 @@ import API_URL from "../config/api";
 export default function Events() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showAll, setShowAll] = useState(true); // Show all events by default
+  const [showAll, setShowAll] = useState(false); // Only show 3 events by default
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [bookingEvent, setBookingEvent] = useState(null);
   const [openBooking, setOpenBooking] = useState(false);
