@@ -81,6 +81,13 @@ export default function Events() {
       return true;
     })
     .map((e) => {
+      // Fix Internmania casing if it comes from DB as all caps or wrong casing
+      if (e?.title?.toLowerCase() === "internmania") {
+        return {
+          ...e,
+          title: "Internmania"
+        };
+      }
       if (e?.title?.toLowerCase() === "portfolio launchpad") {
         return {
           ...e,
