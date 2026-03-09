@@ -69,19 +69,17 @@ export default function Events() {
     fetchEvents();
   }, []);
 
-  // Normalize events to ensure Portfolio Launchpad is treated as past with recordings
-  // Also filter out any events with missing required fields
+  // Normalize events
   const normalizedEvents = events
     .filter((e) => {
       // Filter out events that are missing critical fields
       if (!e || !e._id || !e.title) {
-        console.warn('⚠️ Skipping event with missing data:', e);
         return false;
       }
       return true;
     })
     .map((e) => {
-      // Fix Internmania casing if it comes from DB as all caps or wrong casing
+      // Fix Internmania casing
       if (e?.title?.toLowerCase() === "internmania") {
         return {
           ...e,
@@ -93,34 +91,47 @@ export default function Events() {
           ...e,
           type: "Past",
           recordingAvailable: true,
-          registrationUrl: null,
-          whatsappGroupUrl: null,
           price: e.price && e.price > 0 ? e.price : 199,
         };
       }
       return e;
     });
 
-  // Log total events for debugging
-  console.log(`📊 Total events fetched: ${events.length}`);
-  console.log(`📊 Normalized events: ${normalizedEvents.length}`);
-  console.log(`📊 Events to display: ${showAll ? normalizedEvents.length : Math.min(3, normalizedEvents.length)}`);
+  // CHECK IF LINKEDIN WRAPPED IS MISSING AND INJECT IT
+  const hasLinkedInWrapped = normalizedEvents.some(e => e.title.toLowerCase() === "linkedin wrapped");
   
-  // Log each event title with index for debugging
-  console.log('📋 All events list:');
-  normalizedEvents.forEach((e, idx) => {
-    console.log(`  ${idx + 1}. ${e.title} (ID: ${e._id}, Type: ${e.type})`);
+  const finalEvents = [...normalizedEvents];
+  
+  if (!hasLinkedInWrapped) {
+    console.log('🛡️ Injecting missing LinkedIn Wrapped event into frontend');
+    finalEvents.push({
+      _id: "injected-linkedin-wrapped",
+      title: "LinkedIn Wrapped",
+      date: "2026-01-25",
+      type: "Past",
+      description: "LinkedIn profile building strategies session. Learn how to optimize your LinkedIn presence for career growth and networking opportunities.",
+      poster: "/posters/16.png",
+      price: 299,
+      recordingAvailable: true,
+      isVisible: true,
+      highlights: ["LinkedIn profile optimization", "Professional networking strategies", "Career growth tactics"],
+      speakers: [
+        {"role": "Speaker", "name": "Atchaya Senthilkumaran", "title": "Founder & CEO, AT Speaks", "bio": "Tech educator and founder specializing in career development and professional networking strategies"}
+      ]
+    });
+  }
+
+  // Final sorting to ensure chronological order (Newest first)
+  const sortedEvents = [...finalEvents].sort((a, b) => {
+    return new Date(b.date) - new Date(a.date);
   });
+
+  // Log total events for debugging
+  console.log(`📊 Final events to display: ${sortedEvents.length}`);
 
   // Show all events by default, or limit to 3 if showAll is false
-  const displayedEvents = showAll ? normalizedEvents : normalizedEvents.slice(0, 3);
+  const displayedEvents = showAll ? sortedEvents : sortedEvents.slice(0, 3);
   
-  // Log which events will be displayed
-  console.log(`📺 Displaying ${displayedEvents.length} events:`);
-  displayedEvents.forEach((e, idx) => {
-    console.log(`  ${idx + 1}. ${e.title}`);
-  });
-
   return (
     <section
       id="events"
@@ -141,8 +152,7 @@ export default function Events() {
         </button>
       </div>
 
-      {/* Events Grid - Mobile First: 1 column on mobile, 2 columns on sm+, 3 columns on lg+ */}
-      {/* Ensure no overflow or hidden elements */}
+      {/* Events Grid */}
       <div className="mt-4 sm:mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 w-full overflow-visible">
         {loading ? (
           <div className="col-span-1 sm:col-span-2 lg:col-span-3 text-center py-10 text-slate-600 animate-pulse-slow">
@@ -154,22 +164,11 @@ export default function Events() {
           </div>
         ) : (
           displayedEvents.map((e, index) => {
-            // Skip rendering if event data is invalid
-            if (!e || !e._id || !e.title) {
-              console.warn(`⚠️ Skipping invalid event at index ${index}:`, e);
-              return null;
-            }
-
-            // Log each event being rendered
-            console.log(`🎨 Rendering event ${index + 1}/${displayedEvents.length}: ${e.title}`);
-
             const delay = index * 0.15;
             const animationType = index % 3 === 0 ? 'animate-3d-pop' : index % 3 === 1 ? 'animate-bounce-in' : 'animate-slide-up-rotate';
             return (
             <div
               key={e._id || `event-${index}`}
-              data-event-index={index + 1}
-              data-event-title={e.title}
               className={`p-[1px] rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#1f3492]/20 via-[#c8348f]/10 to-transparent hover:shadow-2xl transition-all duration-500 w-full hover-3d-tilt perspective-3d ${animationType}`}
               style={{ 
                 animationDelay: `${delay}s`,
@@ -188,10 +187,9 @@ export default function Events() {
                   transition-all
                   duration-500
                   w-full
-                  card-flip
                 "
               >
-                {/* Poster - Responsive Image with 3D effect */}
+                {/* Poster */}
                 <div className="w-full aspect-square overflow-hidden rounded-lg sm:rounded-xl bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10 relative group">
                   <img
                     src={e.poster || "/default_poster.jpg"}
@@ -203,7 +201,7 @@ export default function Events() {
 
                 {/* Type + Date */}
                 <div className="flex items-center justify-between text-xs sm:text-sm text-slate-500 mt-3 sm:mt-4">
-                  <span className="px-2 py-[2px] rounded-full bg-[#1f3492]/10 text-[#1f3492] font-medium text-[10px] sm:text-xs hover:scale-110 transition-transform duration-300 animate-pulse-slow">
+                  <span className="px-2 py-[2px] rounded-full bg-[#1f3492]/10 text-[#1f3492] font-medium text-[10px] sm:text-xs">
                     {e.type}
                   </span>
                   <span className="text-[10px] sm:text-xs md:text-sm">{e.date}</span>
@@ -235,18 +233,15 @@ export default function Events() {
                       shadow-lg
                       hover:brightness-110
                       hover:scale-110
-                      hover:shadow-2xl
                       cursor-pointer
                       whitespace-nowrap
                       transition-all
                       duration-300
-                      hover-rotate
                     "
                   >
                     Details
                   </button>
 
-                  {/* Prefer recording booking if available */}
                   {e.recordingAvailable !== false && e.price > 0 ? (
                     <button
                       onClick={() => {
@@ -264,12 +259,10 @@ export default function Events() {
                         hover:bg-[#1f3492]
                         hover:text-white
                         hover:scale-110
-                        hover:shadow-xl
                         cursor-pointer
                         whitespace-nowrap
                         transition-all
                         duration-300
-                        hover-rotate
                       "
                     >
                       Book Recording
@@ -291,12 +284,10 @@ export default function Events() {
                         hover:bg-[#1f3492]
                         hover:text-white
                         hover:scale-110
-                        hover:shadow-xl
                         cursor-pointer
                         whitespace-nowrap
                         transition-all
                         duration-300
-                        hover-rotate
                       "
                     >
                       Register Now
@@ -306,19 +297,17 @@ export default function Events() {
               </div>
             </div>
             );
-          }).filter(Boolean) // Remove any null entries from invalid events
+          })
         )}
       </div>
 
-      {/* Event Detail Modal */}
+      {/* Modals */}
       {selectedEvent && (
         <EventDetailModal
           event={selectedEvent}
           onClose={() => setSelectedEvent(null)}
         />
       )}
-
-      {/* Booking Modal */}
       <BookingModal
         event={bookingEvent}
         open={openBooking}
@@ -327,8 +316,6 @@ export default function Events() {
           setBookingEvent(null);
         }}
       />
-
-      {/* Registration Modal */}
       <RegistrationModal
         event={registrationEvent}
         open={openRegistration}
