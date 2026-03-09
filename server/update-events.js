@@ -34,7 +34,7 @@ const updateEvents = async () => {
       { title: "Wordpress Wonders", price: 199, recordingAvailable: true, isVisible: true },
       { title: "Introduction To Figma", price: 0, recordingAvailable: false, isVisible: true },
       { title: "Founders Unfiltered", price: 199, recordingAvailable: true, isVisible: true },
-      { title: "InternMania", price: 299, recordingAvailable: false, isVisible: true, type: "Upcoming" },
+      { title: "Internmania", price: 299, recordingAvailable: false, isVisible: true, type: "Upcoming" },
       { title: "LinkedIn Wrapped", price: 299, recordingAvailable: true, isVisible: true, type: "Past" }
     ];
 
