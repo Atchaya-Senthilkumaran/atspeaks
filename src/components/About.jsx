@@ -69,7 +69,7 @@ export default function About() {
             AT Speaks is a growing edutech startup led by
             Atchaya Senthilkumaran — focused on delivering
             practical, industry-aligned learning for students across
-            design and technology.
+            design and technology..
           </p>
 
           <p className="text-xs sm:text-sm md:text-base text-slate-700 leading-relaxed mt-2 sm:mt-3 md:mt-4 break-words">
