@@ -27,6 +27,7 @@ export default function ScrollToTop() {
   return (
     <button
       onClick={scrollToTop}
+      data-scroll-to-top
       className={`fixed bottom-6 right-6 z-50 p-3 rounded-full bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white shadow-lg hover:shadow-2xl hover:scale-110 transition-all duration-300 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
       }`}

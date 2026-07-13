@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BookingModal from "./BookingModal";
 import RegistrationModal from "./RegistrationModal";
 
@@ -6,24 +6,34 @@ export default function EventDetailModal({ event, onClose }) {
   const [openBooking, setOpenBooking] = useState(false);
   const [openRegistration, setOpenRegistration] = useState(false);
 
+  useEffect(() => {
+    if (!event) return undefined;
+
+    document.body.classList.add("event-details-open");
+    return () => document.body.classList.remove("event-details-open");
+  }, [event]);
+
   if (!event) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-3 md:p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
       <div className="relative w-full max-w-3xl max-h-[95vh] sm:max-h-[95vh] md:max-h-[90vh] overflow-y-auto bg-white rounded-xl sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-2xl my-4 sm:my-4">
 
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 z-10 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-white/90 hover:bg-white shadow-lg text-slate-700 hover:text-slate-900 transition-all min-w-[44px] min-h-[44px]"
-          aria-label="Close"
-        >
-          <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-
         <div className="p-5 sm:p-6 md:p-6 lg:p-8">
+          {/* This close button is in the scrollable content flow. */}
+          <div className="flex justify-end mb-2 sm:mb-3">
+            <button
+              type="button"
+              onClick={onClose}
+              className="w-11 h-11 flex items-center justify-center rounded-full bg-white hover:bg-slate-100 border border-slate-200 shadow-lg text-slate-700 hover:text-slate-900 hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1f3492] focus-visible:ring-offset-2"
+              aria-label="Close event details"
+            >
+              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
           {/* Event Poster - Responsive Image */}
           <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 mx-auto overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10 shadow-lg max-w-full">
             <img

@@ -72,6 +72,11 @@ body > * {
   overflow-x: hidden;
 }
 
+/* Keep the global page control out of event-detail overlays. */
+body.event-details-open [data-scroll-to-top] {
+  display: none;
+}
+
 /* Fix for any grid or flex containers */
 .grid, .flex {
   max-width: 100%;
