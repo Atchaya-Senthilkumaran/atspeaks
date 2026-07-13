@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import BookingModal from "./BookingModal";
 import RegistrationModal from "./RegistrationModal";
 
@@ -9,13 +10,19 @@ export default function EventDetailModal({ event, onClose }) {
   useEffect(() => {
     if (!event) return undefined;
 
+    const previousOverflow = document.body.style.overflow;
     document.body.classList.add("event-details-open");
-    return () => document.body.classList.remove("event-details-open");
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.classList.remove("event-details-open");
+      document.body.style.overflow = previousOverflow;
+    };
   }, [event]);
 
   if (!event) return null;
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-3 md:p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
       <div className="relative w-full max-w-3xl max-h-[95vh] sm:max-h-[95vh] md:max-h-[90vh] overflow-y-auto bg-white rounded-xl sm:rounded-xl md:rounded-2xl lg:rounded-3xl shadow-2xl my-4 sm:my-4">
 
@@ -56,6 +63,11 @@ export default function EventDetailModal({ event, onClose }) {
                 </svg>
                 {event.date}
               </span>
+              {event.time && (
+                <span className="text-slate-600 text-[10px] sm:text-xs md:text-sm">
+                  {event.time}
+                </span>
+              )}
             </div>
 
             {/* Title */}
@@ -182,7 +194,7 @@ export default function EventDetailModal({ event, onClose }) {
                 </button>
               )}
 
-              {event.type === "Upcoming" && event.registrationUrl && (
+              {event.type === "Upcoming" && (event.registrationEnabled || event.registrationUrl) && (
                 <button
                   onClick={() => setOpenRegistration(true)}
                   className="inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 px-4 sm:px-5 md:px-6 py-2.5 sm:py-2.5 md:py-3 text-sm sm:text-sm md:text-base rounded-full bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white font-medium shadow-lg hover:shadow-xl hover:brightness-110 transition-all min-h-[48px]"
@@ -194,7 +206,7 @@ export default function EventDetailModal({ event, onClose }) {
                 </button>
               )}
 
-              {event.type === "Upcoming" && !event.registrationUrl && (
+              {event.type === "Upcoming" && !event.registrationEnabled && !event.registrationUrl && (
                 <a
                   href="mailto:connect.atspeaks@gmail.com?subject=Event%20Registration"
                   className="inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 px-4 sm:px-5 md:px-6 py-2.5 sm:py-2.5 md:py-3 text-sm sm:text-sm md:text-base rounded-full bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white font-medium shadow-lg hover:shadow-xl hover:brightness-110 transition-all min-h-[48px]"
@@ -226,5 +238,7 @@ export default function EventDetailModal({ event, onClose }) {
       {/* Registration Modal */}
       <RegistrationModal event={event} open={openRegistration} onClose={() => setOpenRegistration(false)} />
     </div>
+    ,
+    document.body
   );
 }

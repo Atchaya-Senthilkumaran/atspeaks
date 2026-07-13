@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Instagram, Linkedin, Sparkles } from "lucide-react";
+import { WHATSAPP_GROUP_URL } from "../config/links";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -55,7 +56,7 @@ export default function Navbar() {
               <Linkedin className="w-4 h-4 text-[#1f3492] group-hover:scale-110 transition-transform duration-300" />
             </a>
             <a
-              href="https://chat.whatsapp.com/B9GxPUSs4SFA7rMJUHo84I?mode=wwt"
+              href={WHATSAPP_GROUP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border border-slate-200 shadow-sm hover:-translate-y-0.5 hover:shadow-md hover:border-green-500/30 transition-all duration-300 flex items-center justify-center"
@@ -76,7 +77,7 @@ export default function Navbar() {
             </a>
           </div>
           <a
-            href="https://chat.whatsapp.com/B9GxPUSs4SFA7rMJUHo84I?mode=wwt"
+            href={WHATSAPP_GROUP_URL}
             className="group hidden md:inline-flex items-center gap-1.5 rounded-full px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm font-medium bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white shadow-md hover:shadow-xl hover:scale-110 transition-all duration-300 whitespace-nowrap animate-fade-in relative overflow-hidden"
           >
             <span className="relative z-10 inline-flex items-center gap-1">
@@ -132,7 +133,7 @@ export default function Navbar() {
               Contact
             </a>
             <a
-              href="https://chat.whatsapp.com/B9GxPUSs4SFA7rMJUHo84I?mode=wwt"
+              href={WHATSAPP_GROUP_URL}
               onClick={handleLinkClick}
               className="group inline-flex items-center justify-center gap-1.5 text-center rounded-full px-4 py-2.5 text-sm font-medium bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 mt-2 relative overflow-hidden"
             >

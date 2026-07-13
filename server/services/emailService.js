@@ -45,6 +45,18 @@ const sendAdminNotification = async (registrationData) => {
               <td style="padding: 8px 0; font-weight: bold;">Timestamp:</td>
               <td style="padding: 8px 0;">${new Date(registrationData.createdAt).toLocaleString()}</td>
             </tr>
+            ${registrationData.eventDate ? `
+            <tr>
+              <td style="padding: 8px 0; font-weight: bold;">Event Date:</td>
+              <td style="padding: 8px 0;">${registrationData.eventDate}</td>
+            </tr>
+            ` : ''}
+            ${registrationData.eventTime ? `
+            <tr>
+              <td style="padding: 8px 0; font-weight: bold;">Event Time:</td>
+              <td style="padding: 8px 0;">${registrationData.eventTime}</td>
+            </tr>
+            ` : ''}
             <tr>
               <td style="padding: 8px 0; font-weight: bold;">Full Name:</td>
               <td style="padding: 8px 0;">${registrationData.fullName}</td>
@@ -126,6 +138,8 @@ const sendUserAcknowledgement = async (registrationData, whatsappGroupUrl) => {
 
           <div style="background-color: white; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #1f3492;">
             <h3 style="color: #1f3492; margin-top: 0;">Your Registration Details</h3>
+            ${registrationData.eventDate ? `<p style="margin: 5px 0;"><strong>Date:</strong> ${registrationData.eventDate}</p>` : ''}
+            ${registrationData.eventTime ? `<p style="margin: 5px 0;"><strong>Time:</strong> ${registrationData.eventTime}</p>` : ''}
             <p style="margin: 5px 0;"><strong>Email:</strong> ${registrationData.email}</p>
             <p style="margin: 5px 0;"><strong>Phone:</strong> ${registrationData.phone}</p>
             <p style="margin: 5px 0;"><strong>Registration Type:</strong> ${registrationData.registrationType}</p>

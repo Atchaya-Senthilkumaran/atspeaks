@@ -7,6 +7,36 @@ import API_URL from "../config/api";
 
 const fallbackEvents = [
   {
+    _id: "aptitude-mastery-2",
+    eventKey: "aptitude-mastery-2",
+    title: "Aptitude Mastery #2",
+    date: "2026-07-19",
+    time: "06:00 PM - 07:00 PM IST",
+    type: "Upcoming",
+    description: "Master Time & Work aptitude concepts for college placements, bank exams, and government and group examinations in this focused live session.",
+    poster: "/posters/aptitude-mastery-2.png",
+    price: 0,
+    recordingAvailable: false,
+    registrationEnabled: true,
+    whatsappGroupUrl: "https://chat.whatsapp.com/EtsdMfwoC8oJWnQdHi0uO0",
+    registrationOptions: ["Live Session - Free"],
+    registrationQuote: "Build speed, accuracy, and confidence for your next aptitude exam.",
+    highlights: [
+      "Master Time & Work fundamentals",
+      "Prepare for college placement aptitude rounds",
+      "Practice concepts used in bank examinations",
+      "Strengthen preparation for government and group exams"
+    ],
+    speakers: [
+      {
+        role: "Speaker",
+        name: "Atchaya Senthilkumaran",
+        title: "Founder & CEO, AT Speaks",
+        bio: "Educator and founder helping students build practical, career-ready skills."
+      }
+    ]
+  },
+  {
     _id: "fallback-internmania",
     title: "Internmania",
     date: "2026-02-22",
@@ -256,7 +286,9 @@ export default function Events() {
                   <span className="px-2 py-[2px] rounded-full bg-[#1f3492]/10 text-[#1f3492] font-medium text-[10px] sm:text-xs">
                     {e.type}
                   </span>
-                  <span className="text-[10px] sm:text-xs md:text-sm">{e.date}</span>
+                  <span className="text-[10px] sm:text-xs md:text-sm text-right">
+                    {e.date}{e.time ? <span className="block">{e.time}</span> : null}
+                  </span>
                 </div>
 
                 {/* Title */}
@@ -319,7 +351,7 @@ export default function Events() {
                     >
                       Book Recording
                     </button>
-                  ) : e.type === "Upcoming" && e.registrationUrl ? (
+                  ) : e.type === "Upcoming" && (e.registrationEnabled || e.registrationUrl) ? (
                     <button
                       onClick={() => {
                         setRegistrationEvent(e);

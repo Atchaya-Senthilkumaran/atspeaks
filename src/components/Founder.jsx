@@ -37,15 +37,15 @@ export default function FounderSection() {
           {/* Stats with 3D Effects */}
           <div className="grid grid-cols-3 gap-2 sm:gap-2.5 md:gap-3 text-center w-full mt-2 sm:mt-3">
             <div className="p-2 sm:p-2.5 md:p-3 bg-gradient-to-br from-gray-50 to-white rounded-lg border border-gray-200 hover:scale-110 hover:rotate-2 hover-3d-tilt transition-all duration-300 animate-bounce-in animate-delay-100 perspective-3d">
-              <p className="text-base sm:text-lg md:text-xl font-bold text-[#1f3492] animate-pulse-slow">10+</p>
+              <p className="text-base sm:text-lg md:text-xl font-bold text-[#1f3492] animate-pulse-slow">60+</p>
               <p className="text-[9px] sm:text-[10px] md:text-xs text-gray-600">Events</p>
             </div>
             <div className="p-2 sm:p-2.5 md:p-3 bg-gradient-to-br from-gray-50 to-white rounded-lg border border-gray-200 hover:scale-110 hover:rotate-2 hover-3d-tilt transition-all duration-300 animate-bounce-in animate-delay-200 perspective-3d">
-              <p className="text-base sm:text-lg md:text-xl font-bold text-[#1f3492] animate-pulse-slow">1000+</p>
+              <p className="text-base sm:text-lg md:text-xl font-bold text-[#1f3492] animate-pulse-slow">5000+</p>
               <p className="text-[9px] sm:text-[10px] md:text-xs text-gray-600">Learners</p>
             </div>
             <div className="p-2 sm:p-2.5 md:p-3 bg-gradient-to-br from-gray-50 to-white rounded-lg border border-gray-200 hover:scale-110 hover:rotate-2 hover-3d-tilt transition-all duration-300 animate-bounce-in animate-delay-300 perspective-3d">
-              <p className="text-base sm:text-lg md:text-xl font-bold text-[#1f3492] animate-pulse-slow">3+</p>
+              <p className="text-base sm:text-lg md:text-xl font-bold text-[#1f3492] animate-pulse-slow">15+</p>
               <p className="text-[9px] sm:text-[10px] md:text-xs text-gray-600">Domains</p>
             </div>
           </div>
@@ -67,7 +67,7 @@ export default function FounderSection() {
 
           <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed mb-3 sm:mb-4 animate-fade-in animate-delay-300 break-words">
             With a strong background in UI/UX, Web development, Data visualization and Emerging Ai Techonologies, she has
-            mentored 1000+ learners, hosted multiple workshops, and continues to push forward
+            mentored 5000+ learners, hosted multiple workshops, and continues to push forward
             impactful education for the next generation.
           </p>
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import API_URL from "../config/api";
+import { WHATSAPP_GROUP_URL } from "../config/links";
 
 export default function BookingModal({ event, open, onClose }) {
   const [form, setForm] = useState({
@@ -299,7 +300,7 @@ export default function BookingModal({ event, open, onClose }) {
               <h4 className="font-semibold text-slate-800 mb-3 text-xs sm:text-sm text-center">Connect with us</h4>
               <div className="flex justify-center gap-3 sm:gap-4">
                 <a
-                  href="https://chat.whatsapp.com/B9GxPUSs4SFA7rMJUHo84I"
+                  href={WHATSAPP_GROUP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center text-white transition shadow-md hover:shadow-lg"

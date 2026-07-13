@@ -18,6 +18,16 @@ export default function RegistrationModal({ event, open, onClose }) {
   const [error, setError] = useState("");
   const [whatsappGroupUrl, setWhatsappGroupUrl] = useState("");
 
+  const defaultRegistrationOptions = [
+    "Workshop Only - Free",
+    "Workshop + Certificate - ₹50",
+    "Workshop + Certificate + Recording - ₹150"
+  ];
+  const registrationOptions = event?.registrationOptions?.length
+    ? event.registrationOptions
+    : defaultRegistrationOptions;
+  const isSingleRegistrationOption = registrationOptions.length === 1;
+
   if (!open || !event) return null;
 
   const handleChange = (e) => {
@@ -35,7 +45,16 @@ export default function RegistrationModal({ event, open, onClose }) {
 
     try {
       console.log('📤 Submitting registration to:', `${API_URL}/api/registrations`);
-      console.log('📝 Form data:', { eventId: event._id, ...formData });
+      const isDatabaseEvent = /^[a-f\d]{24}$/i.test(event._id || "");
+      const submissionData = {
+        eventId: isDatabaseEvent ? event._id : undefined,
+        eventKey: event.eventKey || (!isDatabaseEvent ? event._id : undefined),
+        ...formData,
+        registrationType: isSingleRegistrationOption
+          ? registrationOptions[0]
+          : formData.registrationType
+      };
+      console.log('📝 Form data:', submissionData);
 
       // Submit to backend
       const response = await fetch(`${API_URL}/api/registrations`, {
@@ -43,10 +62,7 @@ export default function RegistrationModal({ event, open, onClose }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          eventId: event._id,
-          ...formData
-        }),
+        body: JSON.stringify(submissionData),
       });
 
       console.log('📡 Response status:', response.status);
@@ -165,7 +181,7 @@ export default function RegistrationModal({ event, open, onClose }) {
           {/* Inspirational Quote */}
           <div className="mb-6 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border-l-4 border-[#c8348f]">
             <p className="text-sm sm:text-base text-slate-700 italic font-medium">
-              "Transform your ideas into reality. Your journey to building an amazing portfolio starts here!"
+              "{event.registrationQuote || "Transform your ideas into reality. Your next learning journey starts here!"}"
             </p>
             <p className="text-xs text-slate-500 mt-1">- Team AT Speaks</p>
           </div>
@@ -291,22 +307,28 @@ export default function RegistrationModal({ event, open, onClose }) {
               <label className="block text-sm font-medium text-slate-700 mb-1">
                 Select your registration type <span className="text-red-500">*</span>
               </label>
-              <select
-                name="registrationType"
-                value={formData.registrationType}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#1f3492] focus:border-transparent outline-none transition-all"
-              >
-                <option value="">Select Type</option>
-                <option value="Workshop Only - Free">Workshop Only - Free</option>
-                <option value="Workshop + Certificate - ₹50">Workshop + Certificate - ₹50</option>
-                <option value="Workshop + Certificate + Recording - ₹150">Workshop + Certificate + Recording - ₹150</option>
-              </select>
+              {isSingleRegistrationOption ? (
+                <div className="w-full px-4 py-3 border border-green-200 bg-green-50 text-green-800 rounded-lg font-medium">
+                  {registrationOptions[0]}
+                </div>
+              ) : (
+                <select
+                  name="registrationType"
+                  value={formData.registrationType}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#1f3492] focus:border-transparent outline-none transition-all"
+                >
+                  <option value="">Select Type</option>
+                  {registrationOptions.map((option) => (
+                    <option key={option} value={option}>{option}</option>
+                  ))}
+                </select>
+              )}
             </div>
 
             {/* Payment Section - Only show for paid registrations */}
-            {(formData.registrationType === "Workshop + Certificate - ₹50" || formData.registrationType === "Workshop + Certificate + Recording - ₹150") && (
+            {!isSingleRegistrationOption && (formData.registrationType === "Workshop + Certificate - ₹50" || formData.registrationType === "Workshop + Certificate + Recording - ₹150") && (
               <>
                 {/* Payment QR Code */}
                 <div className="bg-gradient-to-br from-indigo-50 to-pink-50 rounded-lg p-4 border border-indigo-200">
