@@ -5,6 +5,41 @@ import BookingModal from "./BookingModal";
 import RegistrationModal from "./RegistrationModal";
 import API_URL from "../config/api";
 
+const fallbackEvents = [
+  {
+    _id: "fallback-internmania",
+    title: "Internmania",
+    date: "2026-02-22",
+    type: "Past",
+    description: "A focused session designed to help students secure internships in 2026. The event covers practical guidance on where and how to apply, resume preparation, in-demand skills, and securing internships with stipend.",
+    poster: "/posters/17.png",
+    price: 299,
+    recordingAvailable: true,
+    highlights: ["Step-by-step internship application strategies", "Resume optimization tips", "Skills and industry expectations", "Stipend opportunities and insights", "Student-centric career guidance"],
+    speakers: [
+      { role: "Speaker", name: "Atchaya Senthilkumaran", title: "Founder & CEO, AT Speaks", bio: "Tech educator and founder of AT Speaks" }
+    ]
+  },
+  {
+    _id: "fallback-founders-unfiltered",
+    title: "Founders Unfiltered",
+    date: "2025-12-27",
+    type: "Past",
+    description: "If you're someone who wants to start something but doesn't know where to begin, this session will give you clarity, direction, and the confidence to take your first step.",
+    poster: "/posters/15.png",
+    price: 199,
+    recordingAvailable: true,
+    highlights: ["Learn from successful founders", "Get clarity on starting your journey", "Gain direction and confidence", "Real insights from multiple founders", "Practical advice for aspiring entrepreneurs"],
+    speakers: [
+      { role: "Speaker", name: "Swayam Prakash Annamalai S", title: "Founder & CEO, WeDigi", bio: "Entrepreneur and founder leading digital innovation" },
+      { role: "Host", name: "Atchaya Senthilkumaran", title: "Founder & CEO, AT Speaks", bio: "Tech educator and founder of AT Speaks" },
+      { role: "Speaker", name: "Sujan Saitej", title: "Founder & CEO, DiffuseAI Solutions", bio: "Industry expert in Agentic AI and automation solutions" },
+      { role: "Speaker", name: "Prajein C K", title: "Co-Founder & COO, Kenesis", bio: "Business leader and co-founder driving innovation" },
+      { role: "Speaker", name: "Gamaliel Das", title: "Founder, CodeHunters Academy", bio: "Education entrepreneur and founder" }
+    ]
+  }
+];
+
 export default function Events() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -121,6 +156,16 @@ export default function Events() {
     });
   }
 
+  fallbackEvents.forEach((fallbackEvent) => {
+    const eventExists = normalizedEvents.some(
+      (event) => event.title.toLowerCase() === fallbackEvent.title.toLowerCase()
+    );
+
+    if (!eventExists) {
+      finalEvents.push(fallbackEvent);
+    }
+  });
+
   // Final sorting to ensure chronological order (Newest first)
   const sortedEvents = [...finalEvents].sort((a, b) => {
     return new Date(b.date) - new Date(a.date);
@@ -189,15 +234,22 @@ export default function Events() {
                   w-full
                 "
               >
-                {/* Poster */}
-                <div className="w-full aspect-square overflow-hidden rounded-lg sm:rounded-xl bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10 relative group">
-                  <img
-                    src={e.poster || "/default_poster.jpg"}
-                    alt={e.title}
-                    className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-700 group-hover:rotate-2"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
+                {/* Keep all current and future event card posters at a consistent 4:5 ratio. */}
+                <button
+                  type="button"
+                  onClick={() => setSelectedEvent(e)}
+                  className="block w-full aspect-[4/5] overflow-visible rounded-lg sm:rounded-xl bg-gradient-to-br from-[#1f3492]/10 to-[#c8348f]/10 relative group isolate cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1f3492] focus-visible:ring-offset-4"
+                  aria-label={`View details for ${e.title}`}
+                >
+                  <div className="absolute inset-0 overflow-hidden rounded-lg sm:rounded-xl shadow-sm transition-all duration-500 ease-out origin-bottom group-hover:-translate-y-4 group-hover:scale-[1.06] group-hover:rotate-1 group-hover:shadow-2xl group-hover:z-20">
+                    <img
+                      src={e.poster || "/default_poster.jpg"}
+                      alt={e.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                </button>
 
                 {/* Type + Date */}
                 <div className="flex items-center justify-between text-xs sm:text-sm text-slate-500 mt-3 sm:mt-4">
