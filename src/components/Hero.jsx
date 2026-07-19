@@ -1,17 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Tag from "./Tag";
 import { Users, Award, TrendingUp } from "lucide-react";
 
 export default function Hero() {
-  const cardRef = useRef(null);
-
-  useEffect(() => {
-    // Add animation to the impact card
-    if (cardRef.current) {
-      cardRef.current.style.animation = 'popIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards';
-    }
-  }, []);
-
   return (
     <section
       id="home"
@@ -69,62 +60,72 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* RIGHT SIDE — IMPACT SHOWCASE - 3D Animated */}
+      {/* RIGHT SIDE - IMPACT SHOWCASE - 3D Animated */}
       <div className="relative flex justify-center md:justify-end w-full px-4 md:pr-6 overflow-visible perspective-3d">
-        {/* Background Card - Float animation with 3D */}
-        <div 
-          ref={cardRef}
-          className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] rounded-3xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] shadow-2xl rotate-12 relative overflow-hidden animate-float hover-3d-tilt"
+        <div
+          data-testid="hero-impact-stage"
+          className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] animate-float"
         >
-          {/* Dot Pattern */}
+          {/* Background Card - 3D decorative panel */}
           <div
-            className="absolute inset-0 opacity-40"
-            style={{
-              backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.5) 1.5px, transparent 1.5px)`,
-              backgroundSize: "18px 18px",
-            }}
-          ></div>
-          {/* Lines Pattern */}
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(255,255,255,0.25) 12px, rgba(255,255,255,0.25) 14px)`,
-            }}
-          ></div>
-        </div>
+            data-testid="hero-impact-background"
+            className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#1f3492] to-[#c8348f] shadow-2xl rotate-12 overflow-hidden"
+          >
+            {/* Dot Pattern */}
+            <div
+              className="absolute inset-0 opacity-40"
+              style={{
+                backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.5) 1.5px, transparent 1.5px)`,
+                backgroundSize: "18px 18px",
+              }}
+            ></div>
+            {/* Lines Pattern */}
+            <div
+              className="absolute inset-0 opacity-20"
+              style={{
+                backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(255,255,255,0.25) 12px, rgba(255,255,255,0.25) 14px)`,
+              }}
+            ></div>
+          </div>
 
-        {/* Foreground Card - 3D Pop In */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-3xl bg-gradient-to-br from-white via-[#1f3492]/20 to-[#c8348f]/20 backdrop-blur-xl border-2 border-[#1f3492]/40 shadow-2xl flex flex-col items-center justify-center p-4 sm:p-6 animate-3d-pop hover-3d-tilt">
-          <h3 className="text-base sm:text-lg md:text-xl font-bold text-white text-center mb-3 sm:mb-4">
-            Our Impact
-          </h3>
+          <div className="absolute inset-0 flex items-center justify-center">
+            {/* Foreground Card - 3D Pop In */}
+            <div
+              data-testid="hero-impact-card"
+              className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-3xl bg-gradient-to-br from-white via-[#1f3492]/20 to-[#c8348f]/20 backdrop-blur-xl border-2 border-[#1f3492]/40 shadow-2xl flex flex-col items-center justify-center p-4 sm:p-6 animate-3d-pop hover-3d-tilt"
+            >
+              <h3 className="text-base sm:text-lg md:text-xl font-bold text-white text-center mb-3 sm:mb-4">
+                Our Impact
+              </h3>
 
-          <div className="grid grid-cols-3 gap-3 sm:gap-4 w-full">
-            {/* Stat 1 */}
-            <div className="flex flex-col items-center text-center animate-bounce-in animate-delay-100">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1f3567]/40 flex items-center justify-center shadow-md mb-1.5 sm:mb-2 hover:scale-125 hover:rotate-12 transition-all duration-300">
-                <Users className="w-5 h-5 sm:w-6 sm:h-6 text-[#ededef]" />
+              <div className="grid grid-cols-3 gap-3 sm:gap-4 w-full">
+                {/* Stat 1 */}
+                <div className="flex flex-col items-center text-center animate-bounce-in animate-delay-100">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1f3567]/40 flex items-center justify-center shadow-md mb-1.5 sm:mb-2 hover:scale-125 hover:rotate-12 transition-all duration-300">
+                    <Users className="w-5 h-5 sm:w-6 sm:h-6 text-[#ededef]" />
+                  </div>
+                  <div className="text-base sm:text-lg font-bold text-white">5000+</div>
+                  <div className="text-[9px] sm:text-[10px] text-white font-semibold">Students</div>
+                </div>
+
+                {/* Stat 2 */}
+                <div className="flex flex-col items-center text-center animate-bounce-in animate-delay-200">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#c8348e]/40 flex items-center justify-center shadow-md mb-1.5 sm:mb-2 hover:scale-125 hover:rotate-12 transition-all duration-300">
+                    <Award className="w-5 h-5 sm:w-6 sm:h-6 text-[#ededef]" />
+                  </div>
+                  <div className="text-base sm:text-lg font-bold text-white">30+</div>
+                  <div className="text-[9px] sm:text-[10px] text-white font-semibold">Events</div>
+                </div>
+
+                {/* Stat 3 */}
+                <div className="flex flex-col items-center text-center animate-bounce-in animate-delay-300">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1f3567]/40 flex items-center justify-center shadow-md mb-1.5 sm:mb-2 hover:scale-125 hover:rotate-12 transition-all duration-300">
+                    <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-[#ededef]" />
+                  </div>
+                  <div className="text-base sm:text-lg font-bold text-white">20+</div>
+                  <div className="text-[9px] sm:text-[10px] text-white font-semibold">Domains</div>
+                </div>
               </div>
-              <div className="text-base sm:text-lg font-bold text-white">5000+</div>
-              <div className="text-[9px] sm:text-[10px] text-white font-semibold">Students</div>
-            </div>
-
-            {/* Stat 2 */}
-            <div className="flex flex-col items-center text-center animate-bounce-in animate-delay-200">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#c8348e]/40 flex items-center justify-center shadow-md mb-1.5 sm:mb-2 hover:scale-125 hover:rotate-12 transition-all duration-300">
-                <Award className="w-5 h-5 sm:w-6 sm:h-6 text-[#ededef]" />
-              </div>
-              <div className="text-base sm:text-lg font-bold text-white">30+</div>
-              <div className="text-[9px] sm:text-[10px] text-white font-semibold">Events</div>
-            </div>
-
-            {/* Stat 3 */}
-            <div className="flex flex-col items-center text-center animate-bounce-in animate-delay-300">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1f3567]/40 flex items-center justify-center shadow-md mb-1.5 sm:mb-2 hover:scale-125 hover:rotate-12 transition-all duration-300">
-                <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-[#ededef]" />
-              </div>
-              <div className="text-base sm:text-lg font-bold text-white">20+</div>
-              <div className="text-[9px] sm:text-[10px] text-white font-semibold">Domains</div>
             </div>
           </div>
         </div>

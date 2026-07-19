@@ -3,6 +3,18 @@ const Event = require('../models/Event');
 const { sendAdminNotification, sendUserAcknowledgement } = require('../services/emailService');
 const mongoose = require('mongoose');
 
+const BUILT_IN_EVENTS = {
+  'aptitude-mastery-2': {
+    eventKey: 'aptitude-mastery-2',
+    title: 'Aptitude Mastery #2',
+    date: '2026-07-19',
+    time: '06:00 PM - 07:00 PM IST',
+    registrationOptions: ['Live Session - Free'],
+    registrationUrl: '',
+    whatsappGroupUrl: 'https://chat.whatsapp.com/EtsdMfwoC8oJWnQdHi0uO0'
+  }
+};
+
 // POST /api/registrations
 // Create a new event registration
 exports.createRegistration = async (req, res) => {
@@ -14,6 +26,7 @@ exports.createRegistration = async (req, res) => {
 
     const {
       eventId,
+      eventKey,
       fullName,
       email,
       phone,
@@ -25,7 +38,7 @@ exports.createRegistration = async (req, res) => {
     } = req.body;
 
     // Validate required fields
-    if (!eventId || !fullName || !email || !phone || !schoolCollegeWorkplace || !heardAboutFrom || !registrationType) {
+    if ((!eventId && !eventKey) || !fullName || !email || !phone || !schoolCollegeWorkplace || !heardAboutFrom || !registrationType) {
       console.log('❌ Validation failed - missing required fields');
       return res.status(400).json({
         success: false,
@@ -36,10 +49,16 @@ exports.createRegistration = async (req, res) => {
     console.log('✅ Required fields validated');
 
     // Get event details
-    console.log('🔍 Looking for event with ID:', eventId);
-    const event = await Event.findById(eventId);
+    console.log('🔍 Looking for event:', eventId || eventKey);
+    let event = null;
+    if (eventId && mongoose.isValidObjectId(eventId)) {
+      event = await Event.findById(eventId);
+    }
+    if (!event && eventKey && BUILT_IN_EVENTS[eventKey]) {
+      event = BUILT_IN_EVENTS[eventKey];
+    }
     if (!event) {
-      console.log('❌ Event not found:', eventId);
+      console.log('❌ Event not found:', eventId || eventKey);
       return res.status(404).json({
         success: false,
         message: 'Event not found'
@@ -47,14 +66,24 @@ exports.createRegistration = async (req, res) => {
     }
     console.log('✅ Event found:', event.title);
 
+    if (event.registrationOptions && !event.registrationOptions.includes(registrationType)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid registration type for this event'
+      });
+    }
+
     // Note: Allowing multiple registrations from same email as per requirement
     // Users can register multiple times if needed
 
     // Create registration
     console.log('📝 Creating registration document...');
     const registration = new Registration({
-      eventId,
+      eventId: eventId && mongoose.isValidObjectId(eventId) ? eventId : undefined,
+      eventKey: event.eventKey || eventKey,
       eventTitle: event.title,
+      eventDate: event.date,
+      eventTime: event.time,
       fullName,
       email,
       phone,
@@ -74,7 +103,7 @@ exports.createRegistration = async (req, res) => {
     console.log('   Registration ID (after save):', savedRegistration._id);
     console.log('   Event Title:', savedRegistration.eventTitle);
     console.log('   User Email:', savedRegistration.email);
-    console.log('   event id:',savedRegistration.eventId);
+    console.log('   Event reference:', savedRegistration.eventId || savedRegistration.eventKey);
 
     // Submit to Google Form (if URL is provided)
     let googleFormSuccess = false;
@@ -177,7 +206,9 @@ exports.getRegistrations = async (req, res) => {
   try {
     const { eventId } = req.query;
 
-    const filter = eventId ? { eventId } : {};
+    const filter = eventId
+      ? (mongoose.isValidObjectId(eventId) ? { eventId } : { eventKey: eventId })
+      : {};
     const registrations = await Registration.find(filter)
       .sort({ createdAt: -1 })
       .populate('eventId', 'title date type');

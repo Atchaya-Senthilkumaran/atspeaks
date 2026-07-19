@@ -4,11 +4,21 @@ const RegistrationSchema = new mongoose.Schema({
   eventId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Event',
-    required: true
+    required: false
+  },
+  eventKey: {
+    type: String,
+    trim: true
   },
   eventTitle: {
     type: String,
     required: true
+  },
+  eventDate: {
+    type: String
+  },
+  eventTime: {
+    type: String
   },
   fullName: {
     type: String,
@@ -57,6 +67,7 @@ const RegistrationSchema = new mongoose.Schema({
 
 // Index for faster queries
 RegistrationSchema.index({ eventId: 1, email: 1 });
+RegistrationSchema.index({ eventKey: 1, email: 1 });
 RegistrationSchema.index({ createdAt: -1 });
 
 module.exports = mongoose.model('Registration', RegistrationSchema);
