@@ -5,11 +5,6 @@ import { Building2, Eye, GraduationCap, Handshake, Rocket, Users, X } from "luci
 
 const partners = [
   {
-    name: "Rajalakshmi Engineering College",
-    logo: "/partners/rajalakshmi-engineering-college.svg",
-    website: "https://www.rajalakshmi.org/"
-  },
-  {
     name: "WeLocalHost",
     logo: "/partners/welocalhost.svg",
     website: "https://www.welocalhost.com/"

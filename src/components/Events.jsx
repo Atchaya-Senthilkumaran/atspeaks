@@ -12,14 +12,14 @@ const fallbackEvents = [
     title: "Aptitude Mastery #2",
     date: "2026-07-19",
     time: "06:00 PM - 07:00 PM IST",
-    type: "Upcoming",
+    type: "Past",
     description: "Master Time & Work aptitude concepts for college placements, bank exams, and government and group examinations in this focused live session.",
     poster: "/posters/aptitude-mastery-2.png",
-    price: 0,
-    recordingAvailable: false,
-    registrationEnabled: true,
-    whatsappGroupUrl: "https://chat.whatsapp.com/EtsdMfwoC8oJWnQdHi0uO0",
-    registrationOptions: ["Live Session - Free"],
+    price: 199,
+    recordingAvailable: true,
+    registrationEnabled: false,
+    whatsappGroupUrl: null,
+    registrationOptions: ["Recording Access"],
     registrationQuote: "Build speed, accuracy, and confidence for your next aptitude exam.",
     highlights: [
       "Master Time & Work fundamentals",
@@ -156,6 +156,19 @@ export default function Events() {
           ...e,
           type: "Past",
           recordingAvailable: true,
+          price: e.price && e.price > 0 ? e.price : 199,
+        };
+      }
+      if (e?.title?.toLowerCase() === "aptitude mastery #2" || e?.eventKey === "aptitude-mastery-2") {
+        return {
+          ...e,
+          title: "Aptitude Mastery #2",
+          type: "Past",
+          recordingAvailable: true,
+          registrationEnabled: false,
+          registrationUrl: null,
+          whatsappGroupUrl: null,
+          registrationOptions: ["Recording Access"],
           price: e.price && e.price > 0 ? e.price : 199,
         };
       }

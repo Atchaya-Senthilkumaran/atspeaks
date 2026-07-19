@@ -20,6 +20,16 @@ const updateEvents = async () => {
         registrationUrl: null,
         whatsappGroupUrl: null,
       },
+      {
+        title: "Aptitude Mastery #2",
+        price: 199,
+        recordingAvailable: true,
+        isVisible: true,
+        type: "Past",
+        registrationUrl: null,
+        whatsappGroupUrl: null,
+        registrationEnabled: false,
+      },
       { title: "Data to Dimensions: 3D Data Visualization", price: 199, recordingAvailable: true, isVisible: true },
       { title: "Agentic Frames: From CLI to MCP", price: 199, recordingAvailable: true, isVisible: true },
       { title: "Campus to Corporate: Hack and Crack Placements", price: 199, recordingAvailable: true, isVisible: true },
@@ -54,6 +64,9 @@ const updateEvents = async () => {
       }
       if (Object.prototype.hasOwnProperty.call(update, "whatsappGroupUrl")) {
         setFields.whatsappGroupUrl = update.whatsappGroupUrl;
+      }
+      if (Object.prototype.hasOwnProperty.call(update, "registrationEnabled")) {
+        setFields.registrationEnabled = update.registrationEnabled;
       }
 
       const result = await Event.updateOne(
