@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Instagram, Linkedin, Sparkles } from "lucide-react";
+import { Instagram, Linkedin } from "lucide-react";
 import { WHATSAPP_GROUP_URL } from "../config/links";
 
 export default function Navbar() {
@@ -76,17 +76,6 @@ export default function Navbar() {
               <Instagram className="w-4 h-4 text-[#c8348f] group-hover:scale-110 transition-transform duration-300" />
             </a>
           </div>
-          <a
-            href={WHATSAPP_GROUP_URL}
-            className="group hidden md:inline-flex items-center gap-1.5 rounded-full px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm font-medium bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white shadow-md hover:shadow-xl hover:scale-110 transition-all duration-300 whitespace-nowrap animate-fade-in relative overflow-hidden"
-          >
-            <span className="relative z-10 inline-flex items-center gap-1">
-              Join Now
-              <Sparkles className="w-3 h-3 group-hover:rotate-12 transition-transform duration-300" />
-            </span>
-            {/* Shimmer effect on hover */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-          </a>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 min-w-[44px] min-h-[44px] rounded-lg bg-gradient-to-br from-slate-100 to-slate-50 hover:from-[#1f3492]/10 hover:to-[#c8348f]/10 border border-slate-200 hover:border-[#1f3492]/20 transition-all text-xl flex items-center justify-center hover:scale-110 active:scale-95 shadow-sm hover:shadow-md"
@@ -131,18 +120,6 @@ export default function Navbar() {
             <a href="#contact" onClick={handleLinkClick} className="group text-slate-700 hover:text-[#1f3492] py-2 border-b border-slate-100 transition-all duration-300 text-sm hover:translate-x-2 flex items-center gap-2">
               <span className="w-1 h-1 rounded-full bg-[#c8348f] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               Contact
-            </a>
-            <a
-              href={WHATSAPP_GROUP_URL}
-              onClick={handleLinkClick}
-              className="group inline-flex items-center justify-center gap-1.5 text-center rounded-full px-4 py-2.5 text-sm font-medium bg-gradient-to-r from-[#1f3492] to-[#c8348f] text-white shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 mt-2 relative overflow-hidden"
-            >
-              <span className="relative z-10 inline-flex items-center gap-1">
-                Join Now
-                <Sparkles className="w-3 h-3 group-hover:rotate-12 transition-transform duration-300" />
-              </span>
-              {/* Shimmer effect on hover */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
             </a>
           </nav>
         </div>
