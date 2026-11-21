@@ -1,4 +1,10 @@
-# Logs
+# Environment variables
+.env
+.env*.local
+
+# Uploads
+uploads/intern-applications/
+server/uploads/intern-applications/
 logs
 *.log
 npm-debug.log*

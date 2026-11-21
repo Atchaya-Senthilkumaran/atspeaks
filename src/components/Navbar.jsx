@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Instagram, Linkedin } from "lucide-react";
 import { WHATSAPP_GROUP_URL } from "../config/links";
 
@@ -35,13 +36,14 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-2 lg:gap-4 xl:gap-6 text-xs lg:text-sm font-medium flex-wrap justify-end animate-fade-in">
-          <a href="#home" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap hover:scale-105">Home</a>
-          <a href="#about" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap hover:scale-105">About</a>
-          <a href="#events" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap hover:scale-105">Events</a>
-          <a href="#services" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap hover:scale-105">Services</a>
-          <a href="#community" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap hover:scale-105">Community</a>
-          <a href="#testimonials" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap hover:scale-105">Testimonials</a>
-          <a href="#contact" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap hover:scale-105">Contact</a>
+          <Link to="/#home" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap hover:scale-105">Home</Link>
+          <Link to="/#about" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap hover:scale-105">About</Link>
+          <Link to="/#events" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap hover:scale-105">Events</Link>
+          <Link to="/#services" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap hover:scale-105">Services</Link>
+          <Link to="/#community" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap hover:scale-105">Community</Link>
+          <Link to="/#testimonials" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap hover:scale-105">Testimonials</Link>
+          <Link to="/#contact" className="text-slate-700 hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap hover:scale-105">Contact</Link>
+          <Link to="/careers/sales-intern" className="inline-flex items-center gap-1.5 text-[#c8348f] font-semibold hover:text-[#1f3492] hover:underline underline-offset-4 transition-all duration-300 whitespace-nowrap hover:scale-105">Careers<span className="px-1.5 py-0.5 text-[10px] font-bold uppercase bg-[#c8348f]/10 text-[#c8348f] rounded-full">Hiring</span></Link>
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
@@ -121,6 +123,10 @@ export default function Navbar() {
               <span className="w-1 h-1 rounded-full bg-[#c8348f] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               Contact
             </a>
+            <Link to="/careers/sales-intern" onClick={handleLinkClick} className="group text-[#c8348f] font-semibold hover:text-[#1f3492] py-2 border-b border-slate-100 transition-all duration-300 text-sm hover:translate-x-2 flex items-center gap-2">
+              <span className="w-1 h-1 rounded-full bg-[#c8348f]"></span>
+              Careers (Sales Intern)
+            </Link>
           </nav>
         </div>
       )}

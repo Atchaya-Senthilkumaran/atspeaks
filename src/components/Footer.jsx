@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Mail, Instagram, Youtube, Linkedin, Sparkles, Heart, Code, Zap } from "lucide-react";
 
 export default function Footer() {
@@ -147,6 +148,12 @@ export default function Footer() {
                   <span className="w-1 h-1 rounded-full bg-[#c8348f] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   Founder
                 </a>
+              </li>
+              <li>
+                <Link to="/careers/sales-intern" className="group inline-flex items-center gap-2 text-[#c8348f] font-semibold hover:text-[#1f3492] transition-all duration-300 hover:translate-x-1">
+                  <span className="w-1 h-1 rounded-full bg-[#c8348f]"></span>
+                  Careers (Sales Intern)
+                </Link>
               </li>
               <li>
                 <a href="mailto:connect.atspeaks@gmail.com" className="group inline-flex items-center gap-2 hover:text-[#1f3492] transition-all duration-300 hover:translate-x-1">
